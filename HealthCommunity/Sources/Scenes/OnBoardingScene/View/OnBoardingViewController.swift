@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import RxSwift
 
 final class OnBoardingViewController: BaseViewController<OnBoardingView> {
+    
+    private let viewModel = OnBoardingViewModel()
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,6 +19,18 @@ final class OnBoardingViewController: BaseViewController<OnBoardingView> {
     
     override func configureView() {
         super.configureView()
+    }
+    
+    override func bindModel() {
+        let input = OnBoardingViewModel.Input(
+            startButtonTap: rootView.startButton.rx.tap)
+        let output = viewModel.transform(input: input)
+        
+        output.startButtonTapped
+            .bind(with: self) { owner, _ in
+                owner.navigationController?.pushViewController(SignUpViewController(), animated: true)
+            }
+            .disposed(by: disposeBag)
     }
     
 }
