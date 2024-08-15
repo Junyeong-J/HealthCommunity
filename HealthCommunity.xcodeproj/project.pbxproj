@@ -21,6 +21,11 @@
 		723E472B2C6DC11A004B0E0C /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 723E472A2C6DC11A004B0E0C /* RxCocoa */; };
 		723E472D2C6DC11A004B0E0C /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 723E472C2C6DC11A004B0E0C /* RxSwift */; };
 		723E47302C6DC12A004B0E0C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 723E472F2C6DC12A004B0E0C /* SnapKit */; };
+		723E47352C6DC23B004B0E0C /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47342C6DC23B004B0E0C /* OnBoardingViewController.swift */; };
+		723E47372C6DC279004B0E0C /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47362C6DC279004B0E0C /* OnBoardingView.swift */; };
+		723E473B2C6DC5BE004B0E0C /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E473A2C6DC5BE004B0E0C /* BaseButton.swift */; };
+		723E473E2C6DC6EC004B0E0C /* ResourceFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E473D2C6DC6EC004B0E0C /* ResourceFont.swift */; };
+		723E47442C6DCA1B004B0E0C /* ButtonTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47432C6DCA1B004B0E0C /* ButtonTitle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +41,11 @@
 		723E47202C6DBF98004B0E0C /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		723E47222C6DBFBB004B0E0C /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		723E47242C6DBFE7004B0E0C /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		723E47342C6DC23B004B0E0C /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
+		723E47362C6DC279004B0E0C /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
+		723E473A2C6DC5BE004B0E0C /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
+		723E473D2C6DC6EC004B0E0C /* ResourceFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceFont.swift; sourceTree = "<group>"; };
+		723E47432C6DCA1B004B0E0C /* ButtonTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTitle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +97,7 @@
 				723E47022C6CD240004B0E0C /* AppDelegate.swift */,
 				723E47042C6CD240004B0E0C /* SceneDelegate.swift */,
 				723E471B2C6DBC85004B0E0C /* StoryBoard */,
+				723E473C2C6DC6C4004B0E0C /* Fonts */,
 				723E470B2C6CD241004B0E0C /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -103,6 +114,9 @@
 		723E471C2C6DBCA6004B0E0C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				723E473F2C6DC9D3004B0E0C /* Constants */,
+				723E47382C6DC4FE004B0E0C /* Custom */,
+				723E47312C6DC1DA004B0E0C /* Scenes */,
 				723E471D2C6DBE43004B0E0C /* Base */,
 			);
 			path = Sources;
@@ -117,6 +131,71 @@
 				723E47242C6DBFE7004B0E0C /* BaseTableViewCell.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		723E47312C6DC1DA004B0E0C /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				723E47322C6DC1F3004B0E0C /* OnBoardingScene */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		723E47322C6DC1F3004B0E0C /* OnBoardingScene */ = {
+			isa = PBXGroup;
+			children = (
+				723E47332C6DC20C004B0E0C /* View */,
+			);
+			path = OnBoardingScene;
+			sourceTree = "<group>";
+		};
+		723E47332C6DC20C004B0E0C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				723E47342C6DC23B004B0E0C /* OnBoardingViewController.swift */,
+				723E47362C6DC279004B0E0C /* OnBoardingView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		723E47382C6DC4FE004B0E0C /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				723E47392C6DC573004B0E0C /* Button */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		723E47392C6DC573004B0E0C /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				723E473A2C6DC5BE004B0E0C /* BaseButton.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		723E473C2C6DC6C4004B0E0C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				723E473D2C6DC6EC004B0E0C /* ResourceFont.swift */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		723E473F2C6DC9D3004B0E0C /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				723E47422C6DC9F0004B0E0C /* Enums */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		723E47422C6DC9F0004B0E0C /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				723E47432C6DCA1B004B0E0C /* ButtonTitle.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,9 +281,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				723E47212C6DBF98004B0E0C /* BaseViewController.swift in Sources */,
+				723E473E2C6DC6EC004B0E0C /* ResourceFont.swift in Sources */,
+				723E47442C6DCA1B004B0E0C /* ButtonTitle.swift in Sources */,
 				723E47032C6CD240004B0E0C /* AppDelegate.swift in Sources */,
 				723E47192C6CD360004B0E0C /* APIKey.swift in Sources */,
+				723E47372C6DC279004B0E0C /* OnBoardingView.swift in Sources */,
+				723E47352C6DC23B004B0E0C /* OnBoardingViewController.swift in Sources */,
 				723E47052C6CD240004B0E0C /* SceneDelegate.swift in Sources */,
+				723E473B2C6DC5BE004B0E0C /* BaseButton.swift in Sources */,
 				723E47252C6DBFE7004B0E0C /* BaseTableViewCell.swift in Sources */,
 				723E471F2C6DBF5F004B0E0C /* BaseView.swift in Sources */,
 				723E47232C6DBFBB004B0E0C /* BaseCollectionViewCell.swift in Sources */,
