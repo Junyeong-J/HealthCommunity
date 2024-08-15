@@ -29,6 +29,7 @@ class BaseViewController<RootView: UIView>: UIViewController {
         configureHierarchy()
         configureView()
         configureConstraints()
+        bindModel()
     }
     
     func configureHierarchy() {
@@ -41,6 +42,19 @@ class BaseViewController<RootView: UIView>: UIViewController {
     
     func configureConstraints() {
         
+    }
+    
+    func bindModel() {
+        
+    }
+    
+    func configureKeyboardTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        rootView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func dismissKeyboard() {
+        rootView.endEditing(true)
     }
     
 }

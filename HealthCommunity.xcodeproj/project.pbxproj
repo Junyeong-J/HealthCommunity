@@ -27,6 +27,9 @@
 		723E473E2C6DC6EC004B0E0C /* ResourceFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E473D2C6DC6EC004B0E0C /* ResourceFont.swift */; };
 		723E47442C6DCA1B004B0E0C /* ButtonTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47432C6DCA1B004B0E0C /* ButtonTitle.swift */; };
 		723E47462C6DCE9C004B0E0C /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47452C6DCE9C004B0E0C /* BaseViewModel.swift */; };
+		723E47492C6DCF22004B0E0C /* OnBoardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47482C6DCF22004B0E0C /* OnBoardingViewModel.swift */; };
+		723E474D2C6DD421004B0E0C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E474C2C6DD421004B0E0C /* SignUpViewController.swift */; };
+		723E47502C6DD437004B0E0C /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E474F2C6DD437004B0E0C /* SignUpView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +51,9 @@
 		723E473D2C6DC6EC004B0E0C /* ResourceFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceFont.swift; sourceTree = "<group>"; };
 		723E47432C6DCA1B004B0E0C /* ButtonTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTitle.swift; sourceTree = "<group>"; };
 		723E47452C6DCE9C004B0E0C /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		723E47482C6DCF22004B0E0C /* OnBoardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewModel.swift; sourceTree = "<group>"; };
+		723E474C2C6DD421004B0E0C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		723E474F2C6DD437004B0E0C /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				723E47322C6DC1F3004B0E0C /* OnBoardingScene */,
+				723E474A2C6DD12E004B0E0C /* SignUpScene */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -148,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				723E47332C6DC20C004B0E0C /* View */,
+				723E47472C6DCEDF004B0E0C /* ViewModel */,
 			);
 			path = OnBoardingScene;
 			sourceTree = "<group>";
@@ -199,6 +207,31 @@
 				723E47432C6DCA1B004B0E0C /* ButtonTitle.swift */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		723E47472C6DCEDF004B0E0C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				723E47482C6DCF22004B0E0C /* OnBoardingViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		723E474A2C6DD12E004B0E0C /* SignUpScene */ = {
+			isa = PBXGroup;
+			children = (
+				723E474B2C6DD40E004B0E0C /* View */,
+			);
+			path = SignUpScene;
+			sourceTree = "<group>";
+		};
+		723E474B2C6DD40E004B0E0C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				723E474C2C6DD421004B0E0C /* SignUpViewController.swift */,
+				723E474F2C6DD437004B0E0C /* SignUpView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,7 +325,10 @@
 				723E47352C6DC23B004B0E0C /* OnBoardingViewController.swift in Sources */,
 				723E47462C6DCE9C004B0E0C /* BaseViewModel.swift in Sources */,
 				723E47052C6CD240004B0E0C /* SceneDelegate.swift in Sources */,
+				723E474D2C6DD421004B0E0C /* SignUpViewController.swift in Sources */,
+				723E47492C6DCF22004B0E0C /* OnBoardingViewModel.swift in Sources */,
 				723E473B2C6DC5BE004B0E0C /* BaseButton.swift in Sources */,
+				723E47502C6DD437004B0E0C /* SignUpView.swift in Sources */,
 				723E47252C6DBFE7004B0E0C /* BaseTableViewCell.swift in Sources */,
 				723E471F2C6DBF5F004B0E0C /* BaseView.swift in Sources */,
 				723E47232C6DBFBB004B0E0C /* BaseCollectionViewCell.swift in Sources */,
