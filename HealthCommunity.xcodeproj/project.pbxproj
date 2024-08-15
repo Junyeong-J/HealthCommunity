@@ -57,14 +57,46 @@
 		723E47012C6CD240004B0E0C /* HealthCommunity */ = {
 			isa = PBXGroup;
 			children = (
-				723E47022C6CD240004B0E0C /* AppDelegate.swift */,
-				723E47042C6CD240004B0E0C /* SceneDelegate.swift */,
-				723E470B2C6CD241004B0E0C /* Assets.xcassets */,
-				723E470D2C6CD241004B0E0C /* LaunchScreen.storyboard */,
+				723E471A2C6DBC6D004B0E0C /* Resources */,
+				723E471C2C6DBCA6004B0E0C /* Sources */,
 				723E47102C6CD241004B0E0C /* Info.plist */,
 				723E47182C6CD360004B0E0C /* APIKey.swift */,
 			);
 			path = HealthCommunity;
+			sourceTree = "<group>";
+		};
+		723E471A2C6DBC6D004B0E0C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				723E47022C6CD240004B0E0C /* AppDelegate.swift */,
+				723E47042C6CD240004B0E0C /* SceneDelegate.swift */,
+				723E471B2C6DBC85004B0E0C /* StoryBoard */,
+				723E470B2C6CD241004B0E0C /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		723E471B2C6DBC85004B0E0C /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				723E470D2C6CD241004B0E0C /* LaunchScreen.storyboard */,
+			);
+			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		723E471C2C6DBCA6004B0E0C /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				723E471D2C6DBE43004B0E0C /* Base */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		723E471D2C6DBE43004B0E0C /* Base */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
