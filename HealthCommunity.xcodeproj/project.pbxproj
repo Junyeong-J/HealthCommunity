@@ -26,6 +26,7 @@
 		723E473B2C6DC5BE004B0E0C /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E473A2C6DC5BE004B0E0C /* BaseButton.swift */; };
 		723E473E2C6DC6EC004B0E0C /* ResourceFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E473D2C6DC6EC004B0E0C /* ResourceFont.swift */; };
 		723E47442C6DCA1B004B0E0C /* ButtonTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47432C6DCA1B004B0E0C /* ButtonTitle.swift */; };
+		723E47462C6DCE9C004B0E0C /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47452C6DCE9C004B0E0C /* BaseViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		723E473A2C6DC5BE004B0E0C /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		723E473D2C6DC6EC004B0E0C /* ResourceFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceFont.swift; sourceTree = "<group>"; };
 		723E47432C6DCA1B004B0E0C /* ButtonTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTitle.swift; sourceTree = "<group>"; };
+		723E47452C6DCE9C004B0E0C /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 				723E47202C6DBF98004B0E0C /* BaseViewController.swift */,
 				723E47222C6DBFBB004B0E0C /* BaseCollectionViewCell.swift */,
 				723E47242C6DBFE7004B0E0C /* BaseTableViewCell.swift */,
+				723E47452C6DCE9C004B0E0C /* BaseViewModel.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				723E47192C6CD360004B0E0C /* APIKey.swift in Sources */,
 				723E47372C6DC279004B0E0C /* OnBoardingView.swift in Sources */,
 				723E47352C6DC23B004B0E0C /* OnBoardingViewController.swift in Sources */,
+				723E47462C6DCE9C004B0E0C /* BaseViewModel.swift in Sources */,
 				723E47052C6CD240004B0E0C /* SceneDelegate.swift in Sources */,
 				723E473B2C6DC5BE004B0E0C /* BaseButton.swift in Sources */,
 				723E47252C6DBFE7004B0E0C /* BaseTableViewCell.swift in Sources */,
