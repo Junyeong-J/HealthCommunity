@@ -30,6 +30,11 @@
 		723E47492C6DCF22004B0E0C /* OnBoardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47482C6DCF22004B0E0C /* OnBoardingViewModel.swift */; };
 		723E474D2C6DD421004B0E0C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E474C2C6DD421004B0E0C /* SignUpViewController.swift */; };
 		723E47502C6DD437004B0E0C /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E474F2C6DD437004B0E0C /* SignUpView.swift */; };
+		723E47532C6DD9E2004B0E0C /* LSLPAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47522C6DD9E2004B0E0C /* LSLPAPIManager.swift */; };
+		723E47562C6DDC77004B0E0C /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47552C6DDC77004B0E0C /* APIError.swift */; };
+		723E47582C6DDCD2004B0E0C /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47572C6DDCD2004B0E0C /* TargetType.swift */; };
+		723E475A2C6DDD0A004B0E0C /* LSLPRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47592C6DDD0A004B0E0C /* LSLPRouter.swift */; };
+		723E475C2C6DE187004B0E0C /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E475B2C6DE187004B0E0C /* Header.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +59,11 @@
 		723E47482C6DCF22004B0E0C /* OnBoardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewModel.swift; sourceTree = "<group>"; };
 		723E474C2C6DD421004B0E0C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		723E474F2C6DD437004B0E0C /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		723E47522C6DD9E2004B0E0C /* LSLPAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSLPAPIManager.swift; sourceTree = "<group>"; };
+		723E47552C6DDC77004B0E0C /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		723E47572C6DDCD2004B0E0C /* TargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
+		723E47592C6DDD0A004B0E0C /* LSLPRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSLPRouter.swift; sourceTree = "<group>"; };
+		723E475B2C6DE187004B0E0C /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +132,7 @@
 		723E471C2C6DBCA6004B0E0C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				723E47512C6DD971004B0E0C /* Network */,
 				723E473F2C6DC9D3004B0E0C /* Constants */,
 				723E47382C6DC4FE004B0E0C /* Custom */,
 				723E47312C6DC1DA004B0E0C /* Scenes */,
@@ -234,6 +245,26 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		723E47512C6DD971004B0E0C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				723E47542C6DDC60004B0E0C /* APIError */,
+				723E47522C6DD9E2004B0E0C /* LSLPAPIManager.swift */,
+				723E47572C6DDCD2004B0E0C /* TargetType.swift */,
+				723E47592C6DDD0A004B0E0C /* LSLPRouter.swift */,
+				723E475B2C6DE187004B0E0C /* Header.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		723E47542C6DDC60004B0E0C /* APIError */ = {
+			isa = PBXGroup;
+			children = (
+				723E47552C6DDC77004B0E0C /* APIError.swift */,
+			);
+			path = APIError;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -324,14 +355,19 @@
 				723E47372C6DC279004B0E0C /* OnBoardingView.swift in Sources */,
 				723E47352C6DC23B004B0E0C /* OnBoardingViewController.swift in Sources */,
 				723E47462C6DCE9C004B0E0C /* BaseViewModel.swift in Sources */,
+				723E47582C6DDCD2004B0E0C /* TargetType.swift in Sources */,
 				723E47052C6CD240004B0E0C /* SceneDelegate.swift in Sources */,
+				723E475C2C6DE187004B0E0C /* Header.swift in Sources */,
 				723E474D2C6DD421004B0E0C /* SignUpViewController.swift in Sources */,
+				723E475A2C6DDD0A004B0E0C /* LSLPRouter.swift in Sources */,
 				723E47492C6DCF22004B0E0C /* OnBoardingViewModel.swift in Sources */,
 				723E473B2C6DC5BE004B0E0C /* BaseButton.swift in Sources */,
 				723E47502C6DD437004B0E0C /* SignUpView.swift in Sources */,
 				723E47252C6DBFE7004B0E0C /* BaseTableViewCell.swift in Sources */,
+				723E47532C6DD9E2004B0E0C /* LSLPAPIManager.swift in Sources */,
 				723E471F2C6DBF5F004B0E0C /* BaseView.swift in Sources */,
 				723E47232C6DBFBB004B0E0C /* BaseCollectionViewCell.swift in Sources */,
+				723E47562C6DDC77004B0E0C /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
