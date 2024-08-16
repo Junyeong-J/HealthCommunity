@@ -28,7 +28,7 @@ final class OnBoardingViewController: BaseViewController<OnBoardingView> {
         
         output.startButtonTapped
             .bind(with: self) { owner, _ in
-                owner.navigationController?.pushViewController(SignUpViewController(), animated: true)
+                owner.navigationController?.pushViewController(EmailViewController(), animated: true)
             }
             .disposed(by: disposeBag)
     }

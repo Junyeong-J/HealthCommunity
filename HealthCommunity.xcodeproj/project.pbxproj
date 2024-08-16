@@ -28,13 +28,19 @@
 		723E47442C6DCA1B004B0E0C /* ButtonTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47432C6DCA1B004B0E0C /* ButtonTitle.swift */; };
 		723E47462C6DCE9C004B0E0C /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47452C6DCE9C004B0E0C /* BaseViewModel.swift */; };
 		723E47492C6DCF22004B0E0C /* OnBoardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47482C6DCF22004B0E0C /* OnBoardingViewModel.swift */; };
-		723E474D2C6DD421004B0E0C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E474C2C6DD421004B0E0C /* SignUpViewController.swift */; };
-		723E47502C6DD437004B0E0C /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E474F2C6DD437004B0E0C /* SignUpView.swift */; };
 		723E47532C6DD9E2004B0E0C /* LSLPAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47522C6DD9E2004B0E0C /* LSLPAPIManager.swift */; };
 		723E47562C6DDC77004B0E0C /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47552C6DDC77004B0E0C /* APIError.swift */; };
 		723E47582C6DDCD2004B0E0C /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47572C6DDCD2004B0E0C /* TargetType.swift */; };
 		723E475A2C6DDD0A004B0E0C /* LSLPRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47592C6DDD0A004B0E0C /* LSLPRouter.swift */; };
 		723E475C2C6DE187004B0E0C /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E475B2C6DE187004B0E0C /* Header.swift */; };
+		723E47632C6F2718004B0E0C /* EmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47622C6F2718004B0E0C /* EmailView.swift */; };
+		723E47652C6F2720004B0E0C /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47642C6F2720004B0E0C /* EmailViewController.swift */; };
+		723E47682C6F288E004B0E0C /* LineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47672C6F288E004B0E0C /* LineTextField.swift */; };
+		723E476A2C6F28C5004B0E0C /* TextFieldPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47692C6F28C5004B0E0C /* TextFieldPlaceholder.swift */; };
+		723E476D2C6F3345004B0E0C /* EmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E476C2C6F3345004B0E0C /* EmailViewModel.swift */; };
+		723E47702C6F3814004B0E0C /* EmailCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E476F2C6F3814004B0E0C /* EmailCheck.swift */; };
+		723E47732C6F3B87004B0E0C /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 723E47722C6F3B87004B0E0C /* Toast */; };
+		723E47752C6F3ED5004B0E0C /* Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47742C6F3ED5004B0E0C /* Body.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,13 +63,18 @@
 		723E47432C6DCA1B004B0E0C /* ButtonTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTitle.swift; sourceTree = "<group>"; };
 		723E47452C6DCE9C004B0E0C /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		723E47482C6DCF22004B0E0C /* OnBoardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewModel.swift; sourceTree = "<group>"; };
-		723E474C2C6DD421004B0E0C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		723E474F2C6DD437004B0E0C /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		723E47522C6DD9E2004B0E0C /* LSLPAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSLPAPIManager.swift; sourceTree = "<group>"; };
 		723E47552C6DDC77004B0E0C /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		723E47572C6DDCD2004B0E0C /* TargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
 		723E47592C6DDD0A004B0E0C /* LSLPRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSLPRouter.swift; sourceTree = "<group>"; };
 		723E475B2C6DE187004B0E0C /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
+		723E47622C6F2718004B0E0C /* EmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailView.swift; sourceTree = "<group>"; };
+		723E47642C6F2720004B0E0C /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
+		723E47672C6F288E004B0E0C /* LineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineTextField.swift; sourceTree = "<group>"; };
+		723E47692C6F28C5004B0E0C /* TextFieldPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldPlaceholder.swift; sourceTree = "<group>"; };
+		723E476C2C6F3345004B0E0C /* EmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewModel.swift; sourceTree = "<group>"; };
+		723E476F2C6F3814004B0E0C /* EmailCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCheck.swift; sourceTree = "<group>"; };
+		723E47742C6F3ED5004B0E0C /* Body.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Body.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +85,7 @@
 				723E472D2C6DC11A004B0E0C /* RxSwift in Frameworks */,
 				723E47302C6DC12A004B0E0C /* SnapKit in Frameworks */,
 				723E472B2C6DC11A004B0E0C /* RxCocoa in Frameworks */,
+				723E47732C6F3B87004B0E0C /* Toast in Frameworks */,
 				723E47282C6DC100004B0E0C /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -183,6 +195,7 @@
 		723E47382C6DC4FE004B0E0C /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				723E47662C6F287B004B0E0C /* TextField */,
 				723E47392C6DC573004B0E0C /* Button */,
 			);
 			path = Custom;
@@ -216,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				723E47432C6DCA1B004B0E0C /* ButtonTitle.swift */,
+				723E47692C6F28C5004B0E0C /* TextFieldPlaceholder.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -231,38 +245,97 @@
 		723E474A2C6DD12E004B0E0C /* SignUpScene */ = {
 			isa = PBXGroup;
 			children = (
-				723E474B2C6DD40E004B0E0C /* View */,
+				723E475E2C6F26AC004B0E0C /* EmailView */,
+				723E475F2C6F26D6004B0E0C /* PasswordView */,
+				723E47602C6F26E0004B0E0C /* NicknameView */,
 			);
 			path = SignUpScene;
-			sourceTree = "<group>";
-		};
-		723E474B2C6DD40E004B0E0C /* View */ = {
-			isa = PBXGroup;
-			children = (
-				723E474C2C6DD421004B0E0C /* SignUpViewController.swift */,
-				723E474F2C6DD437004B0E0C /* SignUpView.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		723E47512C6DD971004B0E0C /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				723E47542C6DDC60004B0E0C /* APIError */,
-				723E47522C6DD9E2004B0E0C /* LSLPAPIManager.swift */,
-				723E47572C6DDCD2004B0E0C /* TargetType.swift */,
-				723E47592C6DDD0A004B0E0C /* LSLPRouter.swift */,
-				723E475B2C6DE187004B0E0C /* Header.swift */,
+				723E47762C6F3F7D004B0E0C /* API */,
+				723E47772C6F3F84004B0E0C /* Router */,
 			);
 			path = Network;
 			sourceTree = "<group>";
 		};
-		723E47542C6DDC60004B0E0C /* APIError */ = {
+		723E475E2C6F26AC004B0E0C /* EmailView */ = {
+			isa = PBXGroup;
+			children = (
+				723E476E2C6F37CA004B0E0C /* Model */,
+				723E47612C6F2701004B0E0C /* View */,
+				723E476B2C6F3335004B0E0C /* ViewModel */,
+			);
+			path = EmailView;
+			sourceTree = "<group>";
+		};
+		723E475F2C6F26D6004B0E0C /* PasswordView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PasswordView;
+			sourceTree = "<group>";
+		};
+		723E47602C6F26E0004B0E0C /* NicknameView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NicknameView;
+			sourceTree = "<group>";
+		};
+		723E47612C6F2701004B0E0C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				723E47642C6F2720004B0E0C /* EmailViewController.swift */,
+				723E47622C6F2718004B0E0C /* EmailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		723E47662C6F287B004B0E0C /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				723E47672C6F288E004B0E0C /* LineTextField.swift */,
+			);
+			path = TextField;
+			sourceTree = "<group>";
+		};
+		723E476B2C6F3335004B0E0C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				723E476C2C6F3345004B0E0C /* EmailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		723E476E2C6F37CA004B0E0C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				723E476F2C6F3814004B0E0C /* EmailCheck.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		723E47762C6F3F7D004B0E0C /* API */ = {
 			isa = PBXGroup;
 			children = (
 				723E47552C6DDC77004B0E0C /* APIError.swift */,
+				723E47522C6DD9E2004B0E0C /* LSLPAPIManager.swift */,
+				723E47572C6DDCD2004B0E0C /* TargetType.swift */,
 			);
-			path = APIError;
+			path = API;
+			sourceTree = "<group>";
+		};
+		723E47772C6F3F84004B0E0C /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				723E47592C6DDD0A004B0E0C /* LSLPRouter.swift */,
+				723E475B2C6DE187004B0E0C /* Header.swift */,
+				723E47742C6F3ED5004B0E0C /* Body.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,6 +359,7 @@
 				723E472A2C6DC11A004B0E0C /* RxCocoa */,
 				723E472C2C6DC11A004B0E0C /* RxSwift */,
 				723E472F2C6DC12A004B0E0C /* SnapKit */,
+				723E47722C6F3B87004B0E0C /* Toast */,
 			);
 			productName = HealthCommunity;
 			productReference = 723E46FF2C6CD240004B0E0C /* HealthCommunity.app */;
@@ -319,6 +393,7 @@
 				723E47262C6DC100004B0E0C /* XCRemoteSwiftPackageReference "Alamofire" */,
 				723E47292C6DC11A004B0E0C /* XCRemoteSwiftPackageReference "RxSwift" */,
 				723E472E2C6DC12A004B0E0C /* XCRemoteSwiftPackageReference "SnapKit" */,
+				723E47712C6F3B87004B0E0C /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = 723E47002C6CD240004B0E0C /* Products */;
 			projectDirPath = "";
@@ -348,26 +423,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				723E47212C6DBF98004B0E0C /* BaseViewController.swift in Sources */,
+				723E476D2C6F3345004B0E0C /* EmailViewModel.swift in Sources */,
 				723E473E2C6DC6EC004B0E0C /* ResourceFont.swift in Sources */,
 				723E47442C6DCA1B004B0E0C /* ButtonTitle.swift in Sources */,
+				723E47632C6F2718004B0E0C /* EmailView.swift in Sources */,
 				723E47032C6CD240004B0E0C /* AppDelegate.swift in Sources */,
 				723E47192C6CD360004B0E0C /* APIKey.swift in Sources */,
+				723E47752C6F3ED5004B0E0C /* Body.swift in Sources */,
 				723E47372C6DC279004B0E0C /* OnBoardingView.swift in Sources */,
+				723E47682C6F288E004B0E0C /* LineTextField.swift in Sources */,
 				723E47352C6DC23B004B0E0C /* OnBoardingViewController.swift in Sources */,
 				723E47462C6DCE9C004B0E0C /* BaseViewModel.swift in Sources */,
 				723E47582C6DDCD2004B0E0C /* TargetType.swift in Sources */,
 				723E47052C6CD240004B0E0C /* SceneDelegate.swift in Sources */,
+				723E47652C6F2720004B0E0C /* EmailViewController.swift in Sources */,
 				723E475C2C6DE187004B0E0C /* Header.swift in Sources */,
-				723E474D2C6DD421004B0E0C /* SignUpViewController.swift in Sources */,
 				723E475A2C6DDD0A004B0E0C /* LSLPRouter.swift in Sources */,
 				723E47492C6DCF22004B0E0C /* OnBoardingViewModel.swift in Sources */,
 				723E473B2C6DC5BE004B0E0C /* BaseButton.swift in Sources */,
-				723E47502C6DD437004B0E0C /* SignUpView.swift in Sources */,
+				723E476A2C6F28C5004B0E0C /* TextFieldPlaceholder.swift in Sources */,
 				723E47252C6DBFE7004B0E0C /* BaseTableViewCell.swift in Sources */,
 				723E47532C6DD9E2004B0E0C /* LSLPAPIManager.swift in Sources */,
 				723E471F2C6DBF5F004B0E0C /* BaseView.swift in Sources */,
 				723E47232C6DBFBB004B0E0C /* BaseCollectionViewCell.swift in Sources */,
 				723E47562C6DDC77004B0E0C /* APIError.swift in Sources */,
+				723E47702C6F3814004B0E0C /* EmailCheck.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -616,6 +696,14 @@
 				minimumVersion = 5.7.1;
 			};
 		};
+		723E47712C6F3B87004B0E0C /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -638,6 +726,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 723E472E2C6DC12A004B0E0C /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		723E47722C6F3B87004B0E0C /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 723E47712C6F3B87004B0E0C /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
