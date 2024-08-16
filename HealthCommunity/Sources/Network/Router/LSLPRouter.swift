@@ -11,7 +11,8 @@ import Alamofire
 enum LSLPRouter {
     
     case SignUpAPI(email: String, password: String, nick: String)
-
+    case EmailCheck(email: String)
+    
 }
 
 extension LSLPRouter: TargetType {
@@ -24,19 +25,21 @@ extension LSLPRouter: TargetType {
         switch self {
         case .SignUpAPI:
             return APIURL.signUpURL
+        case .EmailCheck:
+            return APIURL.emailCheckURL
         }
     }
     
     var method: Alamofire.HTTPMethod {
         switch self {
-        case .SignUpAPI:
+        case .SignUpAPI, .EmailCheck:
             return .post
         }
     }
     
     var header: [String : String] {
         switch self {
-        case .SignUpAPI(let email, let password, let nick):
+        case .SignUpAPI, .EmailCheck:
             return [
                 Header.contentType.rawValue: Header.json.rawValue,
                 Header.sesacKey.rawValue: APIKey.key
@@ -53,7 +56,15 @@ extension LSLPRouter: TargetType {
     }
     
     var body: Data? {
-        return nil
+        switch self {
+        case .SignUpAPI(let email, let password, let nick):
+            return nil
+        case .EmailCheck(let email):
+            let params: [String: Any] = [
+                Body.email.rawValue: email
+            ]
+            return try? JSONSerialization.data(withJSONObject: params, options: [])
+        }
     }
-
+    
 }

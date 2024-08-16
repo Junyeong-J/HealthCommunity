@@ -11,4 +11,5 @@ enum APIError: Error {
     case unknownResponse
     case networkError(Error)
     case invalidRequest
+    case customError(statusCode: Int, message: String)
 }

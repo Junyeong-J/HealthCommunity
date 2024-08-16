@@ -10,8 +10,8 @@ import Alamofire
 
 protocol TargetType: URLRequestConvertible {
     var baseURL: String { get }
-    var method: HTTPMethod { get }
     var path: String { get }
+    var method: HTTPMethod { get }
     var header: [String: String] { get }
     var parameters: Parameters? { get }
     var queryItems: [URLQueryItem]? { get }
