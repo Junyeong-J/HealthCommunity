@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct EmailCheck: Decodable {
+    let message: String
+}
