@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 //MARK: - 밑줄 그어지는 애니메이션
-class NicknameTextField: UITextField {
+class BaseTextField: UITextField {
     
     private let myUnderlLine = UIProgressView(progressViewStyle: .bar)
 
@@ -41,7 +41,7 @@ class NicknameTextField: UITextField {
     }
 }
 
-extension NicknameTextField: UITextFieldDelegate {
+extension BaseTextField: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         UIView.animate(withDuration: 0.20) {
             self.myUnderlLine.setProgress(1.0, animated: true)

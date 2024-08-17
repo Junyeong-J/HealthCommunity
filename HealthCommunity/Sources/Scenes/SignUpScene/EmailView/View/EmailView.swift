@@ -32,7 +32,7 @@ final class EmailView: BaseView {
     }()
     
     //MARK: - 이메일 입력부분
-    let emailTextField = NicknameTextField(style: .email)
+    let emailTextField = BaseTextField(style: .email)
     
     //MARK: - 설명부분
     private let explanationLabel: UILabel = {
