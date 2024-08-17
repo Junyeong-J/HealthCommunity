@@ -25,8 +25,9 @@ final class EmailViewController: BaseViewController<EmailView> {
     
     override func bindModel() {
         let input = EmailViewModel.Input(
-            emailCheckButtonTap: rootView.emailCheckButton.rx.tap,
-            email: rootView.emailTextField.rx.text.orEmpty.asObservable())
+            emailCheckButtonTap: rootView.checkEmailButton.rx.tap,
+            email: rootView.emailTextField.rx.text.orEmpty.asObservable(),
+            nextButtonTap: rootView.nextButton.rx.tap)
         
         let output = viewModel.transform(input: input)
         
@@ -36,6 +37,24 @@ final class EmailViewController: BaseViewController<EmailView> {
             })
             .disposed(by: disposeBag)
             
+        output.isEmail
+            .bind(with: self) { owner, value in
+                owner.rootView.nextButton.isEnabled = value
+                owner.rootView.nextButton.backgroundColor = value ? .myAppMain : .myAppGray
+            }
+            .disposed(by: disposeBag)
+        
+        output.nextButtonTapped
+            .withLatestFrom(output.isEmail)
+            .filter { $0 }
+            .withLatestFrom(output.email)
+            .bind(with: self) { owner, value in
+                let passwordVC = PasswordViewController()
+                passwordVC.email = value
+                owner.navigationController?.pushViewController(passwordVC, animated: true)
+            }
+            .disposed(by: disposeBag)
+        
     }
     
 }

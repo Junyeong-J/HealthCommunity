@@ -47,23 +47,41 @@ final class EmailView: BaseView {
         return label
     }()
     
+    let checkEmailButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("중복 체크", for: .normal)
+        button.titleLabel?.font = Font.bold15
+        button.setTitleColor(.myAppBlack, for: .normal)
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.myAppBlack.cgColor
+        button.layer.cornerRadius = 10
+        return button
+    }()
+    
     //MARK: - 버튼
-    var emailCheckButton = BaseButton(title: .email)
+    var nextButton = BaseButton(title: .next)
     
     override func configureHierarchy() {
-        addSubview(emailTextField)
-        addSubview(emailStackView)
-        addSubview(explanationLabel)
-        addSubview(emailCheckButton)
+        
+        [checkEmailButton, emailTextField, emailStackView,
+         explanationLabel, nextButton].forEach { addSubview($0) }
     }
     
     override func configureLayout() {
         
         let topOffset = UIScreen.main.bounds.height * 0.3
         
-        emailTextField.snp.makeConstraints { make in
+        checkEmailButton.snp.makeConstraints { make in
             make.bottom.equalTo(safeAreaLayoutGuide.snp.top).offset(topOffset)
-            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(20)
+            make.trailing.equalTo(safeAreaLayoutGuide).inset(20)
+            make.width.equalTo(60)
+            make.height.equalTo(44)
+        }
+        
+        emailTextField.snp.makeConstraints { make in
+            make.bottom.equalTo(checkEmailButton)
+            make.leading.equalTo(safeAreaLayoutGuide).inset(20)
+            make.trailing.equalTo(checkEmailButton.snp.leading).offset(-10)
             make.height.equalTo(44)
         }
         
@@ -77,7 +95,7 @@ final class EmailView: BaseView {
             make.horizontalEdges.equalTo(emailTextField)
         }
         
-        emailCheckButton.snp.makeConstraints { make in
+        nextButton.snp.makeConstraints { make in
             make.top.equalTo(explanationLabel.snp.bottom).offset(16)
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(20)
             make.height.equalTo(50)
