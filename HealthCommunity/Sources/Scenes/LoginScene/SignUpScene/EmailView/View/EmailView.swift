@@ -32,7 +32,11 @@ final class EmailView: BaseView {
     }()
     
     //MARK: - 이메일 입력부분
-    let emailTextField = BaseTextField(style: .email)
+    let emailTextField : LineTextField = {
+        let tf = LineTextField(style: .email)
+        tf.keyboardType = .emailAddress
+        return tf
+    }()
     
     //MARK: - 설명부분
     private let explanationLabel: UILabel = {

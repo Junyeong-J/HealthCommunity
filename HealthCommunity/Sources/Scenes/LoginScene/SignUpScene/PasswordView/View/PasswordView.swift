@@ -44,8 +44,8 @@ final class PasswordView: BaseView {
     }()
     
     //MARK: - 이메일 입력부분
-    let passwordInputTextField: BaseTextField = {
-        let tf = BaseTextField(style: .password)
+    let passwordInputTextField: LineTextField = {
+        let tf = LineTextField(style: .passwordCheck)
         tf.textColor = .black
         tf.tintColor = .black
         tf.autocapitalizationType = .none

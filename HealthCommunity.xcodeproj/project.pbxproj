@@ -41,6 +41,17 @@
 		723E47702C6F3814004B0E0C /* EmailCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E476F2C6F3814004B0E0C /* EmailCheck.swift */; };
 		723E47732C6F3B87004B0E0C /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 723E47722C6F3B87004B0E0C /* Toast */; };
 		723E47752C6F3ED5004B0E0C /* Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47742C6F3ED5004B0E0C /* Body.swift */; };
+		723E477B2C705E6D004B0E0C /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E477A2C705E6D004B0E0C /* PasswordView.swift */; };
+		723E477D2C705E81004B0E0C /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E477C2C705E81004B0E0C /* PasswordViewController.swift */; };
+		723E477F2C706EEE004B0E0C /* PasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E477E2C706EEE004B0E0C /* PasswordViewModel.swift */; };
+		723E478C2C707DC2004B0E0C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E478B2C707DC2004B0E0C /* LoginView.swift */; };
+		723E478E2C707DD9004B0E0C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E478D2C707DD9004B0E0C /* LoginViewController.swift */; };
+		723E47902C707E79004B0E0C /* BoxTypeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E478F2C707E79004B0E0C /* BoxTypeTextField.swift */; };
+		723E47922C7081C4004B0E0C /* PasswordSecureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47912C7081C4004B0E0C /* PasswordSecureButton.swift */; };
+		723E47942C70875D004B0E0C /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47932C70875D004B0E0C /* LoginViewModel.swift */; };
+		723E47982C7089AD004B0E0C /* NicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47972C7089AD004B0E0C /* NicknameView.swift */; };
+		723E479A2C7089B8004B0E0C /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47992C7089B8004B0E0C /* NicknameViewController.swift */; };
+		723E479C2C708E48004B0E0C /* NicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E479B2C708E48004B0E0C /* NicknameViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +86,17 @@
 		723E476C2C6F3345004B0E0C /* EmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewModel.swift; sourceTree = "<group>"; };
 		723E476F2C6F3814004B0E0C /* EmailCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCheck.swift; sourceTree = "<group>"; };
 		723E47742C6F3ED5004B0E0C /* Body.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Body.swift; sourceTree = "<group>"; };
+		723E477A2C705E6D004B0E0C /* PasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordView.swift; sourceTree = "<group>"; };
+		723E477C2C705E81004B0E0C /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
+		723E477E2C706EEE004B0E0C /* PasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewModel.swift; sourceTree = "<group>"; };
+		723E478B2C707DC2004B0E0C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		723E478D2C707DD9004B0E0C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		723E478F2C707E79004B0E0C /* BoxTypeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxTypeTextField.swift; sourceTree = "<group>"; };
+		723E47912C7081C4004B0E0C /* PasswordSecureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordSecureButton.swift; sourceTree = "<group>"; };
+		723E47932C70875D004B0E0C /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		723E47972C7089AD004B0E0C /* NicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameView.swift; sourceTree = "<group>"; };
+		723E47992C7089B8004B0E0C /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
+		723E479B2C708E48004B0E0C /* NicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,7 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				723E47322C6DC1F3004B0E0C /* OnBoardingScene */,
-				723E474A2C6DD12E004B0E0C /* SignUpScene */,
+				723E47872C707D61004B0E0C /* LoginScene */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -205,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				723E473A2C6DC5BE004B0E0C /* BaseButton.swift */,
+				723E47912C7081C4004B0E0C /* PasswordSecureButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -274,6 +297,8 @@
 		723E475F2C6F26D6004B0E0C /* PasswordView */ = {
 			isa = PBXGroup;
 			children = (
+				723E47782C705E02004B0E0C /* View */,
+				723E47792C705E09004B0E0C /* ViewModel */,
 			);
 			path = PasswordView;
 			sourceTree = "<group>";
@@ -281,6 +306,8 @@
 		723E47602C6F26E0004B0E0C /* NicknameView */ = {
 			isa = PBXGroup;
 			children = (
+				723E47952C70898D004B0E0C /* View */,
+				723E47962C708992004B0E0C /* ViewModel */,
 			);
 			path = NicknameView;
 			sourceTree = "<group>";
@@ -298,6 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				723E47672C6F288E004B0E0C /* LineTextField.swift */,
+				723E478F2C707E79004B0E0C /* BoxTypeTextField.swift */,
 			);
 			path = TextField;
 			sourceTree = "<group>";
@@ -336,6 +364,75 @@
 				723E47742C6F3ED5004B0E0C /* Body.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		723E47782C705E02004B0E0C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				723E477C2C705E81004B0E0C /* PasswordViewController.swift */,
+				723E477A2C705E6D004B0E0C /* PasswordView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		723E47792C705E09004B0E0C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				723E477E2C706EEE004B0E0C /* PasswordViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		723E47872C707D61004B0E0C /* LoginScene */ = {
+			isa = PBXGroup;
+			children = (
+				723E47882C707D7A004B0E0C /* LoginView */,
+				723E474A2C6DD12E004B0E0C /* SignUpScene */,
+			);
+			path = LoginScene;
+			sourceTree = "<group>";
+		};
+		723E47882C707D7A004B0E0C /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				723E47892C707D85004B0E0C /* View */,
+				723E478A2C707D8A004B0E0C /* ViewModel */,
+			);
+			path = LoginView;
+			sourceTree = "<group>";
+		};
+		723E47892C707D85004B0E0C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				723E478D2C707DD9004B0E0C /* LoginViewController.swift */,
+				723E478B2C707DC2004B0E0C /* LoginView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		723E478A2C707D8A004B0E0C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				723E47932C70875D004B0E0C /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		723E47952C70898D004B0E0C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				723E47992C7089B8004B0E0C /* NicknameViewController.swift */,
+				723E47972C7089AD004B0E0C /* NicknameView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		723E47962C708992004B0E0C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				723E479B2C708E48004B0E0C /* NicknameViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -423,21 +520,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				723E47212C6DBF98004B0E0C /* BaseViewController.swift in Sources */,
+				723E477B2C705E6D004B0E0C /* PasswordView.swift in Sources */,
 				723E476D2C6F3345004B0E0C /* EmailViewModel.swift in Sources */,
 				723E473E2C6DC6EC004B0E0C /* ResourceFont.swift in Sources */,
 				723E47442C6DCA1B004B0E0C /* ButtonTitle.swift in Sources */,
+				723E47902C707E79004B0E0C /* BoxTypeTextField.swift in Sources */,
 				723E47632C6F2718004B0E0C /* EmailView.swift in Sources */,
 				723E47032C6CD240004B0E0C /* AppDelegate.swift in Sources */,
+				723E479C2C708E48004B0E0C /* NicknameViewModel.swift in Sources */,
 				723E47192C6CD360004B0E0C /* APIKey.swift in Sources */,
 				723E47752C6F3ED5004B0E0C /* Body.swift in Sources */,
+				723E47942C70875D004B0E0C /* LoginViewModel.swift in Sources */,
+				723E477F2C706EEE004B0E0C /* PasswordViewModel.swift in Sources */,
 				723E47372C6DC279004B0E0C /* OnBoardingView.swift in Sources */,
 				723E47682C6F288E004B0E0C /* LineTextField.swift in Sources */,
 				723E47352C6DC23B004B0E0C /* OnBoardingViewController.swift in Sources */,
+				723E478E2C707DD9004B0E0C /* LoginViewController.swift in Sources */,
+				723E479A2C7089B8004B0E0C /* NicknameViewController.swift in Sources */,
 				723E47462C6DCE9C004B0E0C /* BaseViewModel.swift in Sources */,
 				723E47582C6DDCD2004B0E0C /* TargetType.swift in Sources */,
 				723E47052C6CD240004B0E0C /* SceneDelegate.swift in Sources */,
 				723E47652C6F2720004B0E0C /* EmailViewController.swift in Sources */,
+				723E47982C7089AD004B0E0C /* NicknameView.swift in Sources */,
 				723E475C2C6DE187004B0E0C /* Header.swift in Sources */,
+				723E478C2C707DC2004B0E0C /* LoginView.swift in Sources */,
+				723E477D2C705E81004B0E0C /* PasswordViewController.swift in Sources */,
+				723E47922C7081C4004B0E0C /* PasswordSecureButton.swift in Sources */,
 				723E475A2C6DDD0A004B0E0C /* LSLPRouter.swift in Sources */,
 				723E47492C6DCF22004B0E0C /* OnBoardingViewModel.swift in Sources */,
 				723E473B2C6DC5BE004B0E0C /* BaseButton.swift in Sources */,
