@@ -12,4 +12,5 @@ enum ButtonTitle: String {
     case start = "시작하기"
     case email = "이메일 중복확인"
     case complete = "완료"
+    case next = "다음"
 }
