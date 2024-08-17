@@ -10,4 +10,5 @@ import Foundation
 enum Body: String {
     case email = "email"
     case password = "password"
+    case nick = "nick"
 }

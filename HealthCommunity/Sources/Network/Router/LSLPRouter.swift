@@ -61,7 +61,12 @@ extension LSLPRouter: TargetType {
     var body: Data? {
         switch self {
         case .SignUpAPI(let email, let password, let nick):
-            return nil
+            let params: [String: Any] = [
+                Body.email.rawValue: email,
+                Body.password.rawValue: password,
+                Body.nick.rawValue: nick
+            ]
+            return try? JSONSerialization.data(withJSONObject: params, options: [])
         case .EmailCheck(let email):
             let params: [String: Any] = [
                 Body.email.rawValue: email
