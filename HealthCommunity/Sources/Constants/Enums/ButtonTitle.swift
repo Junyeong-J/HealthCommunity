@@ -13,4 +13,6 @@ enum ButtonTitle: String {
     case email = "이메일 중복확인"
     case complete = "완료"
     case next = "다음"
+    case login = "로그인"
+    case join = "회원가입"
 }
