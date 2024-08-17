@@ -5,4 +5,16 @@
 //  Created by 전준영 on 8/17/24.
 //
 
-import Foundation
+import UIKit
+
+final class LoginViewController: BaseViewController<LoginView> {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func configureView() {
+        super.configureView()
+    }
+    
+}
