@@ -26,4 +26,7 @@ enum Font {
     static let bold18: UIFont = .boldSystemFont(ofSize: 18)
     static let bold19: UIFont = .boldSystemFont(ofSize: 19)
     static let bold20: UIFont = .boldSystemFont(ofSize: 20)
+    
+    //앱 타이틀 크기
+    static let bold25: UIFont = .boldSystemFont(ofSize: 25)
 }
