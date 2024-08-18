@@ -42,8 +42,8 @@ final class NicknameView: BaseView {
     //MARK: - 설명부분
     private let nicknameExplainLabel: UILabel = {
         let label = UILabel()
-        label.text = "한글, 영문, 숫자(2 ~ 10)"
-        label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.text = "2~10자리, 공백 안됨!"
+        label.font = Font.bold15
         label.textColor = .black
         return label
     }()

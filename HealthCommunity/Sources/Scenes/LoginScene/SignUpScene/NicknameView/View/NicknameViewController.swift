@@ -8,11 +8,23 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Toast
 
 final class NicknameViewController: BaseViewController<NicknameView> {
     
-    private let viewModel = NicknameViewModel()
+    private let viewModel: NicknameViewModel
     private let disposeBag = DisposeBag()
+    
+    init(email: String, password: String) {
+        self.viewModel = NicknameViewModel()
+        self.viewModel.email.accept(email)
+        self.viewModel.password.accept(password)
+        super.init()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +36,8 @@ final class NicknameViewController: BaseViewController<NicknameView> {
     
     override func bindModel() {
         let input = NicknameViewModel.Input(
-            nicknameText: rootView.nicknameInputTextField.rx.text
+            nicknameText: rootView.nicknameInputTextField.rx.text,
+            joinCompleteTap: rootView.joinCompletebt.rx.tap
         )
         
         let output = viewModel.transform(input: input)
@@ -36,6 +49,18 @@ final class NicknameViewController: BaseViewController<NicknameView> {
         output.isButtonEnabled
             .map { $0 ? .myAppMain : .myAppGray }
             .drive(rootView.joinCompletebt.rx.backgroundColor)
+            .disposed(by: disposeBag)
+        
+        output.joinResult
+            .bind(with: self, onNext: { owner, value in
+                if value.success {
+                    let loginVC = LoginViewController()
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "signupSuccess"), object: nil)
+                    owner.navigationController?.pushViewController(loginVC, animated: true)
+                } else {
+                    owner.view.makeToast(value.message)
+                }
+            })
             .disposed(by: disposeBag)
     }
     
