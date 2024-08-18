@@ -52,6 +52,7 @@
 		723E47982C7089AD004B0E0C /* NicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47972C7089AD004B0E0C /* NicknameView.swift */; };
 		723E479A2C7089B8004B0E0C /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47992C7089B8004B0E0C /* NicknameViewController.swift */; };
 		723E479C2C708E48004B0E0C /* NicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E479B2C708E48004B0E0C /* NicknameViewModel.swift */; };
+		723E479F2C71DD7C004B0E0C /* JoinResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E479E2C71DD7C004B0E0C /* JoinResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +98,7 @@
 		723E47972C7089AD004B0E0C /* NicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameView.swift; sourceTree = "<group>"; };
 		723E47992C7089B8004B0E0C /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
 		723E479B2C708E48004B0E0C /* NicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewModel.swift; sourceTree = "<group>"; };
+		723E479E2C71DD7C004B0E0C /* JoinResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -306,6 +308,7 @@
 		723E47602C6F26E0004B0E0C /* NicknameView */ = {
 			isa = PBXGroup;
 			children = (
+				723E479D2C71DD54004B0E0C /* Model */,
 				723E47952C70898D004B0E0C /* View */,
 				723E47962C708992004B0E0C /* ViewModel */,
 			);
@@ -435,6 +438,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		723E479D2C71DD54004B0E0C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				723E479E2C71DD7C004B0E0C /* JoinResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -541,6 +552,7 @@
 				723E47582C6DDCD2004B0E0C /* TargetType.swift in Sources */,
 				723E47052C6CD240004B0E0C /* SceneDelegate.swift in Sources */,
 				723E47652C6F2720004B0E0C /* EmailViewController.swift in Sources */,
+				723E479F2C71DD7C004B0E0C /* JoinResponse.swift in Sources */,
 				723E47982C7089AD004B0E0C /* NicknameView.swift in Sources */,
 				723E475C2C6DE187004B0E0C /* Header.swift in Sources */,
 				723E478C2C707DC2004B0E0C /* LoginView.swift in Sources */,
