@@ -10,9 +10,6 @@ import RxSwift
 import RxCocoa
 
 final class LoginViewModel: BaseViewModel {
-    func transform(input: Input) -> Output {
-        return Output()
-    }
     
     let disposeBag = DisposeBag()
     
@@ -20,14 +17,16 @@ final class LoginViewModel: BaseViewModel {
         let loginButtonTap: ControlEvent<Void>
         let email: Observable<String>
         let password: Observable<String>
+        let joinButtonTap: ControlEvent<Void>
     }
     
     struct Output {
+        let joinButtonTapped: ControlEvent<Void>
 //        let emailCheckResult: Observable<String>
     }
 //    
-//    func transform(input: Input) -> Output {
-//        
+    func transform(input: Input) -> Output {
+        
 //        let loginResult = input.loginButtonTap
 //            .throttle(.seconds(1), scheduler: MainScheduler.instance)
 //            .withLatestFrom(input.email, input.password)
@@ -46,9 +45,9 @@ final class LoginViewModel: BaseViewModel {
 //                    .catchAndReturn("알 수 없는 오류가 발생했습니다.")
 //            }
 //            .share(replay: 1)
-//        
-//        return Output(emailCheckResult: emailCheckResult)
-//    }
+        
+        return Output(joinButtonTapped: input.joinButtonTap)
+    }
 //    
 //    
 //    private func errorMessage(for error: APIError) -> String {

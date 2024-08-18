@@ -18,22 +18,30 @@ final class LoginView: BaseView {
         return label
     }()
     
-    private let emailTextField = BoxTypeTextField(style: .email)
+    let emailTextField = BoxTypeTextField(style: .email)
     
-    private let passwordTextField: BoxTypeTextField = {
+    let passwordTextField: BoxTypeTextField = {
         let tf = BoxTypeTextField(style: .password)
         tf.isSecureTextEntry = true
         return tf
     }()
     
+    let joinButton: UIButton = {
+        let bt = UIButton()
+        bt.setTitle("회원가입", for: .normal)
+        bt.setTitleColor(.myAppBlack, for: .normal)
+        bt.backgroundColor = .clear
+        return bt
+    }()
+    
     let passwordSecureButton = PasswordSecureButton()
     
-    private let loginButton = BaseButton(title: .login)
+    let loginButton = BaseButton(title: .login)
     
     override func configureHierarchy() {
         [appNameLabel, emailTextField,
          passwordTextField, passwordSecureButton,
-         loginButton].forEach { addSubview($0) }
+         joinButton, loginButton].forEach { addSubview($0) }
     }
     
     override func configureLayout() {
@@ -62,8 +70,13 @@ final class LoginView: BaseView {
             make.centerY.equalTo(passwordTextField)
         }
         
+        joinButton.snp.makeConstraints { make in
+            make.trailing.equalTo(passwordTextField).inset(10)
+            make.top.equalTo(passwordTextField.snp.bottom).offset(10)
+        }
+        
         loginButton.snp.makeConstraints { make in
-            make.top.equalTo(passwordTextField.snp.bottom).offset(40)
+            make.top.equalTo(joinButton.snp.bottom).offset(40)
             make.horizontalEdges.equalToSuperview().inset(20)
             make.height.equalTo(50)
         }
