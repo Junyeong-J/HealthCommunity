@@ -49,12 +49,13 @@ final class EmailViewController: BaseViewController<EmailView> {
             .filter { $0 }
             .withLatestFrom(output.email)
             .bind(with: self) { owner, value in
-                let passwordVC = PasswordViewController()
-                passwordVC.email = value
+                let passwordVC = PasswordViewController(email: value)
                 owner.navigationController?.pushViewController(passwordVC, animated: true)
             }
             .disposed(by: disposeBag)
         
     }
+    
+    
     
 }
