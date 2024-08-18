@@ -53,6 +53,7 @@
 		723E479A2C7089B8004B0E0C /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47992C7089B8004B0E0C /* NicknameViewController.swift */; };
 		723E479C2C708E48004B0E0C /* NicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E479B2C708E48004B0E0C /* NicknameViewModel.swift */; };
 		723E479F2C71DD7C004B0E0C /* JoinResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E479E2C71DD7C004B0E0C /* JoinResponse.swift */; };
+		723E47A22C721152004B0E0C /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47A12C721152004B0E0C /* UserDefaultsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +100,7 @@
 		723E47992C7089B8004B0E0C /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
 		723E479B2C708E48004B0E0C /* NicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewModel.swift; sourceTree = "<group>"; };
 		723E479E2C71DD7C004B0E0C /* JoinResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinResponse.swift; sourceTree = "<group>"; };
+		723E47A12C721152004B0E0C /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 		723E471C2C6DBCA6004B0E0C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				723E47A02C72113B004B0E0C /* UserDefaults */,
 				723E47512C6DD971004B0E0C /* Network */,
 				723E473F2C6DC9D3004B0E0C /* Constants */,
 				723E47382C6DC4FE004B0E0C /* Custom */,
@@ -446,6 +449,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		723E47A02C72113B004B0E0C /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				723E47A12C721152004B0E0C /* UserDefaultsManager.swift */,
+			);
+			path = UserDefaults;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -559,6 +570,7 @@
 				723E477D2C705E81004B0E0C /* PasswordViewController.swift in Sources */,
 				723E47922C7081C4004B0E0C /* PasswordSecureButton.swift in Sources */,
 				723E475A2C6DDD0A004B0E0C /* LSLPRouter.swift in Sources */,
+				723E47A22C721152004B0E0C /* UserDefaultsManager.swift in Sources */,
 				723E47492C6DCF22004B0E0C /* OnBoardingViewModel.swift in Sources */,
 				723E473B2C6DC5BE004B0E0C /* BaseButton.swift in Sources */,
 				723E476A2C6F28C5004B0E0C /* TextFieldPlaceholder.swift in Sources */,
