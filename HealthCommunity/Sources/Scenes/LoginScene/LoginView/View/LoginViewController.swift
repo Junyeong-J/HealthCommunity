@@ -18,7 +18,7 @@ final class LoginViewController: BaseViewController<LoginView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        NotificationCenter.default.addObserver(self, selector: #selector(showSignupSuccessToast), name: NSNotification.Name(rawValue: "signupSuccess"), object: nil)
+        //        NotificationCenter.default.addObserver(self, selector: #selector(showSignupSuccessToast), name: NSNotification.Name(rawValue: "signupSuccess"), object: nil)
     }
     
     override func configureView() {
@@ -38,6 +38,21 @@ final class LoginViewController: BaseViewController<LoginView> {
             .bind(with: self) { owner, _ in
                 owner.navigationController?.pushViewController(EmailViewController(), animated: true)
             }
+            .disposed(by: disposeBag)
+        
+        output.loginResult
+            .bind(with: self, onNext: { owner, value in
+                if value.1 {
+                    let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+                    let sceneDelegate = windowScene?.delegate as? SceneDelegate
+                    
+                    let rootViewController = MainViewController()
+                    sceneDelegate?.window?.rootViewController = rootViewController
+                    sceneDelegate?.window?.makeKeyAndVisible()
+                } else {
+                    self.view.makeToast(value.0)
+                }
+            })
             .disposed(by: disposeBag)
     }
     

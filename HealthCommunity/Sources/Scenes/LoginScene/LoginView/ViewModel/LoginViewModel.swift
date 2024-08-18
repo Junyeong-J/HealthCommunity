@@ -22,47 +22,48 @@ final class LoginViewModel: BaseViewModel {
     
     struct Output {
         let joinButtonTapped: ControlEvent<Void>
-//        let emailCheckResult: Observable<String>
+        let loginResult: Observable<(String, Bool)>
     }
-//    
+    
     func transform(input: Input) -> Output {
         
-//        let loginResult = input.loginButtonTap
-//            .throttle(.seconds(1), scheduler: MainScheduler.instance)
-//            .withLatestFrom(input.email, input.password)
-//            .distinctUntilChanged()
-//            .filter { !$0.isEmpty }
-//            .flatMapLatest { email in
-//                LSLPAPIManager.shared.request(api: ., model: EmailCheck.self)
-//                    .map { result -> String in
-//                        switch result {
-//                        case .success(let response):
-//                            return response.message
-//                        case .failure(let error):
-//                            return self.errorMessage(for: error)
-//                        }
-//                    }
-//                    .catchAndReturn("알 수 없는 오류가 발생했습니다.")
-//            }
-//            .share(replay: 1)
+        let loginResult = input.loginButtonTap
+            .throttle(.seconds(1), scheduler: MainScheduler.instance)
+            .withLatestFrom(Observable.combineLatest(input.email, input.password))
+            .filter { !$0.0.isEmpty && !$0.1.isEmpty }
+            .flatMapLatest { email, password in
+                LSLPAPIManager.shared.request(api: .LoginAPI(email: email, password: password), model: LoginResponse.self)
+                    .map { result -> (String, Bool) in
+                        switch result {
+                        case .success(let response):
+                            UserDefaultsManager.shared.token = response.accessToken
+                            UserDefaultsManager.shared.refreshToken = response.refreshToken
+                            print(response)
+                            return ("로그인 성공", true)
+                        case .failure(let error):
+                            return (self.errorMessage(for: error), false)
+                        }
+                    }
+                    .catchAndReturn(("알 수 없는 오류가 발생했습니다.", false))
+            }
+            .share(replay: 1)
         
-        return Output(joinButtonTapped: input.joinButtonTap)
+        return Output(joinButtonTapped: input.joinButtonTap, loginResult: loginResult)
     }
-//    
-//    
-//    private func errorMessage(for error: APIError) -> String {
-//            switch error {
-//            case .customError(let statusCode, let message):
-//                switch statusCode {
-//                case 400:
-//                    return "이메일을 적어주세요."
-//                case 409:
-//                    return message
-//                default:
-//                    return "오류가 발생했습니다."
-//                }
-//            default:
-//                return "네트워크 오류가 발생했습니다."
-//            }
-//        }
+    
+    private func errorMessage(for error: APIError) -> String {
+            switch error {
+            case .customError(let statusCode, let message):
+                switch statusCode {
+                case 400:
+                    return "이메일이나 비밀번호를 적어주세요."
+                case 401:
+                    return message
+                default:
+                    return "오류가 발생했습니다."
+                }
+            default:
+                return "네트워크 오류가 발생했습니다."
+            }
+        }
 }

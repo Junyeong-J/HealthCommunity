@@ -54,6 +54,9 @@
 		723E479C2C708E48004B0E0C /* NicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E479B2C708E48004B0E0C /* NicknameViewModel.swift */; };
 		723E479F2C71DD7C004B0E0C /* JoinResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E479E2C71DD7C004B0E0C /* JoinResponse.swift */; };
 		723E47A22C721152004B0E0C /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47A12C721152004B0E0C /* UserDefaultsManager.swift */; };
+		723E47A52C7212E7004B0E0C /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47A42C7212E7004B0E0C /* LoginResponse.swift */; };
+		723E47A92C721AEB004B0E0C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47A82C721AEB004B0E0C /* MainViewController.swift */; };
+		723E47AB2C721AF1004B0E0C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47AA2C721AF1004B0E0C /* MainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,6 +104,9 @@
 		723E479B2C708E48004B0E0C /* NicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewModel.swift; sourceTree = "<group>"; };
 		723E479E2C71DD7C004B0E0C /* JoinResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinResponse.swift; sourceTree = "<group>"; };
 		723E47A12C721152004B0E0C /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		723E47A42C7212E7004B0E0C /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		723E47A82C721AEB004B0E0C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		723E47AA2C721AF1004B0E0C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +201,7 @@
 		723E47312C6DC1DA004B0E0C /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				723E47A62C721AD2004B0E0C /* MainScene */,
 				723E47322C6DC1F3004B0E0C /* OnBoardingScene */,
 				723E47872C707D61004B0E0C /* LoginScene */,
 			);
@@ -283,6 +290,7 @@
 		723E47512C6DD971004B0E0C /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				723E47A32C7212D5004B0E0C /* Model */,
 				723E47762C6F3F7D004B0E0C /* API */,
 				723E47772C6F3F84004B0E0C /* Router */,
 			);
@@ -457,6 +465,31 @@
 			path = UserDefaults;
 			sourceTree = "<group>";
 		};
+		723E47A32C7212D5004B0E0C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				723E47A42C7212E7004B0E0C /* LoginResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		723E47A62C721AD2004B0E0C /* MainScene */ = {
+			isa = PBXGroup;
+			children = (
+				723E47A72C721ADF004B0E0C /* View */,
+			);
+			path = MainScene;
+			sourceTree = "<group>";
+		};
+		723E47A72C721ADF004B0E0C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				723E47A82C721AEB004B0E0C /* MainViewController.swift */,
+				723E47AA2C721AF1004B0E0C /* MainView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -542,6 +575,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				723E47212C6DBF98004B0E0C /* BaseViewController.swift in Sources */,
+				723E47AB2C721AF1004B0E0C /* MainView.swift in Sources */,
 				723E477B2C705E6D004B0E0C /* PasswordView.swift in Sources */,
 				723E476D2C6F3345004B0E0C /* EmailViewModel.swift in Sources */,
 				723E473E2C6DC6EC004B0E0C /* ResourceFont.swift in Sources */,
@@ -555,6 +589,7 @@
 				723E47942C70875D004B0E0C /* LoginViewModel.swift in Sources */,
 				723E477F2C706EEE004B0E0C /* PasswordViewModel.swift in Sources */,
 				723E47372C6DC279004B0E0C /* OnBoardingView.swift in Sources */,
+				723E47A52C7212E7004B0E0C /* LoginResponse.swift in Sources */,
 				723E47682C6F288E004B0E0C /* LineTextField.swift in Sources */,
 				723E47352C6DC23B004B0E0C /* OnBoardingViewController.swift in Sources */,
 				723E478E2C707DD9004B0E0C /* LoginViewController.swift in Sources */,
@@ -574,6 +609,7 @@
 				723E47492C6DCF22004B0E0C /* OnBoardingViewModel.swift in Sources */,
 				723E473B2C6DC5BE004B0E0C /* BaseButton.swift in Sources */,
 				723E476A2C6F28C5004B0E0C /* TextFieldPlaceholder.swift in Sources */,
+				723E47A92C721AEB004B0E0C /* MainViewController.swift in Sources */,
 				723E47252C6DBFE7004B0E0C /* BaseTableViewCell.swift in Sources */,
 				723E47532C6DD9E2004B0E0C /* LSLPAPIManager.swift in Sources */,
 				723E471F2C6DBF5F004B0E0C /* BaseView.swift in Sources */,
