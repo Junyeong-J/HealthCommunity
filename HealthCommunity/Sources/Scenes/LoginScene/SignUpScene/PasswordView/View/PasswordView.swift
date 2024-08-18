@@ -55,20 +55,6 @@ final class PasswordView: BaseView {
         return tf
     }()
     
-    // 패스워드에 "표시"버튼 비밀번호 가리기 기능
-    //    lazy var passwordSecureButton: UIButton = {
-    //        let button = UIButton(type: .custom)
-    //        button.setTitle("표시", for: .normal)
-    //        button.setTitleColor(#colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1), for: .normal)
-    //                button.addTarget(self, action: #selector(passwordSecureModeSetting), for: .touchUpInside)
-    //        return button
-    //    }()
-    //
-    //    @objc private func passwordSecureModeSetting() {
-    //        // 이미 텍스트필드에 내장되어 있는 기능
-    //        passwordInputTextField.isSecureTextEntry.toggle()
-    //    }
-    
     //MARK: - 설명부분
     private func checkImage() -> UIImageView {
         let imageView = UIImageView()

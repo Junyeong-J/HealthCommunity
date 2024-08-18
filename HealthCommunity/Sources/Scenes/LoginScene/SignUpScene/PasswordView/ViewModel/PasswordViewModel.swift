@@ -10,10 +10,14 @@ import RxSwift
 import RxCocoa
 
 final class PasswordViewModel: BaseViewModel {
+    
+    var email = BehaviorRelay<String>(value: "")
     let disposeBag = DisposeBag()
     
     struct Input {
         let passwordText: ControlProperty<String?>
+        let password: Observable<String>
+        let nextButtonTap: ControlEvent<Void>
     }
     
     struct Output {
@@ -22,11 +26,15 @@ final class PasswordViewModel: BaseViewModel {
         let isLowercase: Observable<Bool>
         let isLengthValid: Observable<Bool>
         let isWhitespace: Observable<Bool>
+        let nextButtonTapped: ControlEvent<Void>
+        let password: Observable<String>
+        let email: Observable<String>
     }
     
     func transform(input: Input) -> Output {
         let password = input.passwordText
             .orEmpty.asObservable()
+        let email = email.asObservable()
         
         let isNumber = password.map { $0.rangeOfCharacter(from: .decimalDigits) != nil }
         let isSpecialCharacter = password.map { $0.rangeOfCharacter(from: .symbols) != nil || $0.rangeOfCharacter(from: .punctuationCharacters) != nil }
@@ -36,6 +44,7 @@ final class PasswordViewModel: BaseViewModel {
         
         return Output(isNumber: isNumber, isSpecialCharacter: isSpecialCharacter,
                       isLowercase: isLowercase, isLengthValid: isLengthValid,
-                      isWhitespace: isWhitespace)
+                      isWhitespace: isWhitespace, nextButtonTapped: input.nextButtonTap,
+                      password: input.password, email: email)
     }
 }

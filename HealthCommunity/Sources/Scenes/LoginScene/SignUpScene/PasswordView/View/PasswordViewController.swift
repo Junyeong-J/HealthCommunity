@@ -11,8 +11,19 @@ import RxCocoa
 
 final class PasswordViewController: BaseViewController<PasswordView> {
     
-    private let viewModel = PasswordViewModel()
+    private let viewModel: PasswordViewModel
     private let disposeBag = DisposeBag()
+    
+    init(email: String) {
+        self.viewModel = PasswordViewModel()
+        self.viewModel.email.accept(email)
+        super.init()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +35,9 @@ final class PasswordViewController: BaseViewController<PasswordView> {
     
     override func bindModel() {
         let input = PasswordViewModel.Input(
-            passwordText: rootView.passwordInputTextField.rx.text)
+            passwordText: rootView.passwordInputTextField.rx.text,
+            password: rootView.passwordInputTextField.rx.text.orEmpty.asObservable(),
+            nextButtonTap: rootView.passwordNextbt.rx.tap)
         
         let output = viewModel.transform(input: input)
         
@@ -45,8 +58,15 @@ final class PasswordViewController: BaseViewController<PasswordView> {
                     label?.textColor = value ? .myAppBlack : .myAppGray
                 })
                 .disposed(by: disposeBag)
-            
         }
+        
+        output.nextButtonTapped
+            .withLatestFrom(Observable.combineLatest(output.password, output.email))
+            .bind(with: self) { owner, value in
+                let nickVC = NicknameViewController(email: value.1, password: value.0)
+                owner.navigationController?.pushViewController(nickVC, animated: true)
+            }
+            .disposed(by: disposeBag)
         
     }
     
