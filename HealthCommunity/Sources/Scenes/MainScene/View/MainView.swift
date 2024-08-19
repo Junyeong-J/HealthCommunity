@@ -13,7 +13,7 @@ final class MainView: BaseView {
     let postButton = PostButton()
     
     override func configureHierarchy() {
-        addSubview(postButton)
+        [postButton].forEach { addSubview($0) }
     }
     
     override func configureLayout() {
