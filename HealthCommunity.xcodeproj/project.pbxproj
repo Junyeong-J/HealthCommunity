@@ -57,6 +57,14 @@
 		723E47A52C7212E7004B0E0C /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47A42C7212E7004B0E0C /* LoginResponse.swift */; };
 		723E47A92C721AEB004B0E0C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47A82C721AEB004B0E0C /* MainViewController.swift */; };
 		723E47AB2C721AF1004B0E0C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47AA2C721AF1004B0E0C /* MainView.swift */; };
+		723E47B52C7369CA004B0E0C /* PostButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47B42C7369CA004B0E0C /* PostButton.swift */; };
+		723E47B92C736D21004B0E0C /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47B82C736D21004B0E0C /* PostView.swift */; };
+		723E47BB2C736D2A004B0E0C /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47BA2C736D2A004B0E0C /* PostViewController.swift */; };
+		723E47BE2C736DAF004B0E0C /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47BD2C736DAF004B0E0C /* MainViewModel.swift */; };
+		723E47C22C7385C6004B0E0C /* WODView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47C12C7385C6004B0E0C /* WODView.swift */; };
+		723E47C42C7385CF004B0E0C /* WODViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47C32C7385CF004B0E0C /* WODViewController.swift */; };
+		723E47C62C7389A9004B0E0C /* CameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47C52C7389A9004B0E0C /* CameraButton.swift */; };
+		723E47C92C738DF8004B0E0C /* WODViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47C82C738DF8004B0E0C /* WODViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,6 +115,14 @@
 		723E47A42C7212E7004B0E0C /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		723E47A82C721AEB004B0E0C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		723E47AA2C721AF1004B0E0C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		723E47B42C7369CA004B0E0C /* PostButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostButton.swift; sourceTree = "<group>"; };
+		723E47B82C736D21004B0E0C /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
+		723E47BA2C736D2A004B0E0C /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		723E47BD2C736DAF004B0E0C /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		723E47C12C7385C6004B0E0C /* WODView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODView.swift; sourceTree = "<group>"; };
+		723E47C32C7385CF004B0E0C /* WODViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODViewController.swift; sourceTree = "<group>"; };
+		723E47C52C7389A9004B0E0C /* CameraButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraButton.swift; sourceTree = "<group>"; };
+		723E47C82C738DF8004B0E0C /* WODViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,12 +192,12 @@
 		723E471C2C6DBCA6004B0E0C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				723E471D2C6DBE43004B0E0C /* Base */,
 				723E47A02C72113B004B0E0C /* UserDefaults */,
 				723E47512C6DD971004B0E0C /* Network */,
 				723E473F2C6DC9D3004B0E0C /* Constants */,
 				723E47382C6DC4FE004B0E0C /* Custom */,
 				723E47312C6DC1DA004B0E0C /* Scenes */,
-				723E471D2C6DBE43004B0E0C /* Base */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -201,9 +217,10 @@
 		723E47312C6DC1DA004B0E0C /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				723E47A62C721AD2004B0E0C /* MainScene */,
 				723E47322C6DC1F3004B0E0C /* OnBoardingScene */,
 				723E47872C707D61004B0E0C /* LoginScene */,
+				723E47A62C721AD2004B0E0C /* MainScene */,
+				723E47B62C736CB8004B0E0C /* PostScene */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -240,6 +257,8 @@
 			children = (
 				723E473A2C6DC5BE004B0E0C /* BaseButton.swift */,
 				723E47912C7081C4004B0E0C /* PasswordSecureButton.swift */,
+				723E47B42C7369CA004B0E0C /* PostButton.swift */,
+				723E47C52C7389A9004B0E0C /* CameraButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -477,6 +496,7 @@
 			isa = PBXGroup;
 			children = (
 				723E47A72C721ADF004B0E0C /* View */,
+				723E47BC2C736DA2004B0E0C /* ViewModel */,
 			);
 			path = MainScene;
 			sourceTree = "<group>";
@@ -488,6 +508,58 @@
 				723E47AA2C721AF1004B0E0C /* MainView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		723E47B62C736CB8004B0E0C /* PostScene */ = {
+			isa = PBXGroup;
+			children = (
+				723E47BF2C7385AA004B0E0C /* WODView */,
+				723E47B72C736CF6004B0E0C /* View */,
+			);
+			path = PostScene;
+			sourceTree = "<group>";
+		};
+		723E47B72C736CF6004B0E0C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				723E47BA2C736D2A004B0E0C /* PostViewController.swift */,
+				723E47B82C736D21004B0E0C /* PostView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		723E47BC2C736DA2004B0E0C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				723E47BD2C736DAF004B0E0C /* MainViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		723E47BF2C7385AA004B0E0C /* WODView */ = {
+			isa = PBXGroup;
+			children = (
+				723E47C02C7385B4004B0E0C /* View */,
+				723E47C72C738DEB004B0E0C /* ViewModel */,
+			);
+			path = WODView;
+			sourceTree = "<group>";
+		};
+		723E47C02C7385B4004B0E0C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				723E47C32C7385CF004B0E0C /* WODViewController.swift */,
+				723E47C12C7385C6004B0E0C /* WODView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		723E47C72C738DEB004B0E0C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				723E47C82C738DF8004B0E0C /* WODViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -577,12 +649,15 @@
 				723E47212C6DBF98004B0E0C /* BaseViewController.swift in Sources */,
 				723E47AB2C721AF1004B0E0C /* MainView.swift in Sources */,
 				723E477B2C705E6D004B0E0C /* PasswordView.swift in Sources */,
+				723E47B52C7369CA004B0E0C /* PostButton.swift in Sources */,
 				723E476D2C6F3345004B0E0C /* EmailViewModel.swift in Sources */,
 				723E473E2C6DC6EC004B0E0C /* ResourceFont.swift in Sources */,
 				723E47442C6DCA1B004B0E0C /* ButtonTitle.swift in Sources */,
 				723E47902C707E79004B0E0C /* BoxTypeTextField.swift in Sources */,
 				723E47632C6F2718004B0E0C /* EmailView.swift in Sources */,
+				723E47BB2C736D2A004B0E0C /* PostViewController.swift in Sources */,
 				723E47032C6CD240004B0E0C /* AppDelegate.swift in Sources */,
+				723E47B92C736D21004B0E0C /* PostView.swift in Sources */,
 				723E479C2C708E48004B0E0C /* NicknameViewModel.swift in Sources */,
 				723E47192C6CD360004B0E0C /* APIKey.swift in Sources */,
 				723E47752C6F3ED5004B0E0C /* Body.swift in Sources */,
@@ -592,17 +667,22 @@
 				723E47A52C7212E7004B0E0C /* LoginResponse.swift in Sources */,
 				723E47682C6F288E004B0E0C /* LineTextField.swift in Sources */,
 				723E47352C6DC23B004B0E0C /* OnBoardingViewController.swift in Sources */,
+				723E47C92C738DF8004B0E0C /* WODViewModel.swift in Sources */,
+				723E47BE2C736DAF004B0E0C /* MainViewModel.swift in Sources */,
 				723E478E2C707DD9004B0E0C /* LoginViewController.swift in Sources */,
 				723E479A2C7089B8004B0E0C /* NicknameViewController.swift in Sources */,
 				723E47462C6DCE9C004B0E0C /* BaseViewModel.swift in Sources */,
 				723E47582C6DDCD2004B0E0C /* TargetType.swift in Sources */,
 				723E47052C6CD240004B0E0C /* SceneDelegate.swift in Sources */,
+				723E47C42C7385CF004B0E0C /* WODViewController.swift in Sources */,
 				723E47652C6F2720004B0E0C /* EmailViewController.swift in Sources */,
 				723E479F2C71DD7C004B0E0C /* JoinResponse.swift in Sources */,
 				723E47982C7089AD004B0E0C /* NicknameView.swift in Sources */,
 				723E475C2C6DE187004B0E0C /* Header.swift in Sources */,
 				723E478C2C707DC2004B0E0C /* LoginView.swift in Sources */,
 				723E477D2C705E81004B0E0C /* PasswordViewController.swift in Sources */,
+				723E47C62C7389A9004B0E0C /* CameraButton.swift in Sources */,
+				723E47C22C7385C6004B0E0C /* WODView.swift in Sources */,
 				723E47922C7081C4004B0E0C /* PasswordSecureButton.swift in Sources */,
 				723E475A2C6DDD0A004B0E0C /* LSLPRouter.swift in Sources */,
 				723E47A22C721152004B0E0C /* UserDefaultsManager.swift in Sources */,
