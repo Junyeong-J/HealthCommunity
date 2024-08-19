@@ -10,9 +10,6 @@ import SnapKit
 
 final class WODView: BaseView {
     
-    private let WODPostScrollView = UIScrollView()
-    private let contentView = UIView()
-    
     private let photoLabel: UILabel = {
         let label = UILabel()
         label.text = "사진 선택"
@@ -20,37 +17,34 @@ final class WODView: BaseView {
         return label
     }()
     
-    private let photoScrollView = UIScrollView()
-    
+    let photoScrollView = UIScrollView()
     let photoButton = CameraButton()
+    var imageViews: [UIImageView] = []
+    
+    let contentTextView: UITextView = {
+        let textView = UITextView()
+        textView.font = UIFont.systemFont(ofSize: 16)
+        textView.layer.borderWidth = 1
+        textView.layer.borderColor = UIColor.myAppGray.cgColor
+        textView.layer.cornerRadius = 10
+        return textView
+    }()
     
     override func configureHierarchy() {
-        addSubview(WODPostScrollView)
-        WODPostScrollView.addSubview(contentView)
-        
-        [photoLabel, photoScrollView].forEach { contentView.addSubview($0) }
+        addSubview(photoLabel)
+        addSubview(photoScrollView)
+        addSubview(contentTextView)
         photoScrollView.addSubview(photoButton)
-        
     }
     
     override func configureLayout() {
-        WODPostScrollView.snp.makeConstraints { make in
-            make.edges.equalTo(safeAreaLayoutGuide)
-        }
-        
-        contentView.snp.makeConstraints { make in
-            make.width.equalTo(WODPostScrollView.snp.width)
-            make.verticalEdges.equalTo(WODPostScrollView)
-        }
-        
         photoLabel.snp.makeConstraints { make in
-            make.leading.top.equalTo(contentView).inset(15)
+            make.leading.top.equalTo(safeAreaLayoutGuide).inset(15)
         }
         
         photoScrollView.snp.makeConstraints { make in
             make.top.equalTo(photoLabel.snp.bottom).offset(5)
-            make.trailing.equalTo(contentView.snp.trailing).offset(-5)
-            make.leading.equalTo(photoLabel)
+            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(15)
             make.height.equalTo(100)
         }
         
@@ -60,7 +54,46 @@ final class WODView: BaseView {
             make.leading.equalTo(photoScrollView).inset(5)
         }
         
+        contentTextView.snp.makeConstraints { make in
+            make.top.equalTo(photoScrollView.snp.bottom).offset(20)
+            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(15)
+            make.height.equalTo(150)
+        }
     }
-
+    
+    func addImageView(image: UIImage) {
+        let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 20
+        imageView.layer.masksToBounds = true
+        imageView.isUserInteractionEnabled = true
+        imageViews.append(imageView)
+        
+        setupPhotoScrollView()
+    }
+    
+    private func setupPhotoScrollView() {
+        let stackView = UIStackView(arrangedSubviews: imageViews)
+        stackView.axis = .horizontal
+        stackView.spacing = 10
+        
+        photoScrollView.addSubview(stackView)
+        
+        stackView.snp.makeConstraints { make in
+            make.leading.equalTo(photoButton.snp.trailing).offset(10)
+            make.centerY.equalTo(photoButton)
+            make.height.equalTo(80)
+        }
+        
+        imageViews.forEach { imageView in
+            imageView.snp.makeConstraints { make in
+                make.size.equalTo(80)
+            }
+        }
+        
+        let totalWidth = CGFloat(imageViews.count * 80) + CGFloat((imageViews.count) * 10) + 80 + 15
+        photoScrollView.contentSize = CGSize(width: totalWidth, height: 80)
+    }
     
 }

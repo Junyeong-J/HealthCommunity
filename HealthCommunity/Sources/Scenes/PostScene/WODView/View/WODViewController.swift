@@ -23,6 +23,7 @@ final class WODViewController: BaseViewController<WODView> {
     }
     
     override func bindModel() {
+        
         let input = WODViewModel.Input(
             albumButtonTap: rootView.photoButton.rx.tap)
         
