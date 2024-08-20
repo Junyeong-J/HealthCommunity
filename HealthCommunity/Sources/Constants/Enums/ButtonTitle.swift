@@ -15,4 +15,5 @@ enum ButtonTitle: String {
     case next = "다음"
     case login = "로그인"
     case join = "회원가입"
+    case post = "글올리기"
 }

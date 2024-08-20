@@ -65,6 +65,10 @@
 		723E47C42C7385CF004B0E0C /* WODViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47C32C7385CF004B0E0C /* WODViewController.swift */; };
 		723E47C62C7389A9004B0E0C /* CameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47C52C7389A9004B0E0C /* CameraButton.swift */; };
 		723E47C92C738DF8004B0E0C /* WODViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47C82C738DF8004B0E0C /* WODViewModel.swift */; };
+		7274DA452C74D8E700245DCD /* WODTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA442C74D8E700245DCD /* WODTableViewCell.swift */; };
+		7274DA482C74D93600245DCD /* ReuseIdentifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA472C74D93600245DCD /* ReuseIdentifierProtocol.swift */; };
+		7274DA4B2C74DC8300245DCD /* WODTableTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA4A2C74DC8300245DCD /* WODTableTitles.swift */; };
+		7274DA4E2C74DF4C00245DCD /* TriangleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA4D2C74DF4C00245DCD /* TriangleImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -123,6 +127,10 @@
 		723E47C32C7385CF004B0E0C /* WODViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODViewController.swift; sourceTree = "<group>"; };
 		723E47C52C7389A9004B0E0C /* CameraButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraButton.swift; sourceTree = "<group>"; };
 		723E47C82C738DF8004B0E0C /* WODViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODViewModel.swift; sourceTree = "<group>"; };
+		7274DA442C74D8E700245DCD /* WODTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODTableViewCell.swift; sourceTree = "<group>"; };
+		7274DA472C74D93600245DCD /* ReuseIdentifierProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifierProtocol.swift; sourceTree = "<group>"; };
+		7274DA4A2C74DC8300245DCD /* WODTableTitles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODTableTitles.swift; sourceTree = "<group>"; };
+		7274DA4D2C74DF4C00245DCD /* TriangleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +200,7 @@
 		723E471C2C6DBCA6004B0E0C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				7274DA462C74D92A00245DCD /* Protocol */,
 				723E471D2C6DBE43004B0E0C /* Base */,
 				723E47A02C72113B004B0E0C /* UserDefaults */,
 				723E47512C6DD971004B0E0C /* Network */,
@@ -246,6 +255,7 @@
 		723E47382C6DC4FE004B0E0C /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				7274DA4C2C74DF3A00245DCD /* ImageView */,
 				723E47662C6F287B004B0E0C /* TextField */,
 				723E47392C6DC573004B0E0C /* Button */,
 			);
@@ -539,6 +549,7 @@
 		723E47BF2C7385AA004B0E0C /* WODView */ = {
 			isa = PBXGroup;
 			children = (
+				7274DA492C74DC6F00245DCD /* Model */,
 				723E47C02C7385B4004B0E0C /* View */,
 				723E47C72C738DEB004B0E0C /* ViewModel */,
 			);
@@ -550,6 +561,7 @@
 			children = (
 				723E47C32C7385CF004B0E0C /* WODViewController.swift */,
 				723E47C12C7385C6004B0E0C /* WODView.swift */,
+				7274DA442C74D8E700245DCD /* WODTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -560,6 +572,30 @@
 				723E47C82C738DF8004B0E0C /* WODViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7274DA462C74D92A00245DCD /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				7274DA472C74D93600245DCD /* ReuseIdentifierProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		7274DA492C74DC6F00245DCD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7274DA4A2C74DC8300245DCD /* WODTableTitles.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7274DA4C2C74DF3A00245DCD /* ImageView */ = {
+			isa = PBXGroup;
+			children = (
+				7274DA4D2C74DF4C00245DCD /* TriangleImage.swift */,
+			);
+			path = ImageView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -679,6 +715,7 @@
 				723E479F2C71DD7C004B0E0C /* JoinResponse.swift in Sources */,
 				723E47982C7089AD004B0E0C /* NicknameView.swift in Sources */,
 				723E475C2C6DE187004B0E0C /* Header.swift in Sources */,
+				7274DA482C74D93600245DCD /* ReuseIdentifierProtocol.swift in Sources */,
 				723E478C2C707DC2004B0E0C /* LoginView.swift in Sources */,
 				723E477D2C705E81004B0E0C /* PasswordViewController.swift in Sources */,
 				723E47C62C7389A9004B0E0C /* CameraButton.swift in Sources */,
@@ -688,11 +725,14 @@
 				723E47A22C721152004B0E0C /* UserDefaultsManager.swift in Sources */,
 				723E47492C6DCF22004B0E0C /* OnBoardingViewModel.swift in Sources */,
 				723E473B2C6DC5BE004B0E0C /* BaseButton.swift in Sources */,
+				7274DA4E2C74DF4C00245DCD /* TriangleImage.swift in Sources */,
 				723E476A2C6F28C5004B0E0C /* TextFieldPlaceholder.swift in Sources */,
 				723E47A92C721AEB004B0E0C /* MainViewController.swift in Sources */,
 				723E47252C6DBFE7004B0E0C /* BaseTableViewCell.swift in Sources */,
 				723E47532C6DD9E2004B0E0C /* LSLPAPIManager.swift in Sources */,
 				723E471F2C6DBF5F004B0E0C /* BaseView.swift in Sources */,
+				7274DA4B2C74DC8300245DCD /* WODTableTitles.swift in Sources */,
+				7274DA452C74D8E700245DCD /* WODTableViewCell.swift in Sources */,
 				723E47232C6DBFBB004B0E0C /* BaseCollectionViewCell.swift in Sources */,
 				723E47562C6DDC77004B0E0C /* APIError.swift in Sources */,
 				723E47702C6F3814004B0E0C /* EmailCheck.swift in Sources */,
