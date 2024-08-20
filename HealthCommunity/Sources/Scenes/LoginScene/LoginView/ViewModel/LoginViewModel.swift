@@ -41,7 +41,14 @@ final class LoginViewModel: BaseViewModel {
                             print(response)
                             return ("로그인 성공", true)
                         case .failure(let error):
-                            return (self.errorMessage(for: error), false)
+                            let errorMessage: String
+                            switch error {
+                            case .customError(_, let message):
+                                errorMessage = message
+                            default:
+                                errorMessage = "알 수 없는 오류가 발생했습니다."
+                            }
+                            return (errorMessage, false)
                         }
                     }
                     .catchAndReturn(("알 수 없는 오류가 발생했습니다.", false))
@@ -51,19 +58,4 @@ final class LoginViewModel: BaseViewModel {
         return Output(joinButtonTapped: input.joinButtonTap, loginResult: loginResult)
     }
     
-    private func errorMessage(for error: APIError) -> String {
-            switch error {
-            case .customError(let statusCode, let message):
-                switch statusCode {
-                case 400:
-                    return "이메일이나 비밀번호를 적어주세요."
-                case 401:
-                    return message
-                default:
-                    return "오류가 발생했습니다."
-                }
-            default:
-                return "네트워크 오류가 발생했습니다."
-            }
-        }
 }
