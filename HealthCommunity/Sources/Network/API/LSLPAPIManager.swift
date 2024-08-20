@@ -28,7 +28,12 @@ final class LSLPAPIManager {
                         case .success(let value):
                             observer(.success(.success(value)))
                         case .failure(let error):
-                            observer(.success(.failure(.networkError(error))))
+                            if let data = response.data, let result = response.response {
+                                let errorMessage = self.parseErrorMessage(data: data, statusCode: result.statusCode, api: api)
+                                observer(.success(.failure(.customError(statusCode: result.statusCode, message: errorMessage))))
+                            } else {
+                                observer(.success(.failure(.networkError(error))))
+                            }
                         }
                     }
             } catch {
@@ -37,4 +42,19 @@ final class LSLPAPIManager {
             return Disposables.create()
         }.debug("LSLP 통신")
     }
+    
+    private func parseErrorMessage(data: Data, statusCode: Int, api: LSLPRouter) -> String {
+        
+        if let commonMessage = APIErrorMessages.commonMessages[statusCode] {
+            return commonMessage
+        }
+        
+        let apiMessages = APIErrorMessages.messages(for: api)
+        if let apiMessage = apiMessages[statusCode] {
+            return apiMessage
+        }
+        
+        return "알 수 없는 오류가 발생했습니다."
+    }
+    
 }
