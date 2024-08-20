@@ -18,9 +18,13 @@ final class WODViewModel: BaseViewModel {
     
     struct Output {
         let albumButtonTapped: ControlEvent<Void>
+        let tableList: Observable<[String]>
     }
     
     func transform(input: Input) -> Output {
-        return Output(albumButtonTapped: input.albumButtonTap)
+        
+        let tableList = Observable.just(WODTableTitles.allTitles)
+        
+        return Output(albumButtonTapped: input.albumButtonTap, tableList: tableList)
     }
 }

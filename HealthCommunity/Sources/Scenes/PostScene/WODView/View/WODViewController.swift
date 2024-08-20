@@ -34,6 +34,14 @@ final class WODViewController: BaseViewController<WODView> {
                 owner.openGallery()
             }
             .disposed(by: viewModel.disposeBag)
+        
+        output.tableList
+            .bind(to: rootView.tableView.rx.items(
+                cellIdentifier: WODTableViewCell.identifier,
+                cellType: WODTableViewCell.self)) { (row, element, cell) in
+                    cell.configureData(title: element)
+                }
+                .disposed(by: viewModel.disposeBag)
     }
     
 }
