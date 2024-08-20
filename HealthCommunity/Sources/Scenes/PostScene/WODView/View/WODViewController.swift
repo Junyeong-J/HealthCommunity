@@ -42,6 +42,15 @@ final class WODViewController: BaseViewController<WODView> {
                     cell.configureData(title: element)
                 }
                 .disposed(by: viewModel.disposeBag)
+        
+
+        rootView.tableView.rx.itemSelected
+            .subscribe(with: self) { owner, _ in
+            let detailVC = RoutineViewController()
+            owner.navigationController?.pushViewController(detailVC, animated: true)
+        }
+        .disposed(by: viewModel.disposeBag)
+        
     }
     
 }

@@ -58,8 +58,6 @@
 		723E47A92C721AEB004B0E0C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47A82C721AEB004B0E0C /* MainViewController.swift */; };
 		723E47AB2C721AF1004B0E0C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47AA2C721AF1004B0E0C /* MainView.swift */; };
 		723E47B52C7369CA004B0E0C /* PostButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47B42C7369CA004B0E0C /* PostButton.swift */; };
-		723E47B92C736D21004B0E0C /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47B82C736D21004B0E0C /* PostView.swift */; };
-		723E47BB2C736D2A004B0E0C /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47BA2C736D2A004B0E0C /* PostViewController.swift */; };
 		723E47BE2C736DAF004B0E0C /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47BD2C736DAF004B0E0C /* MainViewModel.swift */; };
 		723E47C22C7385C6004B0E0C /* WODView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47C12C7385C6004B0E0C /* WODView.swift */; };
 		723E47C42C7385CF004B0E0C /* WODViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47C32C7385CF004B0E0C /* WODViewController.swift */; };
@@ -69,6 +67,12 @@
 		7274DA482C74D93600245DCD /* ReuseIdentifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA472C74D93600245DCD /* ReuseIdentifierProtocol.swift */; };
 		7274DA4B2C74DC8300245DCD /* WODTableTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA4A2C74DC8300245DCD /* WODTableTitles.swift */; };
 		7274DA4E2C74DF4C00245DCD /* TriangleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA4D2C74DF4C00245DCD /* TriangleImage.swift */; };
+		7274DA522C74FE1200245DCD /* RoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA512C74FE1200245DCD /* RoutineView.swift */; };
+		7274DA542C74FE2300245DCD /* RoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA532C74FE2300245DCD /* RoutineViewController.swift */; };
+		7274DA572C75008700245DCD /* RoutineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA562C75008700245DCD /* RoutineViewModel.swift */; };
+		7274DA592C75016200245DCD /* RoutineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA582C75016200245DCD /* RoutineTableViewCell.swift */; };
+		7274DA5B2C75088F00245DCD /* RoutineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA5A2C75088F00245DCD /* RoutineCollectionViewCell.swift */; };
+		7274DA5D2C7510F700245DCD /* RoutineAreaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA5C2C7510F700245DCD /* RoutineAreaButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,8 +124,6 @@
 		723E47A82C721AEB004B0E0C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		723E47AA2C721AF1004B0E0C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		723E47B42C7369CA004B0E0C /* PostButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostButton.swift; sourceTree = "<group>"; };
-		723E47B82C736D21004B0E0C /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
-		723E47BA2C736D2A004B0E0C /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		723E47BD2C736DAF004B0E0C /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		723E47C12C7385C6004B0E0C /* WODView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODView.swift; sourceTree = "<group>"; };
 		723E47C32C7385CF004B0E0C /* WODViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +133,12 @@
 		7274DA472C74D93600245DCD /* ReuseIdentifierProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifierProtocol.swift; sourceTree = "<group>"; };
 		7274DA4A2C74DC8300245DCD /* WODTableTitles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODTableTitles.swift; sourceTree = "<group>"; };
 		7274DA4D2C74DF4C00245DCD /* TriangleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleImage.swift; sourceTree = "<group>"; };
+		7274DA512C74FE1200245DCD /* RoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineView.swift; sourceTree = "<group>"; };
+		7274DA532C74FE2300245DCD /* RoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineViewController.swift; sourceTree = "<group>"; };
+		7274DA562C75008700245DCD /* RoutineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineViewModel.swift; sourceTree = "<group>"; };
+		7274DA582C75016200245DCD /* RoutineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineTableViewCell.swift; sourceTree = "<group>"; };
+		7274DA5A2C75088F00245DCD /* RoutineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineCollectionViewCell.swift; sourceTree = "<group>"; };
+		7274DA5C2C7510F700245DCD /* RoutineAreaButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineAreaButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +238,7 @@
 				723E47872C707D61004B0E0C /* LoginScene */,
 				723E47A62C721AD2004B0E0C /* MainScene */,
 				723E47B62C736CB8004B0E0C /* PostScene */,
+				7274DA4F2C74FDAC00245DCD /* RoutineScene */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -269,6 +278,7 @@
 				723E47912C7081C4004B0E0C /* PasswordSecureButton.swift */,
 				723E47B42C7369CA004B0E0C /* PostButton.swift */,
 				723E47C52C7389A9004B0E0C /* CameraButton.swift */,
+				7274DA5C2C7510F700245DCD /* RoutineAreaButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -524,18 +534,8 @@
 			isa = PBXGroup;
 			children = (
 				723E47BF2C7385AA004B0E0C /* WODView */,
-				723E47B72C736CF6004B0E0C /* View */,
 			);
 			path = PostScene;
-			sourceTree = "<group>";
-		};
-		723E47B72C736CF6004B0E0C /* View */ = {
-			isa = PBXGroup;
-			children = (
-				723E47BA2C736D2A004B0E0C /* PostViewController.swift */,
-				723E47B82C736D21004B0E0C /* PostView.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		723E47BC2C736DA2004B0E0C /* ViewModel */ = {
@@ -596,6 +596,34 @@
 				7274DA4D2C74DF4C00245DCD /* TriangleImage.swift */,
 			);
 			path = ImageView;
+			sourceTree = "<group>";
+		};
+		7274DA4F2C74FDAC00245DCD /* RoutineScene */ = {
+			isa = PBXGroup;
+			children = (
+				7274DA502C74FE0500245DCD /* View */,
+				7274DA552C75005000245DCD /* ViewModel */,
+			);
+			path = RoutineScene;
+			sourceTree = "<group>";
+		};
+		7274DA502C74FE0500245DCD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7274DA532C74FE2300245DCD /* RoutineViewController.swift */,
+				7274DA512C74FE1200245DCD /* RoutineView.swift */,
+				7274DA582C75016200245DCD /* RoutineTableViewCell.swift */,
+				7274DA5A2C75088F00245DCD /* RoutineCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7274DA552C75005000245DCD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7274DA562C75008700245DCD /* RoutineViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -691,15 +719,14 @@
 				723E47442C6DCA1B004B0E0C /* ButtonTitle.swift in Sources */,
 				723E47902C707E79004B0E0C /* BoxTypeTextField.swift in Sources */,
 				723E47632C6F2718004B0E0C /* EmailView.swift in Sources */,
-				723E47BB2C736D2A004B0E0C /* PostViewController.swift in Sources */,
 				723E47032C6CD240004B0E0C /* AppDelegate.swift in Sources */,
-				723E47B92C736D21004B0E0C /* PostView.swift in Sources */,
 				723E479C2C708E48004B0E0C /* NicknameViewModel.swift in Sources */,
 				723E47192C6CD360004B0E0C /* APIKey.swift in Sources */,
 				723E47752C6F3ED5004B0E0C /* Body.swift in Sources */,
 				723E47942C70875D004B0E0C /* LoginViewModel.swift in Sources */,
 				723E477F2C706EEE004B0E0C /* PasswordViewModel.swift in Sources */,
 				723E47372C6DC279004B0E0C /* OnBoardingView.swift in Sources */,
+				7274DA522C74FE1200245DCD /* RoutineView.swift in Sources */,
 				723E47A52C7212E7004B0E0C /* LoginResponse.swift in Sources */,
 				723E47682C6F288E004B0E0C /* LineTextField.swift in Sources */,
 				723E47352C6DC23B004B0E0C /* OnBoardingViewController.swift in Sources */,
@@ -718,6 +745,7 @@
 				7274DA482C74D93600245DCD /* ReuseIdentifierProtocol.swift in Sources */,
 				723E478C2C707DC2004B0E0C /* LoginView.swift in Sources */,
 				723E477D2C705E81004B0E0C /* PasswordViewController.swift in Sources */,
+				7274DA572C75008700245DCD /* RoutineViewModel.swift in Sources */,
 				723E47C62C7389A9004B0E0C /* CameraButton.swift in Sources */,
 				723E47C22C7385C6004B0E0C /* WODView.swift in Sources */,
 				723E47922C7081C4004B0E0C /* PasswordSecureButton.swift in Sources */,
@@ -726,8 +754,12 @@
 				723E47492C6DCF22004B0E0C /* OnBoardingViewModel.swift in Sources */,
 				723E473B2C6DC5BE004B0E0C /* BaseButton.swift in Sources */,
 				7274DA4E2C74DF4C00245DCD /* TriangleImage.swift in Sources */,
+				7274DA542C74FE2300245DCD /* RoutineViewController.swift in Sources */,
 				723E476A2C6F28C5004B0E0C /* TextFieldPlaceholder.swift in Sources */,
+				7274DA592C75016200245DCD /* RoutineTableViewCell.swift in Sources */,
+				7274DA5D2C7510F700245DCD /* RoutineAreaButton.swift in Sources */,
 				723E47A92C721AEB004B0E0C /* MainViewController.swift in Sources */,
+				7274DA5B2C75088F00245DCD /* RoutineCollectionViewCell.swift in Sources */,
 				723E47252C6DBFE7004B0E0C /* BaseTableViewCell.swift in Sources */,
 				723E47532C6DD9E2004B0E0C /* LSLPAPIManager.swift in Sources */,
 				723E471F2C6DBF5F004B0E0C /* BaseView.swift in Sources */,
