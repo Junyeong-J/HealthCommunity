@@ -64,6 +64,9 @@
 		723E47C62C7389A9004B0E0C /* CameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47C52C7389A9004B0E0C /* CameraButton.swift */; };
 		723E47C92C738DF8004B0E0C /* WODViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47C82C738DF8004B0E0C /* WODViewModel.swift */; };
 		725B9A282C761E930078863C /* RoutineData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9A272C761E930078863C /* RoutineData.swift */; };
+		725B9A2B2C76547E0078863C /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9A2A2C76547E0078863C /* AuthRouter.swift */; };
+		725B9A2D2C7654C60078863C /* PostRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9A2C2C7654C60078863C /* PostRouter.swift */; };
+		725B9A2F2C765DD70078863C /* ImageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9A2E2C765DD70078863C /* ImageResponse.swift */; };
 		7274DA452C74D8E700245DCD /* WODTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA442C74D8E700245DCD /* WODTableViewCell.swift */; };
 		7274DA482C74D93600245DCD /* ReuseIdentifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA472C74D93600245DCD /* ReuseIdentifierProtocol.swift */; };
 		7274DA4B2C74DC8300245DCD /* WODTableTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA4A2C74DC8300245DCD /* WODTableTitles.swift */; };
@@ -133,6 +136,9 @@
 		723E47C52C7389A9004B0E0C /* CameraButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraButton.swift; sourceTree = "<group>"; };
 		723E47C82C738DF8004B0E0C /* WODViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODViewModel.swift; sourceTree = "<group>"; };
 		725B9A272C761E930078863C /* RoutineData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineData.swift; sourceTree = "<group>"; };
+		725B9A2A2C76547E0078863C /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
+		725B9A2C2C7654C60078863C /* PostRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRouter.swift; sourceTree = "<group>"; };
+		725B9A2E2C765DD70078863C /* ImageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageResponse.swift; sourceTree = "<group>"; };
 		7274DA442C74D8E700245DCD /* WODTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODTableViewCell.swift; sourceTree = "<group>"; };
 		7274DA472C74D93600245DCD /* ReuseIdentifierProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifierProtocol.swift; sourceTree = "<group>"; };
 		7274DA4A2C74DC8300245DCD /* WODTableTitles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODTableTitles.swift; sourceTree = "<group>"; };
@@ -423,6 +429,8 @@
 			isa = PBXGroup;
 			children = (
 				723E47592C6DDD0A004B0E0C /* LSLPRouter.swift */,
+				725B9A2A2C76547E0078863C /* AuthRouter.swift */,
+				725B9A2C2C7654C60078863C /* PostRouter.swift */,
 				723E475B2C6DE187004B0E0C /* Header.swift */,
 				723E47742C6F3ED5004B0E0C /* Body.swift */,
 			);
@@ -518,6 +526,7 @@
 			isa = PBXGroup;
 			children = (
 				723E47A42C7212E7004B0E0C /* LoginResponse.swift */,
+				725B9A2E2C765DD70078863C /* ImageResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -773,6 +782,7 @@
 				723E479C2C708E48004B0E0C /* NicknameViewModel.swift in Sources */,
 				723E47192C6CD360004B0E0C /* APIKey.swift in Sources */,
 				723E47752C6F3ED5004B0E0C /* Body.swift in Sources */,
+				725B9A2B2C76547E0078863C /* AuthRouter.swift in Sources */,
 				723E47942C70875D004B0E0C /* LoginViewModel.swift in Sources */,
 				723E477F2C706EEE004B0E0C /* PasswordViewModel.swift in Sources */,
 				723E47372C6DC279004B0E0C /* OnBoardingView.swift in Sources */,
@@ -790,6 +800,7 @@
 				723E47052C6CD240004B0E0C /* SceneDelegate.swift in Sources */,
 				723E47C42C7385CF004B0E0C /* WODViewController.swift in Sources */,
 				723E47652C6F2720004B0E0C /* EmailViewController.swift in Sources */,
+				725B9A2F2C765DD70078863C /* ImageResponse.swift in Sources */,
 				723E479F2C71DD7C004B0E0C /* JoinResponse.swift in Sources */,
 				723E47982C7089AD004B0E0C /* NicknameView.swift in Sources */,
 				723E475C2C6DE187004B0E0C /* Header.swift in Sources */,
@@ -810,6 +821,7 @@
 				723E476A2C6F28C5004B0E0C /* TextFieldPlaceholder.swift in Sources */,
 				7274DA592C75016200245DCD /* RoutineTableViewCell.swift in Sources */,
 				7274DA5D2C7510F700245DCD /* RoutineAreaButton.swift in Sources */,
+				725B9A2D2C7654C60078863C /* PostRouter.swift in Sources */,
 				723E47A92C721AEB004B0E0C /* MainViewController.swift in Sources */,
 				7274DA5B2C75088F00245DCD /* RoutineCollectionViewCell.swift in Sources */,
 				723E47252C6DBFE7004B0E0C /* BaseTableViewCell.swift in Sources */,

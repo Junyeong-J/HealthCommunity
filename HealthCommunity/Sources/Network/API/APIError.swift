@@ -24,16 +24,23 @@ struct APIErrorMessages {
     
     static func messages(for api: LSLPRouter) -> [Int: String] {
         switch api {
-        case .LoginAPI:
-            return [
-                400: "이메일 혹은 비밀번호를 입력해주세요.",
-                401: "이메일 또는 비밀번호가 잘못되었습니다."
-            ]
-        case .SignUpAPI:
-            return [
-                400: "회원가입 정보가 잘못되었습니다."
-            ]
-        case .EmailCheck:
+        case .auth(let authRouter):
+            switch authRouter {
+            case .LoginAPI:
+                return [
+                    400: "이메일 혹은 비밀번호를 입력해주세요.",
+                    401: "이메일 또는 비밀번호가 잘못되었습니다."
+                ]
+            case .SignUpAPI:
+                return [
+                    400: "회원가입 정보가 잘못되었습니다."
+                ]
+            case .EmailCheck:
+                return [
+                    400: "이메일 형식이 잘못되었습니다."
+                ]
+            }
+        case .post(let postRouter):
             return [
                 400: "이메일 형식이 잘못되었습니다."
             ]

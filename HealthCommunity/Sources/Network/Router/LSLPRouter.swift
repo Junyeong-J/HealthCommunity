@@ -9,76 +9,81 @@ import Foundation
 import Alamofire
 
 enum LSLPRouter {
-    
-    case SignUpAPI(email: String, password: String, nick: String)
-    case EmailCheck(email: String)
-    case LoginAPI(email: String, password: String)
-    
+    case auth(AuthRouter)
+    case post(PostRouter)
 }
 
 extension LSLPRouter: TargetType {
     
-    var baseURL: String{
-        return APIURL.baseURL
+    var baseURL: String {
+        switch self {
+        case .auth(let router):
+            return router.baseURL
+        case .post(let router):
+            return router.baseURL
+        }
     }
     
     var path: String {
         switch self {
-        case .SignUpAPI:
-            return APIURL.signUpURL
-        case .EmailCheck:
-            return APIURL.emailCheckURL
-        case .LoginAPI:
-            return APIURL.loginURL
+        case .auth(let router):
+            return router.path
+        case .post(let router):
+            return router.path
         }
     }
     
-    var method: Alamofire.HTTPMethod {
+    var method: HTTPMethod {
         switch self {
-        case .SignUpAPI, .EmailCheck, .LoginAPI:
-            return .post
+        case .auth(let router):
+            return router.method
+        case .post(let router):
+            return router.method
         }
     }
     
-    var header: [String : String] {
+    var header: [String: String] {
         switch self {
-        case .SignUpAPI, .EmailCheck, .LoginAPI:
-            return [
-                Header.contentType.rawValue: Header.json.rawValue,
-                Header.sesacKey.rawValue: APIKey.key
-            ]
+        case .auth(let router):
+            return router.header
+        case .post(let router):
+            return router.header
         }
     }
     
-    var parameters: Alamofire.Parameters? {
-        return nil
+    var parameters: Parameters? {
+        switch self {
+        case .auth(let router):
+            return router.parameters
+        case .post(let router):
+            return router.parameters
+        }
     }
     
     var queryItems: [URLQueryItem]? {
-        return nil
+        switch self {
+        case .auth(let router):
+            return router.queryItems
+        case .post(let router):
+            return router.queryItems
+        }
     }
     
     var body: Data? {
         switch self {
-        case .SignUpAPI(let email, let password, let nick):
-            let params: [String: Any] = [
-                Body.email.rawValue: email,
-                Body.password.rawValue: password,
-                Body.nick.rawValue: nick
-            ]
-            return try? JSONSerialization.data(withJSONObject: params, options: [])
-        case .EmailCheck(let email):
-            let params: [String: Any] = [
-                Body.email.rawValue: email
-            ]
-            return try? JSONSerialization.data(withJSONObject: params, options: [])
-        case .LoginAPI(let email, let password):
-            let params: [String: Any] = [
-                Body.email.rawValue: email,
-                Body.password.rawValue: password
-            ]
-            return try? JSONSerialization.data(withJSONObject: params, options: [])
+        case .auth(let router):
+            return router.body
+        case .post(let router):
+            return router.body
         }
     }
     
+    func asMultipartFormData() -> (MultipartFormData) -> Void {
+        switch self {
+        case .post(let router):
+            return router.asMultipartFormData()
+        default:
+            return { _ in }
+        }
+    }
 }
