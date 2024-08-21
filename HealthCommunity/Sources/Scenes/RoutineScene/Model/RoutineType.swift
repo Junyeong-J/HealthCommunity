@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+enum RoutineType: String, CaseIterable {
+    case legs = "하체"
+    case chest = "가슴"
+    case back = "등"
+    case shoulders = "어깨"
+    case arms = "팔"
+}
+
+struct RoutineRoutineItem {
+    let title: String
+}

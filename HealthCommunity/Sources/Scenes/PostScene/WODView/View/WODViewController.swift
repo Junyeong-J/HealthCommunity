@@ -43,13 +43,27 @@ final class WODViewController: BaseViewController<WODView> {
                 }
                 .disposed(by: viewModel.disposeBag)
         
-
+        
         rootView.tableView.rx.itemSelected
-            .subscribe(with: self) { owner, _ in
-            let detailVC = RoutineViewController()
-            owner.navigationController?.pushViewController(detailVC, animated: true)
-        }
-        .disposed(by: viewModel.disposeBag)
+            .subscribe(with: self) { owner, indexPath in
+                switch indexPath.row {
+                case 0:
+                    let detailVC = RoutineViewController()
+                    owner.navigationController?.pushViewController(detailVC, animated: true)
+                case 1:
+                    let detailVC = RoutineViewController()
+                    owner.navigationController?.pushViewController(detailVC, animated: true)
+                case 2:
+                    let detailVC = RoutineViewController()
+                    owner.navigationController?.pushViewController(detailVC, animated: true)
+                case 3:
+                    let detailVC = RoutineViewController()
+                    owner.navigationController?.pushViewController(detailVC, animated: true)
+                default:
+                    break
+                }
+            }
+            .disposed(by: viewModel.disposeBag)
         
     }
     

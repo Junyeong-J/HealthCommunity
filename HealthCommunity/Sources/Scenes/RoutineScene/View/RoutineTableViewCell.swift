@@ -7,20 +7,53 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 final class RoutineTableViewCell: BaseTableViewCell {
+    
+    private var disposeBag = DisposeBag()
     
     private let titleLabel = UILabel()
     private let countTextField1 = UITextField()
     private let countTextField2 = UITextField()
+    private let countTextField3 = UITextField()
+    private let orderLabel = UILabel()
+    private let routineImageView = UIImageView(image: UIImage(systemName: "star"))
+    private let checkBox = UIButton(type: .system)
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+    }
     
     override func configureHierarchy() {
-        [titleLabel, countTextField1, countTextField2].forEach { contentView.addSubview($0) }
+        [checkBox, routineImageView, titleLabel, countTextField1, countTextField2, countTextField3, orderLabel].forEach {
+            contentView.addSubview($0)
+        }
+        configureCheckBox()
     }
     
     override func configureLayout() {
-        titleLabel.snp.makeConstraints { make in
+        checkBox.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(15)
+            make.centerY.equalToSuperview()
+            make.width.height.equalTo(24)
+        }
+        
+        routineImageView.snp.makeConstraints { make in
+            make.leading.equalTo(checkBox.snp.trailing).offset(5)
+            make.centerY.equalToSuperview()
+            make.width.height.equalTo(20)
+        }
+        
+        titleLabel.snp.makeConstraints { make in
+            make.leading.equalTo(routineImageView.snp.trailing).offset(5)
+            make.centerY.equalToSuperview()
+        }
+        
+        orderLabel.snp.makeConstraints { make in
+            make.leading.equalTo(titleLabel.snp.trailing).offset(10)
             make.centerY.equalToSuperview()
         }
         
@@ -31,16 +64,52 @@ final class RoutineTableViewCell: BaseTableViewCell {
         }
         
         countTextField2.snp.makeConstraints { make in
+            make.trailing.equalTo(countTextField3.snp.leading).offset(-10)
+            make.centerY.equalToSuperview()
+            make.width.equalTo(50)
+        }
+        
+        countTextField3.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-15)
             make.centerY.equalToSuperview()
             make.width.equalTo(50)
         }
     }
     
-    func configureData(title: String) {
-            titleLabel.text = title
-            countTextField1.placeholder = "세트"
-            countTextField2.placeholder = "횟수"
-        }
+    func configureData(item: RoutineRoutineItem) {
+        titleLabel.text = item.title
+        countTextField1.placeholder = "세트"
+        countTextField2.placeholder = "횟수"
+        countTextField3.placeholder = "중량(Kg)"
+        updateCheckBoxState(isSelected: false)
+    }
     
+    private func configureCheckBox() {
+        checkBox.layer.borderWidth = 2
+        checkBox.layer.cornerRadius = 4
+        checkBox.layer.borderColor = UIColor.blue.cgColor
+        checkBox.backgroundColor = .white
+        
+        checkBox.setImage(nil, for: .normal)
+        checkBox.setImage(UIImage(systemName: "checkmark"), for: .selected)
+        checkBox.tintColor = .white
+        
+        checkBox.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.checkBox.isSelected.toggle()
+                self.updateCheckBoxState(isSelected: self.checkBox.isSelected)
+                self.setNeedsLayout()
+                self.layoutIfNeeded()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func updateCheckBoxState(isSelected: Bool) {
+        checkBox.backgroundColor = isSelected ? .blue : .white
+        checkBox.layer.borderColor = isSelected ? UIColor.blue.cgColor : UIColor.gray.cgColor
+        checkBox.tintColor = isSelected ? .black : .clear
+    }
 }
+
+

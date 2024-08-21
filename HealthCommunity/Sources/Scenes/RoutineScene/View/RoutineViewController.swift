@@ -22,24 +22,37 @@ final class RoutineViewController: BaseViewController<RoutineView> {
     }
     
     override func bindModel() {
-        let input = RoutineViewModel.Input()
+        let input = RoutineViewModel.Input(
+            routineTypeSelection: rootView.collectionView.rx
+                .modelSelected(RoutineType.self)
+                .asObservable()
+        )
         
         let output = viewModel.transform(input: input)
         
-        output.routineItems
+        // Combine latest selectedRoutineType with routineItems and map to (title, isSelected) tuple
+        Observable.combineLatest(output.routineItems, output.selectedRoutineType)
+            .map { routineItems, selectedRoutineType in
+                routineItems.map { routineItem in
+                    let routineType = RoutineType(rawValue: routineItem) ?? .legs // 기본값으로 legs 설정
+                    return (routineItem, routineType == selectedRoutineType)
+                }
+            }
             .bind(to: rootView.collectionView.rx.items(
                 cellIdentifier: RoutineCollectionViewCell.identifier,
-                cellType: RoutineCollectionViewCell.self)) { (row, element, cell) in
-                    cell.configure(with: element)
+                cellType: RoutineCollectionViewCell.self)) { row, element, cell in
+                    let (title, isSelected) = element
+                    cell.configure(title: title, isSelected: isSelected)
                 }
                 .disposed(by: viewModel.disposeBag)
         
-        output.tableItems
+        output.items
             .bind(to: rootView.tableView.rx.items(
                 cellIdentifier: RoutineTableViewCell.identifier,
-                cellType: RoutineTableViewCell.self)) { (row, element, cell) in
-                    cell.configureData(title: element)
+                cellType: RoutineTableViewCell.self)) { row, item, cell in
+                    cell.configureData(item: item)
                 }
                 .disposed(by: viewModel.disposeBag)
     }
 }
+

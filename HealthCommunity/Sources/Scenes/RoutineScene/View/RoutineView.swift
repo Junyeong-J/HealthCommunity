@@ -32,8 +32,31 @@ final class RoutineView: BaseView {
         return view
     }()
     
+    let selectedRoutineCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 80, height: 30)
+        layout.scrollDirection = .horizontal
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.register(RoutineSelectedCollectionViewCell.self, forCellWithReuseIdentifier: RoutineSelectedCollectionViewCell.identifier)
+        return collectionView
+    }()
+    
+    let completeButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("루틴 완료", for: .normal)
+        button.backgroundColor = .systemBlue
+        button.setTitleColor(.white, for: .normal)
+        button.layer.cornerRadius = 10
+        button.clipsToBounds = true
+        return button
+    }()
+    
+    let bottomView = UIView()
+    
     override func configureHierarchy() {
-        [tableView, collectionView].forEach { addSubview($0) }
+        [tableView, collectionView, bottomView].forEach { addSubview($0) }
+        bottomView.addSubview(selectedRoutineCollectionView)
+        bottomView.addSubview(completeButton)
     }
     
     override func configureLayout() {
@@ -44,9 +67,28 @@ final class RoutineView: BaseView {
         }
         
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide).offset(50)
+            make.top.equalTo(collectionView.snp.bottom)
             make.horizontalEdges.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.bottom.equalTo(bottomView.snp.top)
+        }
+        
+        bottomView.snp.makeConstraints { make in
+            make.horizontalEdges.bottom.equalToSuperview()
+            make.height.equalTo(80)
+        }
+        
+        selectedRoutineCollectionView.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(10)
+            make.centerY.equalToSuperview()
+            make.height.equalTo(30)
+            make.trailing.equalTo(completeButton.snp.leading).offset(-10)
+        }
+        
+        completeButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().offset(-15)
+            make.centerY.equalToSuperview()
+            make.height.equalTo(50)
+            make.width.equalTo(100)
         }
     }
 }

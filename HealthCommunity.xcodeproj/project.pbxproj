@@ -63,6 +63,7 @@
 		723E47C42C7385CF004B0E0C /* WODViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47C32C7385CF004B0E0C /* WODViewController.swift */; };
 		723E47C62C7389A9004B0E0C /* CameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47C52C7389A9004B0E0C /* CameraButton.swift */; };
 		723E47C92C738DF8004B0E0C /* WODViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47C82C738DF8004B0E0C /* WODViewModel.swift */; };
+		725B9A282C761E930078863C /* RoutineData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9A272C761E930078863C /* RoutineData.swift */; };
 		7274DA452C74D8E700245DCD /* WODTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA442C74D8E700245DCD /* WODTableViewCell.swift */; };
 		7274DA482C74D93600245DCD /* ReuseIdentifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA472C74D93600245DCD /* ReuseIdentifierProtocol.swift */; };
 		7274DA4B2C74DC8300245DCD /* WODTableTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA4A2C74DC8300245DCD /* WODTableTitles.swift */; };
@@ -73,6 +74,8 @@
 		7274DA592C75016200245DCD /* RoutineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA582C75016200245DCD /* RoutineTableViewCell.swift */; };
 		7274DA5B2C75088F00245DCD /* RoutineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA5A2C75088F00245DCD /* RoutineCollectionViewCell.swift */; };
 		7274DA5D2C7510F700245DCD /* RoutineAreaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA5C2C7510F700245DCD /* RoutineAreaButton.swift */; };
+		7274DA7D2C75D55000245DCD /* RoutineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA7C2C75D55000245DCD /* RoutineType.swift */; };
+		7274DA7F2C75DE9C00245DCD /* RoutineSelectedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA7E2C75DE9C00245DCD /* RoutineSelectedCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -129,6 +132,7 @@
 		723E47C32C7385CF004B0E0C /* WODViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODViewController.swift; sourceTree = "<group>"; };
 		723E47C52C7389A9004B0E0C /* CameraButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraButton.swift; sourceTree = "<group>"; };
 		723E47C82C738DF8004B0E0C /* WODViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODViewModel.swift; sourceTree = "<group>"; };
+		725B9A272C761E930078863C /* RoutineData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineData.swift; sourceTree = "<group>"; };
 		7274DA442C74D8E700245DCD /* WODTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODTableViewCell.swift; sourceTree = "<group>"; };
 		7274DA472C74D93600245DCD /* ReuseIdentifierProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifierProtocol.swift; sourceTree = "<group>"; };
 		7274DA4A2C74DC8300245DCD /* WODTableTitles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODTableTitles.swift; sourceTree = "<group>"; };
@@ -139,6 +143,8 @@
 		7274DA582C75016200245DCD /* RoutineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineTableViewCell.swift; sourceTree = "<group>"; };
 		7274DA5A2C75088F00245DCD /* RoutineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineCollectionViewCell.swift; sourceTree = "<group>"; };
 		7274DA5C2C7510F700245DCD /* RoutineAreaButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineAreaButton.swift; sourceTree = "<group>"; };
+		7274DA7C2C75D55000245DCD /* RoutineType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineType.swift; sourceTree = "<group>"; };
+		7274DA7E2C75DE9C00245DCD /* RoutineSelectedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineSelectedCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +199,7 @@
 				723E471B2C6DBC85004B0E0C /* StoryBoard */,
 				723E473C2C6DC6C4004B0E0C /* Fonts */,
 				723E470B2C6CD241004B0E0C /* Assets.xcassets */,
+				725B9A262C761E860078863C /* Dummy */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -234,11 +241,14 @@
 		723E47312C6DC1DA004B0E0C /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				7274DA7A2C75D1D700245DCD /* CaloryScene */,
 				723E47322C6DC1F3004B0E0C /* OnBoardingScene */,
 				723E47872C707D61004B0E0C /* LoginScene */,
 				723E47A62C721AD2004B0E0C /* MainScene */,
 				723E47B62C736CB8004B0E0C /* PostScene */,
 				7274DA4F2C74FDAC00245DCD /* RoutineScene */,
+				7274DA782C75D1AD00245DCD /* NutrientScene */,
+				7274DA792C75D1C800245DCD /* WorkoutTimeScene */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -574,6 +584,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		725B9A262C761E860078863C /* Dummy */ = {
+			isa = PBXGroup;
+			children = (
+				725B9A272C761E930078863C /* RoutineData.swift */,
+			);
+			path = Dummy;
+			sourceTree = "<group>";
+		};
 		7274DA462C74D92A00245DCD /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
@@ -601,6 +619,7 @@
 		7274DA4F2C74FDAC00245DCD /* RoutineScene */ = {
 			isa = PBXGroup;
 			children = (
+				7274DA7B2C75D54500245DCD /* Model */,
 				7274DA502C74FE0500245DCD /* View */,
 				7274DA552C75005000245DCD /* ViewModel */,
 			);
@@ -614,6 +633,7 @@
 				7274DA512C74FE1200245DCD /* RoutineView.swift */,
 				7274DA582C75016200245DCD /* RoutineTableViewCell.swift */,
 				7274DA5A2C75088F00245DCD /* RoutineCollectionViewCell.swift */,
+				7274DA7E2C75DE9C00245DCD /* RoutineSelectedCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -624,6 +644,35 @@
 				7274DA562C75008700245DCD /* RoutineViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7274DA782C75D1AD00245DCD /* NutrientScene */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NutrientScene;
+			sourceTree = "<group>";
+		};
+		7274DA792C75D1C800245DCD /* WorkoutTimeScene */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = WorkoutTimeScene;
+			sourceTree = "<group>";
+		};
+		7274DA7A2C75D1D700245DCD /* CaloryScene */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CaloryScene;
+			sourceTree = "<group>";
+		};
+		7274DA7B2C75D54500245DCD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7274DA7C2C75D55000245DCD /* RoutineType.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -714,6 +763,7 @@
 				723E47AB2C721AF1004B0E0C /* MainView.swift in Sources */,
 				723E477B2C705E6D004B0E0C /* PasswordView.swift in Sources */,
 				723E47B52C7369CA004B0E0C /* PostButton.swift in Sources */,
+				7274DA7F2C75DE9C00245DCD /* RoutineSelectedCollectionViewCell.swift in Sources */,
 				723E476D2C6F3345004B0E0C /* EmailViewModel.swift in Sources */,
 				723E473E2C6DC6EC004B0E0C /* ResourceFont.swift in Sources */,
 				723E47442C6DCA1B004B0E0C /* ButtonTitle.swift in Sources */,
@@ -729,6 +779,7 @@
 				7274DA522C74FE1200245DCD /* RoutineView.swift in Sources */,
 				723E47A52C7212E7004B0E0C /* LoginResponse.swift in Sources */,
 				723E47682C6F288E004B0E0C /* LineTextField.swift in Sources */,
+				7274DA7D2C75D55000245DCD /* RoutineType.swift in Sources */,
 				723E47352C6DC23B004B0E0C /* OnBoardingViewController.swift in Sources */,
 				723E47C92C738DF8004B0E0C /* WODViewModel.swift in Sources */,
 				723E47BE2C736DAF004B0E0C /* MainViewModel.swift in Sources */,
@@ -754,6 +805,7 @@
 				723E47492C6DCF22004B0E0C /* OnBoardingViewModel.swift in Sources */,
 				723E473B2C6DC5BE004B0E0C /* BaseButton.swift in Sources */,
 				7274DA4E2C74DF4C00245DCD /* TriangleImage.swift in Sources */,
+				725B9A282C761E930078863C /* RoutineData.swift in Sources */,
 				7274DA542C74FE2300245DCD /* RoutineViewController.swift in Sources */,
 				723E476A2C6F28C5004B0E0C /* TextFieldPlaceholder.swift in Sources */,
 				7274DA592C75016200245DCD /* RoutineTableViewCell.swift in Sources */,
