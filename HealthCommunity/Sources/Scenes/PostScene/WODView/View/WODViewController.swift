@@ -10,9 +10,15 @@ import PhotosUI
 import RxSwift
 import RxCocoa
 
-final class WODViewController: BaseViewController<WODView> {
+final class WODViewController: BaseViewController<WODView>, RoutineViewControllerDelegate {
+    
+    func routineViewController(_ controller: RoutineViewController, didCompleteWith selectedItems: [RoutineRoutineItem]) {
+        self.selectedItems.accept(selectedItems)
+        print("Selected items: \(selectedItems.map { $0.title })")
+    }
     
     private let viewModel = WODViewModel()
+    private let selectedItems = PublishRelay<[RoutineRoutineItem]>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +55,7 @@ final class WODViewController: BaseViewController<WODView> {
                 switch indexPath.row {
                 case 0:
                     let detailVC = RoutineViewController()
+                    detailVC.delegate = self
                     owner.navigationController?.pushViewController(detailVC, animated: true)
                 case 1:
                     let detailVC = RoutineViewController()
