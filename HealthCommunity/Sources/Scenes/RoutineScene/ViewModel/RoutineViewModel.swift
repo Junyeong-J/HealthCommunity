@@ -21,10 +21,13 @@ final class RoutineViewModel: BaseViewModel {
         let routineItems: Observable<[String]>
         let items: Observable<[RoutineRoutineItem]>
         let selectedRoutineType: Observable<RoutineType>
+        let selectedCount: Observable<Int>
+        let selectedItemsRelay: BehaviorRelay<[RoutineRoutineItem]>
     }
     
     private let routineItemsSubject = BehaviorSubject<[RoutineRoutineItem]>(value: [])
-    private let selectedRoutineType = BehaviorRelay<RoutineType>(value: .legs) // 초기값으로 하체
+    private let selectedRoutineType = BehaviorRelay<RoutineType>(value: .legs)
+    private let selectedItemsRelay = BehaviorRelay<[RoutineRoutineItem]>(value: [])
     
     func transform(input: Input) -> Output {
         
@@ -37,12 +40,27 @@ final class RoutineViewModel: BaseViewModel {
             .disposed(by: disposeBag)
         
         selectedRoutineType
-            .subscribe(onNext: { [weak self] type in
-                self?.handleRoutineTypeSelection(type: type)
+            .bind(with: self, onNext: { owner, type in
+                owner.handleRoutineTypeSelection(type: type)
             })
             .disposed(by: disposeBag)
         
-        return Output(routineItems: routineItems, items: items, selectedRoutineType: selectedRoutineType.asObservable())
+        let selectedCount = selectedItemsRelay
+            .map { $0.count }
+        
+        return Output(routineItems: routineItems, items: items,
+                      selectedRoutineType: selectedRoutineType.asObservable(),
+                      selectedCount: selectedCount, selectedItemsRelay: selectedItemsRelay)
+    }
+    
+    func updateSelectedItems(item: RoutineRoutineItem, isSelected: Bool) {
+        var selectedItems = selectedItemsRelay.value
+        if isSelected {
+            selectedItems.append(item)
+        } else {
+            selectedItems.removeAll { $0.title == item.title }
+        }
+        selectedItemsRelay.accept(selectedItems)
     }
     
     private func handleRoutineTypeSelection(type: RoutineType) {
@@ -64,4 +82,3 @@ final class RoutineViewModel: BaseViewModel {
         routineItemsSubject.onNext(routineItems)
     }
 }
-

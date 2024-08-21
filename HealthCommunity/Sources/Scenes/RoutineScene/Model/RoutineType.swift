@@ -17,4 +17,5 @@ enum RoutineType: String, CaseIterable {
 
 struct RoutineRoutineItem {
     let title: String
+    var isSelected: Bool = false
 }

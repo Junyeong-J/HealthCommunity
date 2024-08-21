@@ -10,9 +10,16 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
+protocol RoutineTableViewCellDelegate: AnyObject {
+    func didToggleCheckBox(item: RoutineRoutineItem, isSelected: Bool)
+}
+
 final class RoutineTableViewCell: BaseTableViewCell {
     
     private var disposeBag = DisposeBag()
+    weak var delegate: RoutineTableViewCellDelegate?
+    private var item: RoutineRoutineItem?
+    
     
     private let titleLabel = UILabel()
     private let countTextField1 = UITextField()
@@ -20,7 +27,7 @@ final class RoutineTableViewCell: BaseTableViewCell {
     private let countTextField3 = UITextField()
     private let orderLabel = UILabel()
     private let routineImageView = UIImageView(image: UIImage(systemName: "star"))
-    private let checkBox = UIButton(type: .system)
+    let checkBox = UIButton(type: .system)
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -77,6 +84,7 @@ final class RoutineTableViewCell: BaseTableViewCell {
     }
     
     func configureData(item: RoutineRoutineItem) {
+        self.item = item
         titleLabel.text = item.title
         countTextField1.placeholder = "세트"
         countTextField2.placeholder = "횟수"
@@ -95,12 +103,13 @@ final class RoutineTableViewCell: BaseTableViewCell {
         checkBox.tintColor = .white
         
         checkBox.rx.tap
-            .subscribe(onNext: { [weak self] in
-                guard let self = self else { return }
-                self.checkBox.isSelected.toggle()
-                self.updateCheckBoxState(isSelected: self.checkBox.isSelected)
-                self.setNeedsLayout()
-                self.layoutIfNeeded()
+            .bind(with: self, onNext: { owner, _ in
+                owner.checkBox.isSelected.toggle()
+                owner.updateCheckBoxState(isSelected: owner.checkBox.isSelected)
+                
+                if let item = owner.item {
+                    owner.delegate?.didToggleCheckBox(item: item, isSelected: owner.checkBox.isSelected)
+                }
             })
             .disposed(by: disposeBag)
     }
@@ -111,5 +120,3 @@ final class RoutineTableViewCell: BaseTableViewCell {
         checkBox.tintColor = isSelected ? .black : .clear
     }
 }
-
-
