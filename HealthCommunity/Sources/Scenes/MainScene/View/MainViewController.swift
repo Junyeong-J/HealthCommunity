@@ -19,7 +19,9 @@ final class MainViewController: BaseViewController<MainView> {
     
     override func bindModel() {
         let input = MainViewModel.Input(
-            postButtonTap: rootView.postButton.rx.tap)
+            postButtonTap: rootView.postButton.rx.tap,
+            selectedSegment: rootView.segmentControl.rx.selectedSegmentIndex
+        )
         
         let output = viewModel.transform(input: input)
         
@@ -28,6 +30,37 @@ final class MainViewController: BaseViewController<MainView> {
                 owner.navigationController?.pushViewController(WODViewController(), animated: true)
             }
             .disposed(by: viewModel.disposeBag)
+        
+        output.selectedSegment
+            .bind(with: self) { owner, index in
+                owner.rootView.updateSegmentTableView(index: index)
+            }
+            .disposed(by: viewModel.disposeBag)
+        
+        output.items
+            .drive(rootView.wodTableView.rx.items(
+                cellIdentifier: MainTableViewCell.identifier,
+                cellType: MainTableViewCell.self)) { row, item, cell in
+                    cell.textLabel?.text = item
+                }
+                .disposed(by: viewModel.disposeBag)
+        
+        output.items
+            .drive(rootView.feedbackTableView.rx.items(
+                cellIdentifier: MainTableViewCell.identifier,
+                cellType: MainTableViewCell.self)) { row, item, cell in
+                    cell.textLabel?.text = item
+                }
+                .disposed(by: viewModel.disposeBag)
+        
+        output.items
+            .drive(rootView.communicationTableView.rx.items(
+                cellIdentifier: MainTableViewCell.identifier,
+                cellType: MainTableViewCell.self)) { row, item, cell in
+                    cell.textLabel?.text = item
+                    cell.configureData()
+                }
+                .disposed(by: viewModel.disposeBag)
     }
     
 }
