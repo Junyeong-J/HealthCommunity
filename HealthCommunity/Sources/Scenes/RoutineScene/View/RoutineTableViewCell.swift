@@ -20,7 +20,6 @@ final class RoutineTableViewCell: BaseTableViewCell {
     weak var delegate: RoutineTableViewCellDelegate?
     private var item: RoutineRoutineItem?
     
-    
     private let titleLabel = UILabel()
     private let countTextField1 = UITextField()
     private let countTextField2 = UITextField()

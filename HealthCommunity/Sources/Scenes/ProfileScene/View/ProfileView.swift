@@ -17,7 +17,7 @@ final class ProfileView: BaseView {
         imageView.clipsToBounds = true
         imageView.layer.borderWidth = 2.0
         imageView.layer.borderColor = UIColor.gray.cgColor
-        imageView.image = UIImage(named: "default_profile") // 기본 이미지 설정
+        imageView.image = UIImage(named: "default_profile")
         return imageView
     }()
     
@@ -48,9 +48,11 @@ final class ProfileView: BaseView {
     }()
     
     let tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ProfileOptionCell")
-        return tableView
+        let view = UITableView()
+        view.register(ProfileListTableViewCell.self, forCellReuseIdentifier: ProfileListTableViewCell.identifier)
+        view.rowHeight = 50
+        view.separatorStyle = .none
+        return view
     }()
     
     override func configureHierarchy() {
@@ -65,7 +67,7 @@ final class ProfileView: BaseView {
         profileImageView.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide).offset(20)
             make.centerX.equalToSuperview()
-            make.width.height.equalTo(100) // 원형 이미지
+            make.width.height.equalTo(100)
         }
         
         nicknameLabel.snp.makeConstraints { make in
@@ -85,7 +87,8 @@ final class ProfileView: BaseView {
         
         tableView.snp.makeConstraints { make in
             make.top.equalTo(measurementsLabel.snp.bottom).offset(20)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.horizontalEdges.equalToSuperview()
+            make.bottom.equalTo(safeAreaLayoutGuide).inset(20)
         }
     }
 }

@@ -48,6 +48,11 @@ final class RoutineViewController: BaseViewController<RoutineView> {
                 cellType: RoutineCollectionViewCell.self)) { row, element, cell in
                     let (title, isSelected) = element
                     cell.configure(title: title, isSelected: isSelected)
+                    cell.routineButton.rx.tap
+                        .bind(with: self) { owner, _ in
+                            print("aa")
+                        }
+                        .disposed(by: self.viewModel.disposeBag)
                 }
                 .disposed(by: viewModel.disposeBag)
         
