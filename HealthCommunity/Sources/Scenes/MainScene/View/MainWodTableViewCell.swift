@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class MainTableViewCell: BaseTableViewCell {
+final class MainWodTableViewCell: BaseTableViewCell {
     
     private let opponentProfileImageView = OpponentProfileImage()
     

@@ -67,9 +67,20 @@
 		725B9A2B2C76547E0078863C /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9A2A2C76547E0078863C /* AuthRouter.swift */; };
 		725B9A2D2C7654C60078863C /* PostRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9A2C2C7654C60078863C /* PostRouter.swift */; };
 		725B9A2F2C765DD70078863C /* ImageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9A2E2C765DD70078863C /* ImageResponse.swift */; };
-		725B9A502C772A8C0078863C /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9A4F2C772A8C0078863C /* MainTableViewCell.swift */; };
+		725B9A502C772A8C0078863C /* MainWodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9A4F2C772A8C0078863C /* MainWodTableViewCell.swift */; };
 		725B9A522C7770BF0078863C /* OpponentProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9A512C7770BF0078863C /* OpponentProfileImage.swift */; };
 		725B9A552C7788A10078863C /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9A542C7788A10078863C /* TabBarController.swift */; };
+		725B9A5A2C778AA70078863C /* MyRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9A592C778AA70078863C /* MyRoutineView.swift */; };
+		725B9A5C2C778AB40078863C /* MyRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9A5B2C778AB40078863C /* MyRoutineViewController.swift */; };
+		725B9A5E2C778ABF0078863C /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9A5D2C778ABF0078863C /* ChatView.swift */; };
+		725B9A602C778ACB0078863C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9A5F2C778ACB0078863C /* ChatViewController.swift */; };
+		725B9A622C778AD40078863C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9A612C778AD40078863C /* ProfileView.swift */; };
+		725B9A642C778ADF0078863C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9A632C778ADF0078863C /* ProfileViewController.swift */; };
+		725B9A672C785EDC0078863C /* MainFeedbackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9A662C785EDC0078863C /* MainFeedbackTableViewCell.swift */; };
+		725B9A692C785F190078863C /* MainCommunityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9A682C785F190078863C /* MainCommunityTableViewCell.swift */; };
+		725B9A6D2C786C490078863C /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9A6C2C786C490078863C /* ProfileViewModel.swift */; };
+		725B9A6F2C786D990078863C /* ProfileListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9A6E2C786D990078863C /* ProfileListTableViewCell.swift */; };
+		725B9A712C78D4AB0078863C /* PostResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9A702C78D4AB0078863C /* PostResponse.swift */; };
 		7274DA452C74D8E700245DCD /* WODTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA442C74D8E700245DCD /* WODTableViewCell.swift */; };
 		7274DA482C74D93600245DCD /* ReuseIdentifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA472C74D93600245DCD /* ReuseIdentifierProtocol.swift */; };
 		7274DA4B2C74DC8300245DCD /* WODTableTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA4A2C74DC8300245DCD /* WODTableTitles.swift */; };
@@ -142,9 +153,21 @@
 		725B9A2A2C76547E0078863C /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
 		725B9A2C2C7654C60078863C /* PostRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRouter.swift; sourceTree = "<group>"; };
 		725B9A2E2C765DD70078863C /* ImageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageResponse.swift; sourceTree = "<group>"; };
-		725B9A4F2C772A8C0078863C /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
+		725B9A4F2C772A8C0078863C /* MainWodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWodTableViewCell.swift; sourceTree = "<group>"; };
 		725B9A512C7770BF0078863C /* OpponentProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpponentProfileImage.swift; sourceTree = "<group>"; };
 		725B9A542C7788A10078863C /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		725B9A592C778AA70078863C /* MyRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRoutineView.swift; sourceTree = "<group>"; };
+		725B9A5B2C778AB40078863C /* MyRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRoutineViewController.swift; sourceTree = "<group>"; };
+		725B9A5D2C778ABF0078863C /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		725B9A5F2C778ACB0078863C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		725B9A612C778AD40078863C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		725B9A632C778ADF0078863C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		725B9A652C7795B30078863C /* HealthCommunity.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HealthCommunity.entitlements; sourceTree = "<group>"; };
+		725B9A662C785EDC0078863C /* MainFeedbackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeedbackTableViewCell.swift; sourceTree = "<group>"; };
+		725B9A682C785F190078863C /* MainCommunityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCommunityTableViewCell.swift; sourceTree = "<group>"; };
+		725B9A6C2C786C490078863C /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		725B9A6E2C786D990078863C /* ProfileListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileListTableViewCell.swift; sourceTree = "<group>"; };
+		725B9A702C78D4AB0078863C /* PostResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostResponse.swift; sourceTree = "<group>"; };
 		7274DA442C74D8E700245DCD /* WODTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODTableViewCell.swift; sourceTree = "<group>"; };
 		7274DA472C74D93600245DCD /* ReuseIdentifierProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifierProtocol.swift; sourceTree = "<group>"; };
 		7274DA4A2C74DC8300245DCD /* WODTableTitles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODTableTitles.swift; sourceTree = "<group>"; };
@@ -195,6 +218,7 @@
 		723E47012C6CD240004B0E0C /* HealthCommunity */ = {
 			isa = PBXGroup;
 			children = (
+				725B9A652C7795B30078863C /* HealthCommunity.entitlements */,
 				723E471A2C6DBC6D004B0E0C /* Resources */,
 				723E471C2C6DBCA6004B0E0C /* Sources */,
 				723E47102C6CD241004B0E0C /* Info.plist */,
@@ -253,6 +277,9 @@
 		723E47312C6DC1DA004B0E0C /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				725B9A582C778A720078863C /* ProfileScene */,
+				725B9A572C778A6C0078863C /* ChatScene */,
+				725B9A562C778A550078863C /* MyRoutineScene */,
 				725B9A532C7788910078863C /* TabBar */,
 				7274DA7A2C75D1D700245DCD /* CaloryScene */,
 				723E47322C6DC1F3004B0E0C /* OnBoardingScene */,
@@ -534,6 +561,7 @@
 			children = (
 				723E47A42C7212E7004B0E0C /* LoginResponse.swift */,
 				725B9A2E2C765DD70078863C /* ImageResponse.swift */,
+				725B9A702C78D4AB0078863C /* PostResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -552,7 +580,9 @@
 			children = (
 				723E47A82C721AEB004B0E0C /* MainViewController.swift */,
 				723E47AA2C721AF1004B0E0C /* MainView.swift */,
-				725B9A4F2C772A8C0078863C /* MainTableViewCell.swift */,
+				725B9A4F2C772A8C0078863C /* MainWodTableViewCell.swift */,
+				725B9A662C785EDC0078863C /* MainFeedbackTableViewCell.swift */,
+				725B9A682C785F190078863C /* MainCommunityTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -615,6 +645,51 @@
 				725B9A542C7788A10078863C /* TabBarController.swift */,
 			);
 			path = TabBar;
+			sourceTree = "<group>";
+		};
+		725B9A562C778A550078863C /* MyRoutineScene */ = {
+			isa = PBXGroup;
+			children = (
+				725B9A5B2C778AB40078863C /* MyRoutineViewController.swift */,
+				725B9A592C778AA70078863C /* MyRoutineView.swift */,
+			);
+			path = MyRoutineScene;
+			sourceTree = "<group>";
+		};
+		725B9A572C778A6C0078863C /* ChatScene */ = {
+			isa = PBXGroup;
+			children = (
+				725B9A5D2C778ABF0078863C /* ChatView.swift */,
+				725B9A5F2C778ACB0078863C /* ChatViewController.swift */,
+			);
+			path = ChatScene;
+			sourceTree = "<group>";
+		};
+		725B9A582C778A720078863C /* ProfileScene */ = {
+			isa = PBXGroup;
+			children = (
+				725B9A6A2C786C2D0078863C /* View */,
+				725B9A6B2C786C340078863C /* ViewModel */,
+			);
+			path = ProfileScene;
+			sourceTree = "<group>";
+		};
+		725B9A6A2C786C2D0078863C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				725B9A632C778ADF0078863C /* ProfileViewController.swift */,
+				725B9A612C778AD40078863C /* ProfileView.swift */,
+				725B9A6E2C786D990078863C /* ProfileListTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		725B9A6B2C786C340078863C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				725B9A6C2C786C490078863C /* ProfileViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		7274DA462C74D92A00245DCD /* Protocol */ = {
@@ -789,10 +864,12 @@
 				723E47212C6DBF98004B0E0C /* BaseViewController.swift in Sources */,
 				723E47AB2C721AF1004B0E0C /* MainView.swift in Sources */,
 				723E477B2C705E6D004B0E0C /* PasswordView.swift in Sources */,
+				725B9A712C78D4AB0078863C /* PostResponse.swift in Sources */,
 				723E47B52C7369CA004B0E0C /* PostButton.swift in Sources */,
 				7274DA7F2C75DE9C00245DCD /* RoutineSelectedCollectionViewCell.swift in Sources */,
 				723E476D2C6F3345004B0E0C /* EmailViewModel.swift in Sources */,
 				723E473E2C6DC6EC004B0E0C /* ResourceFont.swift in Sources */,
+				725B9A692C785F190078863C /* MainCommunityTableViewCell.swift in Sources */,
 				723E47442C6DCA1B004B0E0C /* ButtonTitle.swift in Sources */,
 				723E47902C707E79004B0E0C /* BoxTypeTextField.swift in Sources */,
 				723E47632C6F2718004B0E0C /* EmailView.swift in Sources */,
@@ -800,6 +877,8 @@
 				723E479C2C708E48004B0E0C /* NicknameViewModel.swift in Sources */,
 				723E47192C6CD360004B0E0C /* APIKey.swift in Sources */,
 				723E47752C6F3ED5004B0E0C /* Body.swift in Sources */,
+				725B9A6F2C786D990078863C /* ProfileListTableViewCell.swift in Sources */,
+				725B9A672C785EDC0078863C /* MainFeedbackTableViewCell.swift in Sources */,
 				725B9A2B2C76547E0078863C /* AuthRouter.swift in Sources */,
 				723E47942C70875D004B0E0C /* LoginViewModel.swift in Sources */,
 				723E477F2C706EEE004B0E0C /* PasswordViewModel.swift in Sources */,
@@ -810,12 +889,15 @@
 				7274DA7D2C75D55000245DCD /* RoutineType.swift in Sources */,
 				725B9A522C7770BF0078863C /* OpponentProfileImage.swift in Sources */,
 				723E47352C6DC23B004B0E0C /* OnBoardingViewController.swift in Sources */,
+				725B9A5A2C778AA70078863C /* MyRoutineView.swift in Sources */,
 				723E47C92C738DF8004B0E0C /* WODViewModel.swift in Sources */,
 				723E47BE2C736DAF004B0E0C /* MainViewModel.swift in Sources */,
 				723E478E2C707DD9004B0E0C /* LoginViewController.swift in Sources */,
 				723E479A2C7089B8004B0E0C /* NicknameViewController.swift in Sources */,
 				723E47462C6DCE9C004B0E0C /* BaseViewModel.swift in Sources */,
 				723E47582C6DDCD2004B0E0C /* TargetType.swift in Sources */,
+				725B9A602C778ACB0078863C /* ChatViewController.swift in Sources */,
+				725B9A5E2C778ABF0078863C /* ChatView.swift in Sources */,
 				723E47052C6CD240004B0E0C /* SceneDelegate.swift in Sources */,
 				723E47C42C7385CF004B0E0C /* WODViewController.swift in Sources */,
 				723E47652C6F2720004B0E0C /* EmailViewController.swift in Sources */,
@@ -826,7 +908,7 @@
 				7274DA482C74D93600245DCD /* ReuseIdentifierProtocol.swift in Sources */,
 				723E478C2C707DC2004B0E0C /* LoginView.swift in Sources */,
 				723E477D2C705E81004B0E0C /* PasswordViewController.swift in Sources */,
-				725B9A502C772A8C0078863C /* MainTableViewCell.swift in Sources */,
+				725B9A502C772A8C0078863C /* MainWodTableViewCell.swift in Sources */,
 				7274DA572C75008700245DCD /* RoutineViewModel.swift in Sources */,
 				723E47C62C7389A9004B0E0C /* CameraButton.swift in Sources */,
 				723E47C22C7385C6004B0E0C /* WODView.swift in Sources */,
@@ -838,6 +920,7 @@
 				7274DA4E2C74DF4C00245DCD /* TriangleImage.swift in Sources */,
 				725B9A282C761E930078863C /* RoutineData.swift in Sources */,
 				7274DA542C74FE2300245DCD /* RoutineViewController.swift in Sources */,
+				725B9A6D2C786C490078863C /* ProfileViewModel.swift in Sources */,
 				723E476A2C6F28C5004B0E0C /* TextFieldPlaceholder.swift in Sources */,
 				7274DA592C75016200245DCD /* RoutineTableViewCell.swift in Sources */,
 				7274DA5D2C7510F700245DCD /* RoutineAreaButton.swift in Sources */,
@@ -846,8 +929,11 @@
 				7274DA5B2C75088F00245DCD /* RoutineCollectionViewCell.swift in Sources */,
 				723E47252C6DBFE7004B0E0C /* BaseTableViewCell.swift in Sources */,
 				723E47532C6DD9E2004B0E0C /* LSLPAPIManager.swift in Sources */,
+				725B9A642C778ADF0078863C /* ProfileViewController.swift in Sources */,
+				725B9A622C778AD40078863C /* ProfileView.swift in Sources */,
 				723E471F2C6DBF5F004B0E0C /* BaseView.swift in Sources */,
 				7274DA4B2C74DC8300245DCD /* WODTableTitles.swift in Sources */,
+				725B9A5C2C778AB40078863C /* MyRoutineViewController.swift in Sources */,
 				7274DA452C74D8E700245DCD /* WODTableViewCell.swift in Sources */,
 				723E47232C6DBFBB004B0E0C /* BaseCollectionViewCell.swift in Sources */,
 				723E47562C6DDC77004B0E0C /* APIError.swift in Sources */,
@@ -993,6 +1079,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = HealthCommunity/HealthCommunity.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = QQN262X7KM;
@@ -1025,6 +1112,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = HealthCommunity/HealthCommunity.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = QQN262X7KM;
