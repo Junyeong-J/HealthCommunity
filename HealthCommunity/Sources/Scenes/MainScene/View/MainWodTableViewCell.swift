@@ -1,5 +1,5 @@
 //
-//  MainTableViewCell.swift
+//  MainWodTableViewCell.swift
 //  HealthCommunity
 //
 //  Created by 전준영 on 8/22/24.
@@ -7,10 +7,20 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
+import RxSwift
+import RxCocoa
 
 final class MainWodTableViewCell: BaseTableViewCell {
     
     private let opponentProfileImageView = OpponentProfileImage()
+    
+    private var disposeBag = DisposeBag()
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+    }
     
     private let nicknameLabel: UILabel = {
         let label = UILabel()
@@ -81,5 +91,34 @@ final class MainWodTableViewCell: BaseTableViewCell {
         nicknameLabel.text = "하루"
     }
     
+    func configure(post: Post) {
+        KingfisherManager.shared.setHeaders()
+        nicknameLabel.text = post.creator.nick
+        contentLabel.text = post.content
+        
+        if let firstFile = post.files.first {
+            let url = URL(string: APIURL.baseURL + firstFile)
+            mainImageView.kf.setImage(with: url)
+        } else {
+            mainImageView.image = UIImage(named: "placeholder_image")
+        }
+    }
+    
 }
 
+extension KingfisherManager {
+
+    func setHeaders() {
+        let modifier = AnyModifier { request in
+            var req = request
+            req.addValue(UserDefaultsManager.shared.token, forHTTPHeaderField: Header.authorization.rawValue)
+            req.addValue(APIKey.key, forHTTPHeaderField: Header.sesacKey.rawValue)
+            return req
+        }
+
+        KingfisherManager.shared.defaultOptions = [
+            .requestModifier(modifier)
+        ]
+    }
+
+}

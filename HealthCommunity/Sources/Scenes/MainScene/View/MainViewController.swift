@@ -38,27 +38,26 @@ final class MainViewController: BaseViewController<MainView> {
             .disposed(by: viewModel.disposeBag)
         
         output.items
-            .drive(rootView.wodTableView.rx.items(
-                cellIdentifier: MainTableViewCell.identifier,
-                cellType: MainTableViewCell.self)) { row, item, cell in
-                    cell.textLabel?.text = item
+            .bind(to: rootView.wodTableView.rx.items(
+                cellIdentifier: MainWodTableViewCell.identifier,
+                cellType: MainWodTableViewCell.self)) { row, item, cell in
+                    cell.configure(post: item)
                 }
                 .disposed(by: viewModel.disposeBag)
         
         output.items
-            .drive(rootView.feedbackTableView.rx.items(
-                cellIdentifier: MainTableViewCell.identifier,
-                cellType: MainTableViewCell.self)) { row, item, cell in
-                    cell.textLabel?.text = item
+            .bind(to: rootView.feedbackTableView.rx.items(
+                cellIdentifier: MainFeedbackTableViewCell.identifier,
+                cellType: MainFeedbackTableViewCell.self)) { row, item, cell in
+                    cell.configure(post: item)
                 }
                 .disposed(by: viewModel.disposeBag)
         
         output.items
-            .drive(rootView.communicationTableView.rx.items(
-                cellIdentifier: MainTableViewCell.identifier,
-                cellType: MainTableViewCell.self)) { row, item, cell in
-                    cell.textLabel?.text = item
-                    cell.configureData()
+            .bind(to: rootView.communicationTableView.rx.items(
+                cellIdentifier: MainCommunityTableViewCell.identifier,
+                cellType: MainCommunityTableViewCell.self)) { row, item, cell in
+                    cell.configure(post: item)
                 }
                 .disposed(by: viewModel.disposeBag)
     }
