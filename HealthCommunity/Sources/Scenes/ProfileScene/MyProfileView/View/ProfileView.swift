@@ -91,4 +91,8 @@ final class ProfileView: BaseView {
             make.bottom.equalTo(safeAreaLayoutGuide).inset(20)
         }
     }
+    
+    func configureData(profile: [UserProfile]) {
+        nicknameLabel.text = profile.first?.nick
+    }
 }

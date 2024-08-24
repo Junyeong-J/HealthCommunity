@@ -34,6 +34,12 @@ final class ProfileViewController: BaseViewController<ProfileView> {
                 }
                 .disposed(by: viewModel.disposeBag)
         
+        output.myProfileList
+            .bind(with: self, onNext: { owner, profile in
+                owner.rootView.configureData(profile: profile)
+            })
+            .disposed(by: viewModel.disposeBag)
+        
         rootView.tableView.rx.modelSelected(String.self)
             .bind(with: self, onNext: { owner, item in
                 switch item {
