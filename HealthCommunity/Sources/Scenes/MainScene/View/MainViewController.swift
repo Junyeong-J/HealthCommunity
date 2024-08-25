@@ -14,7 +14,7 @@ final class MainViewController: BaseViewController<MainView> {
     
     private let viewModel = MainViewModel()
     let refreshControl = UIRefreshControl()
-        
+    
     lazy var hud: JGProgressHUD = {
         let loader = JGProgressHUD(style: .dark)
         return loader
@@ -91,23 +91,43 @@ final class MainViewController: BaseViewController<MainView> {
                 .disposed(by: viewModel.disposeBag)
         
         output.refreshLoading
-                    .drive(onNext: { [weak self] isLoading in
-                        guard let self = self else { return }
-                        if isLoading {
-                            self.showLoading()
-                        } else {
-                            self.hideLoading()
-                            self.rootView.refreshControl.endRefreshing()
-                        }
-                    })
-                    .disposed(by: viewModel.disposeBag)
+            .drive(onNext: { [weak self] isLoading in
+                guard let self = self else { return }
+                if isLoading {
+                    self.showLoading()
+                } else {
+                    self.hideLoading()
+                    self.rootView.refreshControl.endRefreshing()
+                }
+            })
+            .disposed(by: viewModel.disposeBag)
         
         Observable.zip(
             rootView.wodTableView.rx.modelSelected(Post.self),
             rootView.wodTableView.rx.itemSelected)
         .map { $0.0 }
         .subscribe(with: self) { owner, postDetail in
-            let wodVC = WodDetailViewController(postDetail: postDetail)
+            let wodVC = DetailViewController(postDetail: postDetail)
+            owner.navigationController?.pushViewController(wodVC, animated: true)
+        }
+        .disposed(by: viewModel.disposeBag)
+        
+        Observable.zip(
+            rootView.feedbackTableView.rx.modelSelected(Post.self),
+            rootView.feedbackTableView.rx.itemSelected)
+        .map { $0.0 }
+        .subscribe(with: self) { owner, postDetail in
+            let wodVC = DetailViewController(postDetail: postDetail)
+            owner.navigationController?.pushViewController(wodVC, animated: true)
+        }
+        .disposed(by: viewModel.disposeBag)
+        
+        Observable.zip(
+            rootView.communicationTableView.rx.modelSelected(Post.self),
+            rootView.communicationTableView.rx.itemSelected)
+        .map { $0.0 }
+        .subscribe(with: self) { owner, postDetail in
+            let wodVC = DetailViewController(postDetail: postDetail)
             owner.navigationController?.pushViewController(wodVC, animated: true)
         }
         .disposed(by: viewModel.disposeBag)
@@ -115,16 +135,16 @@ final class MainViewController: BaseViewController<MainView> {
     }
     
     func showLoading() {
-            DispatchQueue.main.async {
-                self.hud.show(in: self.view, animated: true)
-            }
+        DispatchQueue.main.async {
+            self.hud.show(in: self.view, animated: true)
         }
-        
-        func hideLoading() {
-            DispatchQueue.main.async {
-                self.hud.dismiss(animated: true)
-            }
+    }
+    
+    func hideLoading() {
+        DispatchQueue.main.async {
+            self.hud.dismiss(animated: true)
         }
+    }
     
 }
 
