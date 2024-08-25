@@ -11,18 +11,10 @@ import SnapKit
 final class CommentView: BaseView {
     
     private let commentInputView = UIView()
-    private let commentTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "댓글을 입력하세요..."
-        textField.borderStyle = .roundedRect
-        return textField
-    }()
     
-    private let sendButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("전송", for: .normal)
-        return button
-    }()
+    let commentTextField = BoxTypeTextField(style: .comment)
+    
+    let sendButton = SendButton(title: .send)
     
     let tableView: UITableView = {
         let tableView = UITableView()
@@ -32,44 +24,32 @@ final class CommentView: BaseView {
     }()
     
     override func configureHierarchy() {
-        addSubview(tableView)
-        addSubview(commentInputView)
-        
+        [tableView, commentInputView].forEach { addSubview($0) }
         [commentTextField, sendButton].forEach { commentInputView.addSubview($0) }
     }
     
     override func configureLayout() {
         commentInputView.snp.makeConstraints { make in
             make.bottom.equalTo(safeAreaLayoutGuide).inset(8)
-            make.leading.trailing.equalToSuperview().inset(16)
+            make.horizontalEdges.equalToSuperview().inset(16)
             make.height.equalTo(50)
         }
         
         commentTextField.snp.makeConstraints { make in
-            make.leading.top.bottom.equalToSuperview()
+            make.leading.verticalEdges.equalToSuperview()
             make.trailing.equalTo(sendButton.snp.leading).offset(-8)
         }
         
         sendButton.snp.makeConstraints { make in
-            make.top.trailing.bottom.equalToSuperview()
+            make.trailing.verticalEdges.equalToSuperview()
             make.width.equalTo(60)
         }
         
         tableView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
+            make.top.equalTo(safeAreaLayoutGuide).inset(20)
+            make.horizontalEdges.equalToSuperview()
             make.bottom.equalTo(commentInputView.snp.top).offset(-8)
         }
     }
     
-    func clearCommentInput() {
-        commentTextField.text = ""
-    }
-    
-    func setSendAction(target: Any?, action: Selector) {
-        sendButton.addTarget(target, action: action, for: .touchUpInside)
-    }
-    
-    func getCommentText() -> String? {
-        return commentTextField.text
-    }
 }

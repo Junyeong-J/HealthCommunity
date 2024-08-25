@@ -1,5 +1,5 @@
 //
-//  WodCommentTableViewCell.swift
+//  CommentTableViewCell.swift
 //  HealthCommunity
 //
 //  Created by 전준영 on 8/25/24.
@@ -15,28 +15,29 @@ final class CommentTableViewCell: BaseTableViewCell {
     
     private let nicknameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.font = Font.bold14
         label.textColor = .black
         return label
     }()
     
     private let dateLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12)
+        label.font = Font.regular13
         label.textColor = .lightGray
         return label
     }()
     
     private let commentLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = Font.regular14
         label.textColor = .darkGray
         label.numberOfLines = 0
         return label
     }()
     
     override func configureHierarchy() {
-        [profileImageView, nicknameLabel, dateLabel, commentLabel].forEach { contentView.addSubview($0) }
+        [profileImageView, nicknameLabel,
+         dateLabel, commentLabel].forEach { contentView.addSubview($0) }
     }
     
     override func configureLayout() {
@@ -65,7 +66,7 @@ final class CommentTableViewCell: BaseTableViewCell {
 
     
     
-    func configure(with comment: Comments) {
+    func configure(with comment: Comment) {
         if let profileImageUrl = URL(string: APIURL.baseURL + (comment.creator.profileImage ?? "")) {
             profileImageView.kf.setImage(with: profileImageUrl)
         } else {
@@ -73,7 +74,7 @@ final class CommentTableViewCell: BaseTableViewCell {
         }
         
         nicknameLabel.text = comment.creator.nick
-//        dateLabel.text = comment.createdDate
+        dateLabel.text = FormatterManager.shared.formatDate(from: comment.createdAt)
         commentLabel.text = comment.content
     }
 }
