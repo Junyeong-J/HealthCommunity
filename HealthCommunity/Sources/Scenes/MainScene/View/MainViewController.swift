@@ -8,19 +8,48 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import JGProgressHUD
 
 final class MainViewController: BaseViewController<MainView> {
     
     private let viewModel = MainViewModel()
+    let refreshControl = UIRefreshControl()
+        
+    lazy var hud: JGProgressHUD = {
+        let loader = JGProgressHUD(style: .dark)
+        return loader
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
+    override func configureView() {
+        super.configureView()
+        rootView.communicationTableView
+            .rx.setDelegate(self)
+            .disposed(by: viewModel.disposeBag)
+        
+        rootView.wodTableView
+            .rx.setDelegate(self)
+            .disposed(by: viewModel.disposeBag)
+        
+        rootView.feedbackTableView
+            .rx.setDelegate(self)
+            .disposed(by: viewModel.disposeBag)
+        
+        rootView.wodTableView.refreshControl = refreshControl
+        rootView.feedbackTableView.refreshControl = refreshControl
+        rootView.communicationTableView.refreshControl = refreshControl
+        
+    }
+    
     override func bindModel() {
         let input = MainViewModel.Input(
             postButtonTap: rootView.postButton.rx.tap,
-            selectedSegment: rootView.segmentControl.rx.selectedSegmentIndex
+            selectedSegment: rootView.segmentControl.rx.selectedSegmentIndex,
+            refreshTrigger: rootView.refreshControl.rx.controlEvent(.valueChanged)
         )
         
         let output = viewModel.transform(input: input)
@@ -60,6 +89,51 @@ final class MainViewController: BaseViewController<MainView> {
                     cell.configure(post: item)
                 }
                 .disposed(by: viewModel.disposeBag)
+        
+        output.refreshLoading
+                    .drive(onNext: { [weak self] isLoading in
+                        guard let self = self else { return }
+                        if isLoading {
+                            self.showLoading()
+                        } else {
+                            self.hideLoading()
+                            self.rootView.refreshControl.endRefreshing()
+                        }
+                    })
+                    .disposed(by: viewModel.disposeBag)
+        
+        Observable.zip(
+            rootView.wodTableView.rx.modelSelected(Post.self),
+            rootView.wodTableView.rx.itemSelected)
+        .map { $0.0 }
+        .subscribe(with: self) { owner, postDetail in
+            let wodVC = WodDetailViewController(postDetail: postDetail)
+            owner.navigationController?.pushViewController(wodVC, animated: true)
+        }
+        .disposed(by: viewModel.disposeBag)
+        
     }
     
+    func showLoading() {
+            DispatchQueue.main.async {
+                self.hud.show(in: self.view, animated: true)
+            }
+        }
+        
+        func hideLoading() {
+            DispatchQueue.main.async {
+                self.hud.dismiss(animated: true)
+            }
+        }
+    
+}
+
+extension MainViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard let post = try? tableView.rx.model(at: indexPath) as Post else {
+            return 180
+        }
+        
+        return post.files.isEmpty ? 180 : 400
+    }
 }

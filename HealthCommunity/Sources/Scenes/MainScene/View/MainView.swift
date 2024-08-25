@@ -10,6 +10,8 @@ import SnapKit
 
 final class MainView: BaseView {
     
+    let refreshControl = UIRefreshControl()
+    
     let segmentControl: UISegmentedControl = {
         let segment = UISegmentedControl()
         segment.insertSegment(withTitle: "오운완", at: 0, animated: true)
@@ -21,8 +23,7 @@ final class MainView: BaseView {
     
     let wodTableView: UITableView = {
         let view = UITableView()
-        view.register(MainTableViewCell.self, forCellReuseIdentifier: MainTableViewCell.identifier)
-        view.backgroundColor = .red
+        view.register(MainWodTableViewCell.self, forCellReuseIdentifier: MainWodTableViewCell.identifier)
         view.rowHeight = 400
         view.separatorStyle = .none
         return view
@@ -30,8 +31,7 @@ final class MainView: BaseView {
     
     let feedbackTableView: UITableView = {
         let view = UITableView()
-        view.register(MainTableViewCell.self, forCellReuseIdentifier: MainTableViewCell.identifier)
-        view.backgroundColor = .green
+        view.register(MainFeedbackTableViewCell.self, forCellReuseIdentifier: MainFeedbackTableViewCell.identifier)
         view.rowHeight = 400
         view.separatorStyle = .none
         return view
@@ -39,9 +39,8 @@ final class MainView: BaseView {
     
     let communicationTableView: UITableView = {
         let view = UITableView()
-        view.register(MainTableViewCell.self, forCellReuseIdentifier: MainTableViewCell.identifier)
-        view.backgroundColor = .blue
-        view.rowHeight = 400
+        view.register(MainCommunityTableViewCell.self, forCellReuseIdentifier: MainCommunityTableViewCell.identifier)
+        view.rowHeight = 180
         view.separatorStyle = .none
         return view
     }()
@@ -62,7 +61,7 @@ final class MainView: BaseView {
         
         wodTableView.snp.makeConstraints { make in
             make.top.equalTo(segmentControl.snp.bottom).offset(10)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.bottom.horizontalEdges.equalTo(safeAreaLayoutGuide)
         }
         
         feedbackTableView.snp.makeConstraints { make in
@@ -91,5 +90,7 @@ final class MainView: BaseView {
         feedbackTableView.isHidden = index != 1
         communicationTableView.isHidden = index != 2
     }
+    
+    
     
 }
