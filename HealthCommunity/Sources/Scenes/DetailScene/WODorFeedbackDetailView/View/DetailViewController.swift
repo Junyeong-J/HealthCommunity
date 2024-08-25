@@ -1,5 +1,5 @@
 //
-//  WodDetailViewController.swift
+//  DetailViewController.swift
 //  HealthCommunity
 //
 //  Created by 전준영 on 8/25/24.
@@ -9,13 +9,13 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class WodDetailViewController: BaseViewController<WodDetailView> {
+final class DetailViewController: BaseViewController<DetailView> {
     
     private var postDetail: Post
-    private let viewModel: WodDetailViewModel
+    private let viewModel: DetailViewModel
     
     init(postDetail: Post) {
-        self.viewModel = WodDetailViewModel()
+        self.viewModel = DetailViewModel()
         self.postDetail = postDetail
         super.init()
     }
@@ -35,7 +35,7 @@ final class WodDetailViewController: BaseViewController<WodDetailView> {
     }
     
     override func bindModel() {
-        let input = WodDetailViewModel.Input(
+        let input = DetailViewModel.Input(
             commentTap: rootView.showCommentsButton.rx.tap)
         let output = viewModel.transform(input: input)
         

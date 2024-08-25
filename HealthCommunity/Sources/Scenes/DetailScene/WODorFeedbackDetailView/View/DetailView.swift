@@ -1,5 +1,5 @@
 //
-//  WodDetailView.swift
+//  DetailView.swift
 //  HealthCommunity
 //
 //  Created by 전준영 on 8/25/24.
@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-final class WodDetailView: BaseView {
+final class DetailView: BaseView {
     
     let scrollView = UIScrollView()
     let contentView = UIView()
@@ -170,9 +170,21 @@ final class WodDetailView: BaseView {
             }
         }
         
-        routineToggleView.setContentText(data.content2)
-        nutrientsToggleView.setContentText(data.content3)
-        exerciseTimeToggleView.setContentText(data.content4)
-        calorieToggleView.setContentText(data.content2)
+        if data.productID == "소통" {
+            routineToggleView.isHidden = true
+            nutrientsToggleView.isHidden = true
+            exerciseTimeToggleView.isHidden = true
+            calorieToggleView.isHidden = true
+        } else {
+            routineToggleView.isHidden = false
+            nutrientsToggleView.isHidden = false
+            exerciseTimeToggleView.isHidden = false
+            calorieToggleView.isHidden = false
+            
+            routineToggleView.setContentText(data.content2)
+            nutrientsToggleView.setContentText(data.content3)
+            exerciseTimeToggleView.setContentText(data.content4)
+            calorieToggleView.setContentText(data.content2)
+        }
     }
 }
