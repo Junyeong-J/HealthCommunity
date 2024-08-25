@@ -131,30 +131,43 @@ final class WodDetailView: BaseView {
         mainImageView.subviews.forEach { $0.removeFromSuperview() }
         
         let imageUrls = data.files.compactMap { URL(string: APIURL.baseURL + $0) }
-        var previousImageView: UIImageView?
-        for (index, imageUrl) in imageUrls.enumerated() {
-            let imageView = UIImageView()
-            imageView.contentMode = .scaleToFill
-            imageView.kf.setImage(with: imageUrl)
-            mainImageView.addSubview(imageView)
-            
-            imageView.snp.makeConstraints { make in
-                make.top.bottom.equalTo(mainImageView)
-                make.width.equalTo(mainImageView)
+        
+        if imageUrls.isEmpty {
+            mainImageView.isHidden = true
+            mainImageView.snp.updateConstraints { make in
+                make.height.equalTo(0)
+            }
+        } else {
+            mainImageView.isHidden = false
+            mainImageView.snp.updateConstraints { make in
                 make.height.equalTo(300)
-                
-                if let previous = previousImageView {
-                    make.leading.equalTo(previous.snp.trailing)
-                } else {
-                    make.leading.equalTo(mainImageView)
-                }
-                
-                if index == imageUrls.count - 1 {
-                    make.trailing.equalTo(mainImageView)
-                }
             }
             
-            previousImageView = imageView
+            var previousImageView: UIImageView?
+            for (index, imageUrl) in imageUrls.enumerated() {
+                let imageView = UIImageView()
+                imageView.contentMode = .scaleToFill
+                imageView.kf.setImage(with: imageUrl)
+                mainImageView.addSubview(imageView)
+                
+                imageView.snp.makeConstraints { make in
+                    make.top.bottom.equalTo(mainImageView)
+                    make.width.equalTo(mainImageView)
+                    make.height.equalTo(300)
+                    
+                    if let previous = previousImageView {
+                        make.leading.equalTo(previous.snp.trailing)
+                    } else {
+                        make.leading.equalTo(mainImageView)
+                    }
+                    
+                    if index == imageUrls.count - 1 {
+                        make.trailing.equalTo(mainImageView)
+                    }
+                }
+                
+                previousImageView = imageView
+            }
         }
         
         routineToggleView.setContentText(data.content2)

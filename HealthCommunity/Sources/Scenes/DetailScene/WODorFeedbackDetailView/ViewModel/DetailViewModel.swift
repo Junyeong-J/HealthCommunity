@@ -1,5 +1,5 @@
 //
-//  WodDetailViewModel.swift
+//  DetailViewModel.swift
 //  HealthCommunity
 //
 //  Created by 전준영 on 8/25/24.
@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-final class WodDetailViewModel: BaseViewModel {
+final class DetailViewModel: BaseViewModel {
     
     let disposeBag = DisposeBag()
     
