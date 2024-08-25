@@ -14,7 +14,6 @@ final class WODViewController: BaseViewController<WODView>, RoutineViewControlle
     
     func routineViewController(_ controller: RoutineViewController, didCompleteWith selectedItems: [RoutineRoutineItem]) {
         self.selectedItems.accept(selectedItems)
-        print("Selected items: \(selectedItems.map { $0.title })")
     }
     
     private let viewModel = WODViewModel()
@@ -29,9 +28,13 @@ final class WODViewController: BaseViewController<WODView>, RoutineViewControlle
     }
     
     override func bindModel() {
+        let selectedImages = Observable.combineLatest(rootView.imageViews.map { $0.rx.observe(UIImage.self, "image").compactMap { $0 } })
         
         let input = WODViewModel.Input(
-            albumButtonTap: rootView.photoButton.rx.tap)
+            albumButtonTap: rootView.photoButton.rx.tap,
+            actionButtonTap: rootView.actionButton.rx.tap,
+            selectedImages: selectedImages
+        )
         
         let output = viewModel.transform(input: input)
         
@@ -70,6 +73,17 @@ final class WODViewController: BaseViewController<WODView>, RoutineViewControlle
                     break
                 }
             }
+            .disposed(by: viewModel.disposeBag)
+        
+        output.uploadResult
+            .subscribe(onNext: { result in
+                switch result {
+                case .success(let response):
+                    print("이미지 업로드 성공: \(response)")
+                case .failure(let error):
+                    print("이미지 업로드 실패: \(error)")
+                }
+            })
             .disposed(by: viewModel.disposeBag)
         
     }
