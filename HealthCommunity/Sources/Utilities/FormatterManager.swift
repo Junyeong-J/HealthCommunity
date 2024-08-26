@@ -7,14 +7,15 @@
 
 import Foundation
 
-class FormatterManager {
+final class FormatterManager {
     
     static let shared = FormatterManager()
     
     private init() { }
     
+    private let formatter = DateFormatter()
+    
     func formatDate(from dateString: String) -> String? {
-        let formatter = DateFormatter()
         
         let dateFormatter = ISO8601DateFormatter()
         dateFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
@@ -51,6 +52,18 @@ class FormatterManager {
             formatter.dateFormat = "yyyy.MM.dd"
             return formatter.string(from: date)
         }
+    }
+    
+    func formatCalendarDate(_ date: Date) -> String {
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter.string(from: date)
+    }
+    
+    func formatStringToDate(_ date: String) -> Date {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter.date(from: date) ?? Date()
     }
 }
 
