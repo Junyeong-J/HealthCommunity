@@ -10,40 +10,70 @@ import SnapKit
 
 final class HealthDataCollectionViewCell: BaseCollectionViewCell {
     
-    private let titleLabel = UILabel()
-    private let valueLabel = UILabel()
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = Font.bold16
+        return label
+    }()
+    
+    private let valueLabel: UILabel = {
+        let label = UILabel()
+        label.font = Font.bold20
+        label.textColor = .darkGray
+        return label
+    }()
+    
+    private let iconImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
+    override func configureHierarchy() {
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(iconImageView)
+        contentView.addSubview(valueLabel)
+    }
+    
+    override func configureLayout() {
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(10)
+            make.leading.equalToSuperview().inset(10)
+        }
+        
+        iconImageView.snp.makeConstraints { make in
+            make.centerY.equalTo(titleLabel)
+            make.leading.equalTo(titleLabel.snp.trailing).offset(10)
+            make.trailing.lessThanOrEqualToSuperview().inset(10)
+            make.width.height.equalTo(20)
+        }
+        
+        valueLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(20)
+            make.centerX.equalToSuperview()
+        }
+    }
     
     override func configureView() {
         contentView.backgroundColor = .systemGray6
         contentView.layer.cornerRadius = 10
-        
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 16)
-        valueLabel.font = UIFont.systemFont(ofSize: 14)
-        valueLabel.textColor = .darkGray
-        
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, valueLabel])
-        stackView.axis = .vertical
-        stackView.alignment = .center
-        stackView.spacing = 10
-        
-        contentView.addSubview(stackView)
-        stackView.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(10)
-        }
     }
     
     func configure(data: HealthDataItem) {
         switch data.type {
         case .steps:
             titleLabel.text = "걸음 수"
+            iconImageView.image = UIImage(systemName: "figure.walk")
         case .calories:
             titleLabel.text = "칼로리 소모"
+            iconImageView.image = UIImage(systemName: "flame")
         case .strengthTraining:
-            titleLabel.text = "근력 훈련"
+            titleLabel.text = "이동거리"
+            iconImageView.image = UIImage(systemName: "location.north.line")
         case .standingHours:
             titleLabel.text = "서 있는 시간"
+            iconImageView.image = UIImage(systemName: "clock")
         }
         valueLabel.text = data.value
     }
-    
 }

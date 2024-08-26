@@ -50,7 +50,7 @@ final class MyRoutineMenuViewController: BaseViewController<MyRoutineMenuView> {
                 case 0:
                     print(indexPath)
                 case 1:
-                    owner.navigationController?.pushViewController(HealthDataViewController(), animated: true)
+                    owner.navigationController?.pushViewController(HealthDataViewController(dateString: owner.selectedDate), animated: true)
                 default:
                     break
                 }

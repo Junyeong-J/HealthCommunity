@@ -28,8 +28,7 @@ final class MyRoutineMenuView: BaseView {
     }()
     
     override func configureHierarchy() {
-        addSubview(tableView)
-        addSubview(addButton)
+        [tableView, addButton].forEach { addSubview($0) }
     }
     
     override func configureLayout() {

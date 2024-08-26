@@ -25,8 +25,7 @@ final class MyRoutineMenuTableViewCell: BaseTableViewCell {
     }()
     
     override func configureHierarchy() {
-        contentView.addSubview(menuTitle)
-        contentView.addSubview(chevronImageView)
+        [menuTitle, chevronImageView].forEach { contentView.addSubview($0) }
     }
     
     override func configureLayout() {

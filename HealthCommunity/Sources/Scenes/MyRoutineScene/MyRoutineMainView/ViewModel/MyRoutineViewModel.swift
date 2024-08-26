@@ -29,9 +29,7 @@ final class MyRoutineViewModel: BaseViewModel {
         
         let recordButtonTapped = input.recordButtonTap
             .withLatestFrom(input.selectedDate)
-        
-        
-        
+
         return Output(selectedSegmentIndexTap: selectedSegmentIndexTap,
                       recordButtonTapped: recordButtonTapped)
     }
