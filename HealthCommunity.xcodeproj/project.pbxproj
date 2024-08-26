@@ -104,8 +104,6 @@
 		725B9AAC2C7B68F90078863C /* SendButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9AAB2C7B68F90078863C /* SendButton.swift */; };
 		725B9AAF2C7B6B300078863C /* FormatterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9AAE2C7B6B300078863C /* FormatterManager.swift */; };
 		725B9AB62C7C5ACD0078863C /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 725B9AB52C7C5ACD0078863C /* FSCalendar */; };
-		725B9ABA2C7C92040078863C /* ExViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9AB92C7C92040078863C /* ExViewController.swift */; };
-		725B9ABC2C7C92110078863C /* Exview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9ABB2C7C92110078863C /* Exview.swift */; };
 		725B9ABF2C7C952F0078863C /* MyRoutineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9ABE2C7C952E0078863C /* MyRoutineViewModel.swift */; };
 		7274DA452C74D8E700245DCD /* WODTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA442C74D8E700245DCD /* WODTableViewCell.swift */; };
 		7274DA482C74D93600245DCD /* ReuseIdentifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA472C74D93600245DCD /* ReuseIdentifierProtocol.swift */; };
@@ -222,8 +220,6 @@
 		725B9AA62C7B2A0C0078863C /* CommentResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentResponse.swift; sourceTree = "<group>"; };
 		725B9AAB2C7B68F90078863C /* SendButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendButton.swift; sourceTree = "<group>"; };
 		725B9AAE2C7B6B300078863C /* FormatterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatterManager.swift; sourceTree = "<group>"; };
-		725B9AB92C7C92040078863C /* ExViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExViewController.swift; sourceTree = "<group>"; };
-		725B9ABB2C7C92110078863C /* Exview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exview.swift; sourceTree = "<group>"; };
 		725B9ABE2C7C952E0078863C /* MyRoutineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRoutineViewModel.swift; sourceTree = "<group>"; };
 		7274DA442C74D8E700245DCD /* WODTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODTableViewCell.swift; sourceTree = "<group>"; };
 		7274DA472C74D93600245DCD /* ReuseIdentifierProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifierProtocol.swift; sourceTree = "<group>"; };
@@ -730,7 +726,6 @@
 				72940B322C7C9CA300311CE8 /* MyRoutineMainView */,
 				72940B332C7C9CB200311CE8 /* MyRoutineMenuView */,
 				72940B3E2C7CAE2B00311CE8 /* HealthDataView */,
-				725B9AB82C7C91F20078863C /* Ex */,
 			);
 			path = MyRoutineScene;
 			sourceTree = "<group>";
@@ -884,15 +879,6 @@
 				725B9A592C778AA70078863C /* MyRoutineView.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		725B9AB82C7C91F20078863C /* Ex */ = {
-			isa = PBXGroup;
-			children = (
-				725B9AB92C7C92040078863C /* ExViewController.swift */,
-				725B9ABB2C7C92110078863C /* Exview.swift */,
-			);
-			path = Ex;
 			sourceTree = "<group>";
 		};
 		725B9ABD2C7C95230078863C /* ViewModel */ = {
@@ -1181,7 +1167,6 @@
 				725B9A5A2C778AA70078863C /* MyRoutineView.swift in Sources */,
 				723E47C92C738DF8004B0E0C /* WODViewModel.swift in Sources */,
 				723E47BE2C736DAF004B0E0C /* MainViewModel.swift in Sources */,
-				725B9ABC2C7C92110078863C /* Exview.swift in Sources */,
 				723E478E2C707DD9004B0E0C /* LoginViewController.swift in Sources */,
 				723E479A2C7089B8004B0E0C /* NicknameViewController.swift in Sources */,
 				72940B3D2C7C9FC900311CE8 /* MyRoutineMenuTableViewCell.swift in Sources */,
@@ -1239,7 +1224,6 @@
 				723E471F2C6DBF5F004B0E0C /* BaseView.swift in Sources */,
 				72940B462C7CAEAE00311CE8 /* HealthDataViewModel.swift in Sources */,
 				725B9A922C7A3BB80078863C /* DetailViewModel.swift in Sources */,
-				725B9ABA2C7C92040078863C /* ExViewController.swift in Sources */,
 				7274DA4B2C74DC8300245DCD /* WODTableTitles.swift in Sources */,
 				725B9A5C2C778AB40078863C /* MyRoutineViewController.swift in Sources */,
 				725B9AA72C7B2A0C0078863C /* CommentResponse.swift in Sources */,
