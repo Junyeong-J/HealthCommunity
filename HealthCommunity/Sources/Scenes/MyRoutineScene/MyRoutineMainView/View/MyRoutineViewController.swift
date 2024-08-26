@@ -13,16 +13,19 @@ import FSCalendar
 final class MyRoutineViewController: BaseViewController<MyRoutineView> {
     
     private let viewModel = MyRoutineViewModel()
+    private let selectedDateRelay = BehaviorRelay<String>(value: "")
     
-    private var selectedDate: Date = Date() {
+    private var selectedDate: String = "" {
         didSet {
             updateTitleButton()
+            selectedDateRelay.accept(selectedDate)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        rootView.calendarView.delegate = self
+        selectedDate = FormatterManager.shared.formatCalendarDate(Date())
     }
     
     override func configureView() {
@@ -34,7 +37,8 @@ final class MyRoutineViewController: BaseViewController<MyRoutineView> {
     override func bindModel() {
         let input = MyRoutineViewModel.Input(
             selectedSegmentIndex: rootView.segmentedControl.rx.selectedSegmentIndex,
-            recordButtonTap: rootView.activityButton.rx.tap
+            recordButtonTap: rootView.activityButton.rx.tap,
+            selectedDate: selectedDateRelay.asObservable()
         )
         
         let output = viewModel.transform(input: input)
@@ -46,8 +50,8 @@ final class MyRoutineViewController: BaseViewController<MyRoutineView> {
             .disposed(by: viewModel.disposeBag)
         
         output.recordButtonTapped
-            .bind(with: self) { owner, _ in
-                owner.navigationController?.pushViewController(MyRoutineMenuViewController(), animated: true)
+            .bind(with: self) { owner, date in
+                owner.navigationController?.pushViewController(MyRoutineMenuViewController(date: date), animated: true)
             }
             .disposed(by: viewModel.disposeBag)
     }
@@ -57,17 +61,13 @@ final class MyRoutineViewController: BaseViewController<MyRoutineView> {
 extension MyRoutineViewController {
     
     private func updateTitleButton() {
-        let formatter = DateFormatter()
-        FormatterManager
-        formatter.dateFormat = "MM월 dd일 운동 기록하기"
-        let dateString = formatter.string(from: selectedDate)
-        rootView.activityButton.setTitle(dateString, for: .normal)
+        rootView.activityButton.setTitle(selectedDate, for: .normal)
     }
     
 }
 
 extension MyRoutineViewController: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        selectedDate = date
+        selectedDate = FormatterManager.shared.formatCalendarDate(date)
     }
 }

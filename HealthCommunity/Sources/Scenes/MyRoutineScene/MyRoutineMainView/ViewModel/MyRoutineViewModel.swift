@@ -16,18 +16,24 @@ final class MyRoutineViewModel: BaseViewModel {
     struct Input {
         let selectedSegmentIndex: ControlProperty<Int>
         let recordButtonTap: ControlEvent<Void>
+        let selectedDate: Observable<String>
     }
     
     struct Output {
         let selectedSegmentIndexTap: Driver<Int>
-        let recordButtonTapped: ControlEvent<Void>
+        let recordButtonTapped: Observable<String>
     }
     
     func transform(input: Input) -> Output {
         let selectedSegmentIndexTap = input.selectedSegmentIndex.asDriver()
         
+        let recordButtonTapped = input.recordButtonTap
+            .withLatestFrom(input.selectedDate)
+        
+        
+        
         return Output(selectedSegmentIndexTap: selectedSegmentIndexTap,
-                      recordButtonTapped: input.recordButtonTap)
+                      recordButtonTapped: recordButtonTapped)
     }
     
 }
