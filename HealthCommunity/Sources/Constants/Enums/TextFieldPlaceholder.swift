@@ -12,5 +12,14 @@ enum TextFieldPlaceholder: String {
     case passwordCheck = "비밀번호를 조건에 맞게 적어주세요 :)"
     case nickname = "닉네임을 조건에 맞게 적어주세요 :)"
     
+    case comment = "댓글을 입력하세요.."
+    
     case password = "비밀번호를 입력하세요 :)"
+    
+    case editNick = "닉네임"
+    case introduce = "내 소개"
+    
+    case bench = "벤치"
+    case squat = "스쿼트"
+    case deadlift = "데드"
 }
