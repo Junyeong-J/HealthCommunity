@@ -69,4 +69,42 @@ struct RoutineData {
         "인클라인 덤벨 컬",
         "벤치 딥스"
     ]
+    
+    static let weightliftingRoutines = [
+        "클린",
+        "클린&저크",
+        "저크",
+        "케이블 크런치",
+        "클린 하이풀",
+        "스내치 하이풀"
+    ]
+    
+    static let absRoutines = [
+        "싯업",
+        "브이 업",
+        "크런치",
+        "힐 터치",
+        "레그레이즈",
+        "행잉 레그 레이즈",
+        "러시안 트위스트",
+        "플랭크",
+        "사이드 크런치"
+    ]
+    
+    static let othersRoutines = [
+        "버피",
+        "박스 점프",
+        "바 머슬업",
+        "링 머슬업",
+        "배틀링 로프",
+        "터키쉬 겟업"
+    ]
+    
+    static let cardioRoutines = [
+        "걷기",
+        "달리기",
+        "줄넘기",
+        "계단오르기"
+    ]
 }
+
