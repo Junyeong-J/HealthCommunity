@@ -48,7 +48,7 @@ final class MyRoutineMenuViewController: BaseViewController<MyRoutineMenuView> {
             .drive(with: self, onNext: { owner, indexPath in
                 switch indexPath.row {
                 case 0:
-                    print(indexPath)
+                    owner.navigationController?.pushViewController(MyRoutineSelectViewController(), animated: true)
                 case 1:
                     owner.navigationController?.pushViewController(HealthDataViewController(dateString: owner.selectedDate), animated: true)
                 default:
