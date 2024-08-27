@@ -38,7 +38,10 @@ final class MyRoutineSelectViewModel: BaseViewModel {
                 case 2: return RoutineData.backRoutines
                 case 3: return RoutineData.shouldersRoutines
                 case 4: return RoutineData.armsRoutines
-                    // 다른 케이스에 대해선 나머지 루틴 데이터 추가
+                case 5: return RoutineData.weightliftingRoutines
+                case 6: return RoutineData.absRoutines
+                case 7: return RoutineData.othersRoutines
+                case 8: return RoutineData.cardioRoutines
                 default: return []
                 }
             }
