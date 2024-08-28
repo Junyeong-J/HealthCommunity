@@ -131,6 +131,9 @@
 		72940B622C7D932600311CE8 /* MyRoutineSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940B612C7D932600311CE8 /* MyRoutineSelectViewModel.swift */; };
 		72940B642C7DCF7600311CE8 /* FitnessAreaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940B632C7DCF7600311CE8 /* FitnessAreaCollectionViewCell.swift */; };
 		72940B662C7E1BF100311CE8 /* MyRoutineSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940B652C7E1BF100311CE8 /* MyRoutineSelectTableViewCell.swift */; };
+		72940B682C7E3B7F00311CE8 /* SelectedRoutineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940B672C7E3B7F00311CE8 /* SelectedRoutineCollectionViewCell.swift */; };
+		72940B6A2C7EAA3D00311CE8 /* DeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940B692C7EAA3D00311CE8 /* DeleteButton.swift */; };
+		72940B772C7F17F600311CE8 /* MyRoutineDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940B762C7F17F600311CE8 /* MyRoutineDetailTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -253,6 +256,9 @@
 		72940B612C7D932600311CE8 /* MyRoutineSelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRoutineSelectViewModel.swift; sourceTree = "<group>"; };
 		72940B632C7DCF7600311CE8 /* FitnessAreaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitnessAreaCollectionViewCell.swift; sourceTree = "<group>"; };
 		72940B652C7E1BF100311CE8 /* MyRoutineSelectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRoutineSelectTableViewCell.swift; sourceTree = "<group>"; };
+		72940B672C7E3B7F00311CE8 /* SelectedRoutineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedRoutineCollectionViewCell.swift; sourceTree = "<group>"; };
+		72940B692C7EAA3D00311CE8 /* DeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteButton.swift; sourceTree = "<group>"; };
+		72940B762C7F17F600311CE8 /* MyRoutineDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRoutineDetailTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -410,6 +416,7 @@
 				7274DA5C2C7510F700245DCD /* RoutineAreaButton.swift */,
 				725B9A852C79CDCB0078863C /* ProfileChangeButton.swift */,
 				725B9AAB2C7B68F90078863C /* SendButton.swift */,
+				72940B692C7EAA3D00311CE8 /* DeleteButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -736,9 +743,9 @@
 		725B9A562C778A550078863C /* MyRoutineScene */ = {
 			isa = PBXGroup;
 			children = (
-				72940B552C7D86AF00311CE8 /* MyRoutineSelectView */,
 				72940B322C7C9CA300311CE8 /* MyRoutineMainView */,
 				72940B332C7C9CB200311CE8 /* MyRoutineMenuView */,
+				72940B552C7D86AF00311CE8 /* MyRoutineSelectView */,
 				72940B3E2C7CAE2B00311CE8 /* HealthDataView */,
 			);
 			path = MyRoutineScene;
@@ -1012,6 +1019,7 @@
 				72940B362C7C9CDC00311CE8 /* MyRoutineMenuViewController.swift */,
 				72940B382C7C9CE800311CE8 /* MyRoutineMenuView.swift */,
 				72940B3C2C7C9FC900311CE8 /* MyRoutineMenuTableViewCell.swift */,
+				72940B762C7F17F600311CE8 /* MyRoutineDetailTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1067,6 +1075,7 @@
 				72940B582C7D86F900311CE8 /* MyRoutineSelectView.swift */,
 				72940B632C7DCF7600311CE8 /* FitnessAreaCollectionViewCell.swift */,
 				72940B652C7E1BF100311CE8 /* MyRoutineSelectTableViewCell.swift */,
+				72940B672C7E3B7F00311CE8 /* SelectedRoutineCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1251,6 +1260,7 @@
 				725B9A9A2C7B0CCE0078863C /* CommentTableViewCell.swift in Sources */,
 				723E47C62C7389A9004B0E0C /* CameraButton.swift in Sources */,
 				723E47C22C7385C6004B0E0C /* WODView.swift in Sources */,
+				72940B682C7E3B7F00311CE8 /* SelectedRoutineCollectionViewCell.swift in Sources */,
 				723E47922C7081C4004B0E0C /* PasswordSecureButton.swift in Sources */,
 				723E475A2C6DDD0A004B0E0C /* LSLPRouter.swift in Sources */,
 				723E47A22C721152004B0E0C /* UserDefaultsManager.swift in Sources */,
@@ -1259,6 +1269,7 @@
 				723E473B2C6DC5BE004B0E0C /* BaseButton.swift in Sources */,
 				7274DA4E2C74DF4C00245DCD /* TriangleImage.swift in Sources */,
 				725B9A9D2C7B14A20078863C /* CommentView.swift in Sources */,
+				72940B772C7F17F600311CE8 /* MyRoutineDetailTableViewCell.swift in Sources */,
 				725B9A282C761E930078863C /* RoutineData.swift in Sources */,
 				7274DA542C74FE2300245DCD /* RoutineViewController.swift in Sources */,
 				725B9A6D2C786C490078863C /* ProfileViewModel.swift in Sources */,
@@ -1275,6 +1286,7 @@
 				725B9A642C778ADF0078863C /* ProfileViewController.swift in Sources */,
 				725B9A622C778AD40078863C /* ProfileView.swift in Sources */,
 				725B9A8E2C7A3B640078863C /* DetailViewController.swift in Sources */,
+				72940B6A2C7EAA3D00311CE8 /* DeleteButton.swift in Sources */,
 				72940B422C7CAE5C00311CE8 /* HealthDataView.swift in Sources */,
 				72940B392C7C9CE800311CE8 /* MyRoutineMenuView.swift in Sources */,
 				723E471F2C6DBF5F004B0E0C /* BaseView.swift in Sources */,
