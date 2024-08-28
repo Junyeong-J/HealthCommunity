@@ -14,6 +14,7 @@ final class MyRoutineDetailTableViewCell: BaseTableViewCell {
     
     private let textFieldWidth = (UIScreen.main.bounds.width - 40 - 60) / 3
     private let labelTextFieldOffset: CGFloat = 5
+    let textFieldChanges = PublishSubject<(String, String?, String?, String?)>()
     
     var disposeBag = DisposeBag()
     
@@ -140,14 +141,25 @@ final class MyRoutineDetailTableViewCell: BaseTableViewCell {
     
     func configure(routine: String) {
         routineTitleLabel.text = routine
+        bindTextFields()
+    }
+    
+    private func bindTextFields() {
+        let routineName = routineTitleLabel.text ?? ""
+        
+        Observable.combineLatest(
+            setsTextField.rx.text.orEmpty.asObservable(),
+            weightTextField.rx.text.orEmpty.asObservable(),
+            countTextField.rx.text.orEmpty.asObservable()
+        )
+        .bind(onNext: { [weak self] set, weight, count in
+            self?.textFieldChanges.onNext((routineName, set, weight, count))
+        })
+        .disposed(by: disposeBag)
     }
     
     func getRoutineData() -> (routineName: String, set: String?, weight: String?, count: String?) {
-        let routineName = routineTitleLabel.text ?? ""
-        let set = setsTextField.text
-        let weight = weightTextField.text
-        let count = countTextField.text
-        return (routineName, set, weight, count)
+        return (routineTitleLabel.text ?? "", setsTextField.text, weightTextField.text, countTextField.text)
     }
 }
 

@@ -7,8 +7,17 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 final class MyRoutineMenuTableViewCell: BaseTableViewCell {
+    
+    var disposeBag = DisposeBag()
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+    }
     
     private let menuTitle: UILabel = {
         let label = UILabel()
