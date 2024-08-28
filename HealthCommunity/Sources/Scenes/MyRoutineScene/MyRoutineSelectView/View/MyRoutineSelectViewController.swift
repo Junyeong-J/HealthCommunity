@@ -13,14 +13,36 @@ final class MyRoutineSelectViewController: BaseViewController<MyRoutineSelectVie
     
     private let viewModel = MyRoutineSelectViewModel()
     private var selectedIndex: IndexPath? = IndexPath(item: 0, section: 0)
+    private let checkBoxRow = PublishSubject<Int>()
+    private let deleteRoutineIndex = PublishSubject<Int>()
+    private var initRoutines: [String: [String]]?
+    
+    init(selectedMyRoutine: [String: [String]]? = nil) {
+        self.initRoutines = selectedMyRoutine
+        super.init()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        rootView.collectionView.selectItem(at: selectedIndex, animated: false, scrollPosition: [])
+        viewModel.loadData()
+        
+        if let routines = initRoutines {
+            viewModel.initSelectedRoutines(routines)
+        }
     }
     
     override func bindModel() {
         let input = MyRoutineSelectViewModel.Input(
-            itemSelected: rootView.collectionView.rx.itemSelected)
+            itemSelected: rootView.collectionView.rx.itemSelected,
+            checkBoxToggled: checkBoxRow.asObservable(),
+            deleteRoutine: deleteRoutineIndex.asObservable(),
+            selectedButtonTap: rootView.selectButton.rx.tap
+        )
         
         let output = viewModel.transform(input: input)
         
@@ -29,16 +51,23 @@ final class MyRoutineSelectViewController: BaseViewController<MyRoutineSelectVie
                 cellIdentifier: FitnessAreaCollectionViewCell.identifier,
                 cellType: FitnessAreaCollectionViewCell.self)) { [weak self] index, title, cell in
                     let isSelected = (self?.selectedIndex?.row == index)
-                    cell.configure(with: title, isSelected: isSelected)
+                    cell.configure(title: title, isSelected: isSelected)
                 }
                 .disposed(by: viewModel.disposeBag)
         
         output.routines
-            .drive(rootView.tableView.rx.items(
+            .bind(to: rootView.tableView.rx.items(
                 cellIdentifier: MyRoutineSelectTableViewCell.identifier,
-                cellType: MyRoutineSelectTableViewCell.self)) { index, routine, cell in
-                    let imageName = self.viewModel.iconName(for: self.selectedIndex?.row ?? 0)
-                    cell.configure(with: routine, imageName: imageName, isChecked: false)
+                cellType: MyRoutineSelectTableViewCell.self)) { [weak self] row, routine, cell in
+                    
+                    cell.configure(title: routine.name, imageName: routine.routineImageName, isSelected: routine.isSelected)
+                    
+                    cell.checkBoxButton.rx.tap
+                        .subscribe(onNext: { _ in
+                            cell.toggleCheckBox()
+                            self?.checkBoxRow.onNext(row)
+                        })
+                        .disposed(by: cell.disposeBag)
                 }
                 .disposed(by: viewModel.disposeBag)
         
@@ -56,5 +85,38 @@ final class MyRoutineSelectViewController: BaseViewController<MyRoutineSelectVie
                 owner.selectedIndex = indexPath
             })
             .disposed(by: viewModel.disposeBag)
+        
+        output.selectedRoutines
+            .bind(to: rootView.selectedCollectionView.rx.items(
+                cellIdentifier: SelectedRoutineCollectionViewCell.identifier,
+                cellType: SelectedRoutineCollectionViewCell.self)) { [weak self] index, routine, cell in
+                    cell.configure(title: routine.name)
+                    
+                    cell.deleteButton.rx.tap
+                        .subscribe(onNext: {
+                            self?.deleteRoutineIndex.onNext(index)
+                        })
+                        .disposed(by: cell.disposeBag)
+                }
+                .disposed(by: viewModel.disposeBag)
+        
+        output.selectedRoutines
+            .bind(with: self, onNext: { owner, routines in
+                let isExpand = !routines.isEmpty
+                owner.rootView.viewHeight(isExpand: isExpand)
+            })
+            .disposed(by: viewModel.disposeBag)
+        
+        output.buttonTitle
+            .bind(to: rootView.selectButton.rx.title(for: .normal))
+            .disposed(by: viewModel.disposeBag)
+        
+        output.selectedButtonTapped
+            .bind(with: self, onNext: { owner, myRoutines in
+                NotificationCenter.default.post(name: NSNotification.Name("SelectedMyRoutine"), object: myRoutines)
+                owner.navigationController?.popViewController(animated: true)
+            })
+            .disposed(by: viewModel.disposeBag)
     }
+    
 }

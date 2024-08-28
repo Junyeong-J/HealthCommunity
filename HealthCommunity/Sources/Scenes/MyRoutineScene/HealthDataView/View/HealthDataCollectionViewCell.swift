@@ -7,8 +7,17 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 final class HealthDataCollectionViewCell: BaseCollectionViewCell {
+    
+    var disposeBag = DisposeBag()
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+    }
     
     private let titleLabel: UILabel = {
         let label = UILabel()

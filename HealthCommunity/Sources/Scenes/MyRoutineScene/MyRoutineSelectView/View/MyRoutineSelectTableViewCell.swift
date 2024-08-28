@@ -7,10 +7,19 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 final class MyRoutineSelectTableViewCell: BaseTableViewCell {
     
-    private let checkBox: UIButton = {
+    var disposeBag = DisposeBag()
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+    }
+    
+    let checkBoxButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "square"), for: .normal)
         button.setImage(UIImage(systemName: "checkmark.square.fill"), for: .selected)
@@ -29,19 +38,17 @@ final class MyRoutineSelectTableViewCell: BaseTableViewCell {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        label.textColor = .black
+        label.font = Font.regular16
+        label.textColor = .myAppBlack
         return label
     }()
     
     override func configureHierarchy() {
-        contentView.addSubview(checkBox)
-        contentView.addSubview(routineImageView)
-        contentView.addSubview(titleLabel)
+        [checkBoxButton, routineImageView, titleLabel].forEach { contentView.addSubview($0) }
     }
     
     override func configureLayout() {
-        checkBox.snp.makeConstraints { make in
+        checkBoxButton.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.leading.equalToSuperview().offset(16)
             make.size.equalTo(24)
@@ -49,7 +56,7 @@ final class MyRoutineSelectTableViewCell: BaseTableViewCell {
         
         routineImageView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.leading.equalTo(checkBox.snp.trailing).offset(12)
+            make.leading.equalTo(checkBoxButton.snp.trailing).offset(12)
             make.size.equalTo(40)
         }
         
@@ -60,13 +67,13 @@ final class MyRoutineSelectTableViewCell: BaseTableViewCell {
         }
     }
     
-    func configure(with title: String, imageName: String, isChecked: Bool) {
+    func configure(title: String, imageName: String, isSelected: Bool) {
         titleLabel.text = title
         routineImageView.image = UIImage(systemName: imageName)?.withRenderingMode(.alwaysTemplate)
-        checkBox.isSelected = isChecked
+        checkBoxButton.isSelected = isSelected
     }
     
     func toggleCheckBox() {
-        checkBox.isSelected.toggle()
+        checkBoxButton.isSelected.toggle()
     }
 }

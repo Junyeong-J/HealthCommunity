@@ -7,8 +7,17 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 final class FitnessAreaCollectionViewCell: BaseCollectionViewCell {
+    
+    var disposeBag = DisposeBag()
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+    }
     
     let titleLabel: UILabel = {
         let label = UILabel()
@@ -34,14 +43,14 @@ final class FitnessAreaCollectionViewCell: BaseCollectionViewCell {
         contentView.layer.cornerRadius = 18
     }
     
-    func configure(with title: String, isSelected: Bool) {
-            titleLabel.text = title
-            if isSelected {
-                contentView.backgroundColor = .myAppMain
-                titleLabel.textColor = .myAppWhite
-            } else {
-                contentView.backgroundColor = .myAppWhite
-                titleLabel.textColor = .myAppBlack
-            }
+    func configure(title: String, isSelected: Bool) {
+        titleLabel.text = title
+        if isSelected {
+            contentView.backgroundColor = .myAppMain
+            titleLabel.textColor = .myAppWhite
+        } else {
+            contentView.backgroundColor = .myAppWhite
+            titleLabel.textColor = .myAppBlack
         }
+    }
 }

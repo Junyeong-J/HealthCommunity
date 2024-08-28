@@ -42,23 +42,38 @@ final class HealthDataView: BaseView {
         return button
     }()
     
+    let registerButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("데이터 등록하기", for: .normal)
+        button.backgroundColor = .systemGreen
+        button.setTitleColor(.white, for: .normal)
+        button.layer.cornerRadius = 10
+        return button
+    }()
+    
     override func configureHierarchy() {
-        addSubview(fetchButton)
-        addSubview(collectionView)
+        [fetchButton, registerButton, collectionView].forEach { addSubview($0) }
     }
     
     override func configureLayout() {
         
         fetchButton.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide).inset(20)
+            make.trailing.equalToSuperview().inset(20)
+            make.width.equalTo(100)
+            make.height.equalTo(40)
+        }
+        
+        registerButton.snp.makeConstraints { make in
             make.bottom.equalTo(safeAreaLayoutGuide).inset(20)
             make.horizontalEdges.equalToSuperview().inset(20)
             make.height.equalTo(50)
         }
         
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide)
+            make.top.equalTo(fetchButton.snp.bottom).offset(10)
             make.horizontalEdges.equalToSuperview()
-            make.bottom.equalTo(fetchButton.snp.top).offset(-20)
+            make.bottom.equalTo(registerButton.snp.top).offset(-20)
         }
     }
     

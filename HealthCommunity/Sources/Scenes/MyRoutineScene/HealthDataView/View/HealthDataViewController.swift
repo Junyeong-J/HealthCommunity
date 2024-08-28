@@ -15,7 +15,7 @@ final class HealthDataViewController: BaseViewController<HealthDataView> {
     private let viewModel = HealthDataViewModel()
     private let healthStore = HKHealthStore()
     private let selectedDate: Date
-
+    
     let read = Set([
         HKObjectType.quantityType(forIdentifier: .heartRate)!,
         HKObjectType.quantityType(forIdentifier: .stepCount)!,
@@ -48,7 +48,8 @@ final class HealthDataViewController: BaseViewController<HealthDataView> {
     override func bindModel() {
         let input = HealthDataViewModel.Input(
             fetchButtonTapped: rootView.fetchButton.rx.tap,
-            itemSelected: rootView.collectionView.rx.itemSelected
+            itemSelected: rootView.collectionView.rx.itemSelected,
+            registerButtonTapped: rootView.registerButton.rx.tap
         )
         
         let output = viewModel.transform(input: input)
@@ -59,11 +60,19 @@ final class HealthDataViewController: BaseViewController<HealthDataView> {
                 cellType: HealthDataCollectionViewCell.self)) { row, item, cell in
                     cell.configure(data: item)
                 }
-            .disposed(by: viewModel.disposeBag)
+                .disposed(by: viewModel.disposeBag)
         
         output.fetchButtonTapped
             .drive(with: self, onNext: { owner, _ in
                 owner.fetchAllHealthData(for: owner.selectedDate)
+            })
+            .disposed(by: viewModel.disposeBag)
+        
+        output.registerButtonTapped
+            .drive(with: self, onNext: { owner, data in
+                print("전달 데이터: \(data)")
+                NotificationCenter.default.post(name: NSNotification.Name("HealthMyRoutine"), object: data)
+                owner.navigationController?.popViewController(animated: true)
             })
             .disposed(by: viewModel.disposeBag)
     }
@@ -132,4 +141,5 @@ final class HealthDataViewController: BaseViewController<HealthDataView> {
         }
         healthStore.execute(query)
     }
+
 }

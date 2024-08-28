@@ -37,21 +37,29 @@ final class HealthDataViewModel: BaseViewModel {
     struct Input {
         let fetchButtonTapped: ControlEvent<Void>
         let itemSelected: ControlEvent<IndexPath>
+        let registerButtonTapped: ControlEvent<Void>
     }
     
     struct Output {
         let healthData: Driver<[HealthDataItem]>
         let itemSelected: Driver<IndexPath>
         let fetchButtonTapped: Driver<Void>
+        let registerButtonTapped: Driver<String>
     }
     
     func transform(input: Input) -> Output {
-        let fetchButtonTapped = input.fetchButtonTapped.asDriver()
+        
+        let healthResult = input.registerButtonTapped
+            .map { [weak self] in
+                return self?.getHealthData() ?? ""
+            }
+            .asDriver(onErrorJustReturn: "")
         
         return Output(
             healthData: healthDataRelay.asDriver(),
             itemSelected: input.itemSelected.asDriver(),
-            fetchButtonTapped: fetchButtonTapped
+            fetchButtonTapped: input.fetchButtonTapped.asDriver(),
+            registerButtonTapped: healthResult
         )
     }
     
@@ -61,6 +69,31 @@ final class HealthDataViewModel: BaseViewModel {
             currentData[index] = HealthDataItem(type: type, value: value)
             healthDataRelay.accept(currentData)
         }
+    }
+    
+    private func getHealthData() -> String {
+        let healthData = healthDataRelay.value
+        
+        var steps = "걸음"
+        var distance = "거리"
+        var calories = "칼로리"
+        var standingHours = "서 있는 시간"
+        
+        for item in healthData {
+            switch item.type {
+            case .steps:
+                steps = "\(item.value)"
+            case .calories:
+                calories = "\(item.value)"
+            case .strengthTraining:
+                distance = "\(item.value)"
+            case .standingHours:
+                standingHours = "\(item.value)"
+            }
+        }
+        
+        let output = "\(steps), \(distance), \(calories), \(standingHours)"
+        return output
     }
 }
 
