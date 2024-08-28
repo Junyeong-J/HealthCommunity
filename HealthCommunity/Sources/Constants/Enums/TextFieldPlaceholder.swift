@@ -19,6 +19,10 @@ enum TextFieldPlaceholder: String {
     case editNick = "닉네임"
     case introduce = "내 소개"
     
+    case weight = "중량"
+    case count = "횟수"
+    case set = "세트"
+    
     case bench = "벤치"
     case squat = "스쿼트"
     case deadlift = "데드"

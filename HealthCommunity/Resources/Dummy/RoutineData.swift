@@ -7,9 +7,27 @@
 
 import Foundation
 
+struct Routine {
+    let name: String
+    let routineImageName: String
+    var isSelected: Bool = false
+    
+    mutating func select() {
+        isSelected = true
+    }
+}
+
 struct RoutineData {
     
-    static let legsRoutines = [
+    static let categories = [
+        "하체", "가슴", "등", "어깨", "팔", "역도", "복근", "기타", "유산소"
+    ]
+    
+    static func createRoutines(from names: [String], routineImageName: String) -> [Routine] {
+        return names.map { Routine(name: $0, routineImageName: routineImageName) }
+    }
+    
+    private static let legsRoutineNames = [
         "바벨 백스쿼트",
         "프론트 스쿼드",
         "덤벨 스플릿 스쿼트",
@@ -24,7 +42,7 @@ struct RoutineData {
         "트랩바 데드리프트"
     ]
     
-    static let chestRoutines = [
+    private static let chestRoutineNames = [
         "벤치프레스",
         "인클라인 벤치프레스",
         "덤벨 벤치프레스",
@@ -34,7 +52,7 @@ struct RoutineData {
         "로우 풀리 케이블 플라이"
     ]
     
-    static let backRoutines = [
+    private static let backRoutineNames = [
         "풀업",
         "바벨 로우",
         "펜들레이 로우",
@@ -46,7 +64,7 @@ struct RoutineData {
         "어시스트 풀업 머신"
     ]
     
-    static let shouldersRoutines = [
+    private static let shouldersRoutineNames = [
         "오버헤드 프레스",
         "덤벨 숄더 프레스",
         "아놀드 덤벨 프레스",
@@ -57,7 +75,7 @@ struct RoutineData {
         "원암 케이블 레터럴 레이즈"
     ]
     
-    static let armsRoutines = [
+    private static let armsRoutineNames = [
         "바벨 컬",
         "이지바 컬",
         "덤벨 컬",
@@ -70,7 +88,7 @@ struct RoutineData {
         "벤치 딥스"
     ]
     
-    static let weightliftingRoutines = [
+    private static let weightliftingRoutineNames = [
         "클린",
         "클린&저크",
         "저크",
@@ -79,7 +97,7 @@ struct RoutineData {
         "스내치 하이풀"
     ]
     
-    static let absRoutines = [
+    private static let absRoutineNames = [
         "싯업",
         "브이 업",
         "크런치",
@@ -91,7 +109,7 @@ struct RoutineData {
         "사이드 크런치"
     ]
     
-    static let othersRoutines = [
+    private static let othersRoutineNames = [
         "버피",
         "박스 점프",
         "바 머슬업",
@@ -100,11 +118,22 @@ struct RoutineData {
         "터키쉬 겟업"
     ]
     
-    static let cardioRoutines = [
+    private static let cardioRoutineNames = [
         "걷기",
         "달리기",
         "줄넘기",
         "계단오르기"
     ]
+    
+    static let legsRoutines = createRoutines(from: legsRoutineNames, routineImageName: "figure.strengthtraining.functional")
+    static let chestRoutines = createRoutines(from: chestRoutineNames, routineImageName: "figure.mixed.cardio")
+    static let backRoutines = createRoutines(from: backRoutineNames, routineImageName: "figure.rower")
+    static let shouldersRoutines = createRoutines(from: shouldersRoutineNames, routineImageName: "figure.play")
+    static let armsRoutines = createRoutines(from: armsRoutineNames, routineImageName: "dumbbell")
+    static let weightliftingRoutines = createRoutines(from: weightliftingRoutineNames, routineImageName: "figure.strengthtraining.traditional")
+    static let absRoutines = createRoutines(from: absRoutineNames, routineImageName: "figure.core.training")
+    static let othersRoutines = createRoutines(from: othersRoutineNames, routineImageName: "figure.cooldown")
+    static let cardioRoutines = createRoutines(from: cardioRoutineNames, routineImageName: "figure.highintensity.intervaltraining")
+    
 }
 

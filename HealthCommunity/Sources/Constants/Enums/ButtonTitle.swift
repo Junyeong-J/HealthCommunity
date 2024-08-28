@@ -21,4 +21,6 @@ enum ButtonTitle: String {
     
     case changeProfile = "프로필 사진 수정"
     case editProfile = "프로필 수정하기"
+    
+    case seleteCheck = "0개 운동 선택"
 }
