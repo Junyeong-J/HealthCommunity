@@ -21,6 +21,7 @@ final class MyRoutineMenuViewModel: BaseViewModel {
         let healthData: Observable<String>
         let addButtonTapped: ControlEvent<Void>
         let contentData: Observable<String>
+        let selectedDate: String
     }
     
     struct Output {
@@ -56,7 +57,7 @@ final class MyRoutineMenuViewModel: BaseViewModel {
                 
                 return self.networkManager.request(
                     api: .post(.posts(
-                        title: "",
+                        title: input.selectedDate,
                         content: routineData,
                         content1: healthData,
                         productId: "내운동기록"

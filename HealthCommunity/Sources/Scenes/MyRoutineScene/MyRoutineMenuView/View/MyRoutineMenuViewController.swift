@@ -51,7 +51,8 @@ final class MyRoutineMenuViewController: BaseViewController<MyRoutineMenuView> {
             routineData: myRoutineDetail.asObserver(),
             healthData: healthData.asObserver(),
             addButtonTapped: rootView.addButton.rx.tap,
-            contentData: content.asObserver()
+            contentData: content.asObserver(),
+            selectedDate: selectedDate
         )
         
         let output = viewModel.transform(input: input)
