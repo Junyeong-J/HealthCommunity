@@ -27,10 +27,16 @@ final class MyRoutineViewController: BaseViewController<MyRoutineView> {
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.fetchData()
+        selectedDateRelay.accept(selectedDate)
+    }
+    
     override func configureView() {
         super.configureView()
         rootView.segmentedControl.selectedSegmentIndex = 0
-        rootView.updateView(for: 0)
+        rootView.updateView(index: 0)
         
         rootView.calendarView.delegate = self
         rootView.calendarView.dataSource = self
@@ -51,7 +57,7 @@ final class MyRoutineViewController: BaseViewController<MyRoutineView> {
         
         output.selectedSegmentIndexTap
             .drive(with: self, onNext: { owner, index in
-                owner.rootView.updateView(for: index)
+                owner.rootView.updateView(index: index)
             })
             .disposed(by: viewModel.disposeBag)
         
@@ -66,6 +72,15 @@ final class MyRoutineViewController: BaseViewController<MyRoutineView> {
                 owner.setEvents(posts: posts)
             }
             .disposed(by: viewModel.disposeBag)
+        
+        output.setDateList
+            .bind(to: rootView.myRoutineDetailTableView.rx.items(
+                cellIdentifier: MyRoutineResultTableViewCell.identifier,
+                cellType: MyRoutineResultTableViewCell.self)) { index, routine, cell in
+                    cell.configureData(number: index + 1, routine: routine)
+                }
+                .disposed(by: viewModel.disposeBag)
+        
     }
     
 }
@@ -83,11 +98,13 @@ extension MyRoutineViewController {
         eventDates = Set(events)
         rootView.calendarView.reloadData()
     }
+    
 }
 
 extension MyRoutineViewController: FSCalendarDelegate, FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         selectedDate = FormatterManager.shared.formatCalendarDate(date)
+        rootView.isRoutineView(eventDates.contains(date))
     }
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {

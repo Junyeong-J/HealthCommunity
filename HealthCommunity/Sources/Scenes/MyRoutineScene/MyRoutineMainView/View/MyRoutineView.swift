@@ -47,17 +47,24 @@ final class MyRoutineView: BaseView {
         return view
     }()
     
-    let distanceLabel: UILabel = {
-        let label = UILabel()
-        label.text = "0 km"
-        label.font = UIFont.boldSystemFont(ofSize: 24)
-        label.textAlignment = .center
-        return label
+    let myRoutineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        return view
+    }()
+    
+    let myRoutineDetailTableView: UITableView = {
+        let view = UITableView()
+        view.register(MyRoutineResultTableViewCell.self, forCellReuseIdentifier: MyRoutineResultTableViewCell.identifier)
+        view.rowHeight = 140
+        view.separatorStyle = .singleLine
+        return view
     }()
     
     override func configureHierarchy() {
         [segmentedControl, calendarView, graphView,
-         activityButton, distanceLabel].forEach { addSubview($0) }
+         activityButton, myRoutineView].forEach { addSubview($0) }
+        myRoutineView.addSubview(myRoutineDetailTableView)
     }
     
     override func configureLayout() {
@@ -79,24 +86,43 @@ final class MyRoutineView: BaseView {
             make.height.equalTo(300)
         }
         
+        myRoutineView.snp.makeConstraints { make in
+            make.top.equalTo(calendarView.snp.bottom).offset(10)
+            make.horizontalEdges.equalToSuperview()
+            make.bottom.equalTo(safeAreaLayoutGuide)
+        }
+        
+        myRoutineDetailTableView.snp.makeConstraints { make in
+            make.edges.equalTo(myRoutineView)
+        }
+        
         activityButton.snp.makeConstraints { make in
             make.top.equalTo(calendarView.snp.bottom).offset(20)
             make.horizontalEdges.equalToSuperview().inset(50)
             make.height.equalTo(50)
         }
         
-        distanceLabel.snp.makeConstraints { make in
-            make.top.equalTo(activityButton.snp.bottom).offset(20)
-            make.centerX.equalToSuperview()
-        }
-        
-        updateView(for: segmentedControl.selectedSegmentIndex)
+        updateView(index: segmentedControl.selectedSegmentIndex)
     }
     
-    func updateView(for index: Int) {
-        let isCalendarViewVisible = (index == 0)
-        calendarView.isHidden = !isCalendarViewVisible
-        graphView.isHidden = isCalendarViewVisible
+    func updateView(index: Int) {
+        if (index == 0) {
+            calendarView.isHidden = false
+            graphView.isHidden = true
+            myRoutineView.isHidden = true
+            activityButton.isHidden = false
+        } else {
+            calendarView.isHidden = true
+            graphView.isHidden = false
+            myRoutineView.isHidden = true
+            activityButton.isHidden = true
+        }
     }
+    
+    func isRoutineView(_ isCollect: Bool) {
+        myRoutineView.isHidden = !isCollect
+        activityButton.isEnabled = !isCollect
+    }
+    
 }
 

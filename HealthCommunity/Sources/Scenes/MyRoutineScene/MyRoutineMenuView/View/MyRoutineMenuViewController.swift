@@ -71,20 +71,27 @@ final class MyRoutineMenuViewController: BaseViewController<MyRoutineMenuView> {
             .bind(with: self, onNext: { owner, cell in
                 cell.textFieldChanges
                     .bind(onNext: { routineName, set, weight, count in
-                        var newContentArray = [String]()
+                        var newContentArray = [[String]]()
+                        
                         for i in 0..<self.rootView.myRoutineDetailTableView.numberOfRows(inSection: 0) {
                             if let cell = self.rootView.myRoutineDetailTableView.cellForRow(at: IndexPath(row: i, section: 0)) as? MyRoutineDetailTableViewCell {
                                 let routineData = cell.getRoutineData()
-                                let routineString = "\(routineData.routineName) [세트: \(routineData.set ?? ""), 중량: \(routineData.weight ?? ""), 횟수: \(routineData.count ?? "")]"
-                                newContentArray.append(routineString)
+                                let routineName = routineData.routineName
+                                let set = routineData.set ?? ""
+                                let weight = routineData.weight ?? ""
+                                let count = routineData.count ?? ""
+                                let routineArray = [routineName, set, weight, count]
+                                newContentArray.append(routineArray)
                             }
                         }
-                        let newContent = newContentArray.joined(separator: ", ")
-                        self.content.onNext(newContent)
+                        let joinedContent = newContentArray.map { $0.joined(separator: ", ") }
+                        let finalContent = joinedContent.joined(separator: "; ")
+                        self.content.onNext(finalContent)
                     })
                     .disposed(by: cell.disposeBag)
             })
             .disposed(by: viewModel.disposeBag)
+
         
         output.itemSelected
             .drive(with: self, onNext: { owner, indexPath in
