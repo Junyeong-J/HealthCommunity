@@ -13,12 +13,11 @@ import JGProgressHUD
 final class MainViewController: BaseViewController<MainView> {
     
     private let viewModel = MainViewModel()
-    let refreshControl = UIRefreshControl()
     
-    lazy var hud: JGProgressHUD = {
-        let loader = JGProgressHUD(style: .dark)
-        return loader
-    }()
+//    lazy var hud: JGProgressHUD = {
+//        let loader = JGProgressHUD(style: .dark)
+//        return loader
+//    }()
     
     
     override func viewDidLoad() {
@@ -39,9 +38,19 @@ final class MainViewController: BaseViewController<MainView> {
             .rx.setDelegate(self)
             .disposed(by: viewModel.disposeBag)
         
-        rootView.wodTableView.refreshControl = refreshControl
-        rootView.feedbackTableView.refreshControl = refreshControl
-        rootView.communicationTableView.refreshControl = refreshControl
+        rootView.wodTableView.refreshControl = rootView.refreshControl
+        rootView.feedbackTableView.refreshControl = rootView.refreshControl
+        rootView.communicationTableView.refreshControl = rootView.refreshControl
+        
+        Observable.merge(
+            rootView.wodTableView.rx.contentOffset.map { $0.y },
+            rootView.feedbackTableView.rx.contentOffset.map { $0.y },
+            rootView.communicationTableView.rx.contentOffset.map { $0.y }
+        )
+        .bind(with: self) { owner, offset in
+            owner.rootView.adjustButtonShape(forScrollOffset: offset)
+        }
+        .disposed(by: viewModel.disposeBag)
         
     }
     
@@ -90,61 +99,56 @@ final class MainViewController: BaseViewController<MainView> {
                 }
                 .disposed(by: viewModel.disposeBag)
         
-        output.refreshLoading
-            .drive(onNext: { [weak self] isLoading in
-                guard let self = self else { return }
-                if isLoading {
-                    self.showLoading()
-                } else {
-                    self.hideLoading()
-                    self.rootView.refreshControl.endRefreshing()
-                }
-            })
-            .disposed(by: viewModel.disposeBag)
+//        output.refreshLoading
+//            .drive(onNext: { [weak self] isLoading in
+//                guard let self = self else { return }
+//                if isLoading {
+//                    self.showLoading()
+//                } else {
+//                    self.hideLoading()
+//                    self.rootView.refreshControl.endRefreshing()
+//                }
+//            })
+//            .disposed(by: viewModel.disposeBag)
         
         Observable.zip(
             rootView.wodTableView.rx.modelSelected(Post.self),
-            rootView.wodTableView.rx.itemSelected)
-        .map { $0.0 }
-        .subscribe(with: self) { owner, postDetail in
+            rootView.wodTableView.rx.itemSelected
+        )
+        .bind(with: self, onNext: { owner, data in
+            let (postDetail, indexPath) = data
             let wodVC = DetailViewController(postDetail: postDetail)
             owner.navigationController?.pushViewController(wodVC, animated: true)
-        }
+            owner.rootView.wodTableView.deselectRow(at: indexPath, animated: true)
+        })
         .disposed(by: viewModel.disposeBag)
         
         Observable.zip(
             rootView.feedbackTableView.rx.modelSelected(Post.self),
-            rootView.feedbackTableView.rx.itemSelected)
-        .map { $0.0 }
-        .subscribe(with: self) { owner, postDetail in
+            rootView.feedbackTableView.rx.itemSelected
+        )
+        .bind(with: self, onNext: { owner, data in
+            let (postDetail, indexPath) = data
             let wodVC = DetailViewController(postDetail: postDetail)
             owner.navigationController?.pushViewController(wodVC, animated: true)
-        }
+            owner.rootView.feedbackTableView.deselectRow(at: indexPath, animated: true)
+        })
         .disposed(by: viewModel.disposeBag)
         
         Observable.zip(
             rootView.communicationTableView.rx.modelSelected(Post.self),
-            rootView.communicationTableView.rx.itemSelected)
-        .map { $0.0 }
-        .subscribe(with: self) { owner, postDetail in
+            rootView.communicationTableView.rx.itemSelected
+        )
+        .bind(with: self, onNext: { owner, data in
+            let (postDetail, indexPath) = data
             let wodVC = DetailViewController(postDetail: postDetail)
             owner.navigationController?.pushViewController(wodVC, animated: true)
-        }
+            owner.rootView.communicationTableView.deselectRow(at: indexPath, animated: true)
+        })
         .disposed(by: viewModel.disposeBag)
         
     }
     
-    func showLoading() {
-        DispatchQueue.main.async {
-            self.hud.show(in: self.view, animated: true)
-        }
-    }
-    
-    func hideLoading() {
-        DispatchQueue.main.async {
-            self.hud.dismiss(animated: true)
-        }
-    }
     
 }
 

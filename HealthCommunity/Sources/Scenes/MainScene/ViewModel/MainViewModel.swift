@@ -42,16 +42,16 @@ final class MainViewModel: BaseViewModel {
             .bind(to: appList)
             .disposed(by: disposeBag)
         
-        input.refreshTrigger
-            .withLatestFrom(input.selectedSegment.asObservable())
-            .flatMapLatest { [weak self] index -> Observable<[Post]> in
-                return self?.fetchPosts(for: index) ?? Observable.just([])
-            }
-            .do(onNext: { _ in
-                refreshLoading.accept(false)
-            })
-            .bind(to: appList)
-            .disposed(by: disposeBag)
+//        input.refreshTrigger
+//            .withLatestFrom(input.selectedSegment.asObservable())
+//            .flatMapLatest { [weak self] index -> Observable<[Post]> in
+//                return self?.fetchPosts(for: index) ?? Observable.just([])
+//            }
+//            .do(onNext: { _ in
+//                refreshLoading.accept(false)
+//            })
+//            .bind(to: appList)
+//            .disposed(by: disposeBag)
         
         return Output(
             postButtonTapped: input.postButtonTap,

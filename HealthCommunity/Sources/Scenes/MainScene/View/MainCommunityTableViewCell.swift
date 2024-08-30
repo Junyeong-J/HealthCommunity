@@ -7,8 +7,23 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 final class MainCommunityTableViewCell: BaseTableViewCell {
+    
+    private var disposeBag = DisposeBag()
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+    }
+    
+    private let containerView: ShadowRoundedView = {
+        let view = ShadowRoundedView()
+        view.backgroundColor = .white
+        return view
+    }()
     
     private let opponentProfileImageView = OpponentProfileImage()
     
@@ -35,11 +50,16 @@ final class MainCommunityTableViewCell: BaseTableViewCell {
     }()
     
     override func configureHierarchy() {
+        contentView.addSubview(containerView)
         [opponentProfileImageView, nicknameLabel,
-         contentLabel, timeLabel].forEach { addSubview($0) }
+         contentLabel, timeLabel].forEach { containerView.addSubview($0) }
     }
     
     override func configureLayout() {
+        containerView.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(10)
+        }
+        
         opponentProfileImageView.snp.makeConstraints { make in
             make.top.leading.equalToSuperview().inset(10)
             make.width.height.equalTo(40)
@@ -68,8 +88,16 @@ final class MainCommunityTableViewCell: BaseTableViewCell {
     }
     
     func configure(post: Post) {
+        
+        if let createImage = post.creator.profileImage {
+            let url = URL(string: APIURL.baseURL + createImage)
+            opponentProfileImageView.kf.setImage(with: url)
+        } else {
+            opponentProfileImageView.image = UIImage(named: "star")
+        }
+        
         nicknameLabel.text = post.creator.nick
         contentLabel.text = post.content
+        timeLabel.text = FormatterManager.shared.formatDate(from: post.createdAt)
     }
-    
 }

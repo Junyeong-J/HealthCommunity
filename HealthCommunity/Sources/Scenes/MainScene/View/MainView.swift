@@ -18,8 +18,31 @@ final class MainView: BaseView {
         segment.insertSegment(withTitle: "피드벡", at: 1, animated: true)
         segment.insertSegment(withTitle: "소통", at: 2, animated: true)
         segment.selectedSegmentIndex = 0
+        
+        // 텍스트 스타일 설정
+        segment.setTitleTextAttributes([
+            NSAttributedString.Key.foregroundColor: UIColor.gray,
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)], for: .normal)
+        segment.setTitleTextAttributes([
+            NSAttributedString.Key.foregroundColor: UIColor.black,
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)], for: .selected)
+        
+        // 배경 및 구분선 제거
+        segment.selectedSegmentTintColor = .clear
+        segment.setBackgroundImage(UIImage(), for: .normal, barMetrics: .default)
+        segment.setDividerImage(UIImage(), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
+        
+        segment.translatesAutoresizingMaskIntoConstraints = false
         return segment
     }()
+
+    private let underLineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
     
     let wodTableView: UITableView = {
         let view = UITableView()
@@ -48,19 +71,26 @@ final class MainView: BaseView {
     let postButton = PostButton()
     
     override func configureHierarchy() {
-        [segmentControl, wodTableView,
+        [segmentControl, underLineView, wodTableView,
          feedbackTableView, communicationTableView,
          postButton].forEach { addSubview($0) }
     }
-    
+
     override func configureLayout() {
         segmentControl.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(10)
             make.height.equalTo(30)
         }
         
+        underLineView.snp.makeConstraints { make in
+            make.top.equalTo(segmentControl.snp.bottom).offset(2)
+            make.height.equalTo(2)
+            make.width.equalTo(segmentControl.snp.width).dividedBy(segmentControl.numberOfSegments)
+            make.leading.equalTo(segmentControl.snp.leading)
+        }
+        
         wodTableView.snp.makeConstraints { make in
-            make.top.equalTo(segmentControl.snp.bottom).offset(10)
+            make.top.equalTo(underLineView.snp.bottom).offset(10)
             make.bottom.horizontalEdges.equalTo(safeAreaLayoutGuide)
         }
         
@@ -78,6 +108,7 @@ final class MainView: BaseView {
             make.width.equalTo(120)
         }
     }
+
     
     override func configureView() {
         wodTableView.isHidden = false
@@ -89,8 +120,44 @@ final class MainView: BaseView {
         wodTableView.isHidden = index != 0
         feedbackTableView.isHidden = index != 1
         communicationTableView.isHidden = index != 2
+        segmentControl.addTarget(self, action: #selector(changeUnderLinePosition), for: .valueChanged)
     }
+
     
+    func adjustButtonShape(forScrollOffset offset: CGFloat) {
+        DispatchQueue.main.async {
+            let isCompact = offset > 100
+            
+            UIView.animate(withDuration: 0.3) {
+                if isCompact {
+                    self.postButton.snp.updateConstraints { make in
+                        make.width.equalTo(50)
+                    }
+                    self.postButton.setTitle("", for: .normal)
+                } else {
+                    self.postButton.snp.updateConstraints { make in
+                        make.width.equalTo(100)
+                    }
+                    self.postButton.setTitle("글쓰기", for: .normal)
+                }
+                self.layoutIfNeeded()
+            }
+        }
+    }
+
     
+    @objc
+    private func changeUnderLinePosition(_ segment: UISegmentedControl) {
+        let halfWidth = segment.frame.width / CGFloat(segment.numberOfSegments)
+        let xPosition = halfWidth * CGFloat(segment.selectedSegmentIndex)
+        
+        UIView.animate(withDuration: 0.3) {
+            self.underLineView.snp.updateConstraints { make in
+                make.leading.equalTo(self.segmentControl.snp.leading).offset(xPosition)
+            }
+            self.layoutIfNeeded()
+        }
+    }
+
     
 }

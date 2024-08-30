@@ -8,8 +8,23 @@
 import UIKit
 import SnapKit
 import Kingfisher
+import RxSwift
+import RxCocoa
 
 final class MainFeedbackTableViewCell: BaseTableViewCell {
+    
+    private var disposeBag = DisposeBag()
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+    }
+    
+    private let containerView: ShadowRoundedView = {
+        let view = ShadowRoundedView()
+        view.backgroundColor = .white
+        return view
+    }()
     
     private let opponentProfileImageView = OpponentProfileImage()
     
@@ -43,11 +58,16 @@ final class MainFeedbackTableViewCell: BaseTableViewCell {
     }()
     
     override func configureHierarchy() {
+        contentView.addSubview(containerView)
         [opponentProfileImageView, nicknameLabel,
-         mainImageView, contentLabel, timeLabel].forEach { addSubview($0) }
+         mainImageView, contentLabel, timeLabel].forEach { containerView.addSubview($0) }
     }
     
     override func configureLayout() {
+        containerView.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(10)
+        }
+        
         opponentProfileImageView.snp.makeConstraints { make in
             make.top.leading.equalToSuperview().inset(10)
             make.width.height.equalTo(40)
@@ -60,7 +80,7 @@ final class MainFeedbackTableViewCell: BaseTableViewCell {
         
         mainImageView.snp.makeConstraints { make in
             make.top.equalTo(opponentProfileImageView.snp.bottom).offset(10)
-            make.horizontalEdges.equalToSuperview().inset(10)
+            make.horizontalEdges.equalToSuperview()
             make.height.equalTo(200)
         }
         
@@ -75,16 +95,16 @@ final class MainFeedbackTableViewCell: BaseTableViewCell {
         }
     }
     
-    override func configureView() {
-        timeLabel.text = "7시간 전"
-        contentLabel.text = "오운완"
-        mainImageView.backgroundColor = .gray
-        nicknameLabel.text = "하루"
-    }
-    
     func configure(post: Post) {
         nicknameLabel.text = post.creator.nick
         contentLabel.text = post.content
+        
+        if let createImage = post.creator.profileImage {
+            let url = URL(string: APIURL.baseURL + createImage)
+            opponentProfileImageView.kf.setImage(with: url)
+        } else {
+            opponentProfileImageView.image = UIImage(named: "star")
+        }
         
         if let firstFile = post.files.first, !firstFile.isEmpty {
             let url = URL(string: APIURL.baseURL + firstFile)
@@ -100,7 +120,8 @@ final class MainFeedbackTableViewCell: BaseTableViewCell {
             }
             mainImageView.isHidden = true
         }
+        
+        timeLabel.text = FormatterManager.shared.formatDate(from: post.createdAt)
     }
-
-    
 }
+
