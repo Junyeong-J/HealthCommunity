@@ -22,7 +22,6 @@ final class PostViewController: BaseViewController<PostView> {
         super.viewDidLoad()
         notificationSelectedMyRoutine()
         notificationHealthKitData()
-        observeTableViewContentSize()
     }
     
     override func bindModel() {
@@ -35,7 +34,8 @@ final class PostViewController: BaseViewController<PostView> {
             albumButtonTap: rootView.photoButton.rx.tap,
             contentData: content.asObserver(),
             healthData: healthData.asObserver(),
-            postButtonTap: rootView.addButton.rx.tap
+            postButtonTap: rootView.addButton.rx.tap,
+            tableSize: rootView.myRoutineDetailTableView.rx
         )
         
         let output = viewModel.transform(input: input)
@@ -104,9 +104,11 @@ final class PostViewController: BaseViewController<PostView> {
                 case 0:
                     let myRoutines = try? owner.myRoutineDetail.value()
                     let routineSelectVC = MyRoutineSelectViewController(selectedMyRoutine: myRoutines)
+                    owner.rootView.tableView.deselectRow(at: indexPath, animated: true)
                     owner.navigationController?.pushViewController(routineSelectVC, animated: true)
                 case 1:
                     let healthDataVC = PostHealthDataViewController(dateString: "2024-08-31")
+                    owner.rootView.tableView.deselectRow(at: indexPath, animated: true)
                     owner.navigationController?.pushViewController(healthDataVC, animated: true)
                 default:
                     break
@@ -137,32 +139,28 @@ final class PostViewController: BaseViewController<PostView> {
             .bind(to: rootView.healthDataLabel.rx.text)
             .disposed(by: viewModel.disposeBag)
         
-    }
-    
-    
-    private func observeTableViewContentSize() {
-        rootView.myRoutineDetailTableView.rx
-            .observe(CGSize.self, "contentSize")
-            .compactMap { $0?.height }
-            .distinctUntilChanged()
-            .subscribe(onNext: { [weak self] height in
-                self?.updateTableViewHeight(height)
-            })
+        output.postResult
+            .drive(with: self) { owner, value in
+                if value {
+                    owner.navigationController?.popViewController(animated: true)
+                } else {
+                    print("error입니다")
+                }
+            }
             .disposed(by: viewModel.disposeBag)
-    }
-    
-    private func updateTableViewHeight(_ height: CGFloat) {
-        rootView.myRoutineDetailTableView.snp.updateConstraints { make in
-            make.height.equalTo(height)
-        }
-        UIView.animate(withDuration: 0.3) {
-            self.rootView.layoutIfNeeded()
-        }
+        
+        output.tableSizeOutput
+            .bind(with: self) { owner, height in
+                owner.updateTableViewHeight(height)
+            }
+            .disposed(by: viewModel.disposeBag)
+        
     }
     
 }
 
 extension PostViewController {
+    
     private func openGallery() {
         let remainingImages = 5 - rootView.imageViews.count
         guard remainingImages > 0 else { return }
@@ -174,6 +172,16 @@ extension PostViewController {
         let picker = PHPickerViewController(configuration: configuration)
         picker.delegate = self
         present(picker, animated: true)
+    }
+    
+    private func updateTableViewHeight(_ height: CGFloat) {
+        rootView.myRoutineDetailTableView.snp.updateConstraints { make in
+            make.height.equalTo(height)
+        }
+        
+        UIView.animate(withDuration: 0.3) {
+            self.rootView.layoutIfNeeded()
+        }
     }
 }
 
