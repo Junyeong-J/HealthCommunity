@@ -11,6 +11,9 @@ import Alamofire
 enum LSLPRouter {
     case auth(AuthRouter)
     case post(PostRouter)
+    case profile(ProfileRouter)
+    case comment(CommentRouter)
+    case payment(PaymentRouter)
 }
 
 extension LSLPRouter: TargetType {
@@ -21,6 +24,12 @@ extension LSLPRouter: TargetType {
             return router.baseURL
         case .post(let router):
             return router.baseURL
+        case .profile(let router):
+            return router.baseURL
+        case .comment(let router):
+            return router.baseURL
+        case .payment(let router):
+            return router.baseURL
         }
     }
     
@@ -29,6 +38,12 @@ extension LSLPRouter: TargetType {
         case .auth(let router):
             return router.path
         case .post(let router):
+            return router.path
+        case .profile(let router):
+            return router.path
+        case .comment(let router):
+            return router.path
+        case .payment(let router):
             return router.path
         }
     }
@@ -39,6 +54,12 @@ extension LSLPRouter: TargetType {
             return router.method
         case .post(let router):
             return router.method
+        case .profile(let router):
+            return router.method
+        case .comment(let router):
+            return router.method
+        case .payment(let router):
+            return router.method
         }
     }
     
@@ -47,6 +68,12 @@ extension LSLPRouter: TargetType {
         case .auth(let router):
             return router.header
         case .post(let router):
+            return router.header
+        case .profile(let router):
+            return router.header
+        case .comment(let router):
+            return router.header
+        case .payment(let router):
             return router.header
         }
     }
@@ -57,6 +84,12 @@ extension LSLPRouter: TargetType {
             return router.parameters
         case .post(let router):
             return router.parameters
+        case .profile(let router):
+            return router.parameters
+        case .comment(let router):
+            return router.parameters
+        case .payment(let router):
+            return router.parameters
         }
     }
     
@@ -65,6 +98,12 @@ extension LSLPRouter: TargetType {
         case .auth(let router):
             return router.queryItems
         case .post(let router):
+            return router.queryItems
+        case .profile(let router):
+            return router.queryItems
+        case .comment(let router):
+            return router.queryItems
+        case .payment(let router):
             return router.queryItems
         }
     }
@@ -75,15 +114,12 @@ extension LSLPRouter: TargetType {
             return router.body
         case .post(let router):
             return router.body
-        }
-    }
-    
-    func asMultipartFormData() -> (MultipartFormData) -> Void {
-        switch self {
-        case .post(let router):
-            return router.asMultipartFormData()
-        default:
-            return { _ in }
+        case .profile(let router):
+            return router.body
+        case .comment(let router):
+            return router.body
+        case .payment(let router):
+            return router.body
         }
     }
 }

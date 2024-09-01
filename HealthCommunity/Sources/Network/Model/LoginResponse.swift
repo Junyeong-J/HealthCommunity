@@ -22,3 +22,7 @@ struct LoginResponse: Decodable {
         case refreshToken
     }
 }
+
+struct TokenResponse: Decodable {
+    let accessToken: String
+}

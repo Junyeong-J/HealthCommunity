@@ -13,7 +13,7 @@ enum AuthRouter {
     case SignUpAPI(email: String, password: String, nick: String)
     case EmailCheck(email: String)
     case LoginAPI(email: String, password: String)
-    
+    case TokenAPI
 }
 
 extension AuthRouter: TargetType {
@@ -30,6 +30,8 @@ extension AuthRouter: TargetType {
             return APIURL.emailCheckURL
         case .LoginAPI:
             return APIURL.loginURL
+        case .TokenAPI:
+            return APIURL.tokenURL
         }
     }
     
@@ -37,6 +39,8 @@ extension AuthRouter: TargetType {
         switch self {
         case .SignUpAPI, .EmailCheck, .LoginAPI:
             return .post
+        case .TokenAPI:
+            return .get
         }
     }
     
@@ -46,6 +50,12 @@ extension AuthRouter: TargetType {
             return [
                 Header.contentType.rawValue: Header.json.rawValue,
                 Header.sesacKey.rawValue: APIKey.key
+            ]
+        case .TokenAPI:
+            return [
+                Header.authorization.rawValue: UserDefaultsManager.shared.token,
+                Header.sesacKey.rawValue: APIKey.key,
+                Header.refresh.rawValue: UserDefaultsManager.shared.refreshToken
             ]
         }
     }
@@ -78,6 +88,8 @@ extension AuthRouter: TargetType {
                 Body.password.rawValue: password
             ]
             return try? JSONSerialization.data(withJSONObject: params, options: [])
+        case .TokenAPI:
+            return nil
         }
     }
     
