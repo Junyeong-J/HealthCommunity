@@ -65,5 +65,9 @@ final class FormatterManager {
         formatter.dateFormat = "yyyy-MM-dd"
         return formatter.date(from: date) ?? Date()
     }
+    
+    func getCurrentDate() -> String {
+        return formatCalendarDate(Date())
+    }
 }
 
