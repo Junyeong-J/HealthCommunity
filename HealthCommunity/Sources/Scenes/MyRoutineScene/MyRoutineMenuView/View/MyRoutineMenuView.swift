@@ -29,7 +29,7 @@ final class MyRoutineMenuView: BaseView {
     let addButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("오늘 운동 등록하기", for: .normal)
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = .myAppMain
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 10
         return button

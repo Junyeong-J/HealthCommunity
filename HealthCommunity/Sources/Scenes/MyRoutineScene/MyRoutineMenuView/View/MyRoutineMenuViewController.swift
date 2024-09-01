@@ -87,6 +87,7 @@ final class MyRoutineMenuViewController: BaseViewController<MyRoutineMenuView> {
                         let joinedContent = newContentArray.map { $0.joined(separator: ", ") }
                         let finalContent = joinedContent.joined(separator: "; ")
                         self.content.onNext(finalContent)
+                        cell.selectionStyle = .default
                     })
                     .disposed(by: cell.disposeBag)
             })
@@ -99,14 +100,17 @@ final class MyRoutineMenuViewController: BaseViewController<MyRoutineMenuView> {
                 case 0:
                     let myRoutines = try? owner.myRoutineDetail.value()
                     let routineSelectVC = MyRoutineSelectViewController(selectedMyRoutine: myRoutines)
+                    owner.rootView.tableView.deselectRow(at: indexPath, animated: true)
                     owner.navigationController?.pushViewController(routineSelectVC, animated: true)
                 case 1:
+                    owner.rootView.tableView.deselectRow(at: indexPath, animated: true)
                     owner.navigationController?.pushViewController(HealthDataViewController(dateString: owner.selectedDate), animated: true)
                 default:
                     break
                 }
             })
             .disposed(by: viewModel.disposeBag)
+
         
         output.routineList
             .flatMap { routines -> Observable<[(String, String)]> in

@@ -42,8 +42,8 @@ final class MyRoutineViewController: BaseViewController<MyRoutineView> {
         rootView.calendarView.dataSource = self
         
         selectedDate = FormatterManager.shared.formatCalendarDate(Date())
-        rootView.calendarView.appearance.eventDefaultColor = UIColor.green
-        rootView.calendarView.appearance.eventSelectionColor = UIColor.green
+        rootView.calendarView.appearance.eventDefaultColor = UIColor.myAppMain
+        rootView.calendarView.appearance.eventSelectionColor = UIColor.myAppMain
     }
     
     override func bindModel() {
@@ -81,6 +81,17 @@ final class MyRoutineViewController: BaseViewController<MyRoutineView> {
                 }
                 .disposed(by: viewModel.disposeBag)
         
+        output.todayData
+            .compactMap { $0.first }
+            .map { content1 -> (String, String, String, String) in
+                let components = content1.split(separator: ",").map { $0.trimmingCharacters(in: .whitespaces) }
+                guard components.count == 4 else { return ("0", "0.0", "0", "0") }
+                return (components[0], components[1], components[2], components[3])
+            }
+            .bind(with: self, onNext: { owner, data in
+                owner.rootView.updateContentView(steps: data.0, distance: data.1, calories: data.2, standTime: data.3)
+            })
+            .disposed(by: viewModel.disposeBag)
     }
     
 }

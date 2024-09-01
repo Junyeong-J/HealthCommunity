@@ -33,7 +33,7 @@ final class MyRoutineMenuViewModel: BaseViewModel {
     }
     
     func transform(input: Input) -> Output {
-        let menuItems = Driver.just(["루틴 선택", "건강 데이터 작성 및 가져오기"])
+        let menuItems = Driver.just(["루틴 선택", "건강 데이터 가져오기"])
         
         let formattedHealthData = input.healthData
             .map { healthData -> String in
@@ -56,7 +56,7 @@ final class MyRoutineMenuViewModel: BaseViewModel {
                 guard let self = self else { return Observable.just(false) }
                 
                 return self.networkManager.request(
-                    api: .post(.posts(
+                    api: .post(.myRoutinePosts(
                         title: input.selectedDate,
                         content: routineData,
                         content1: healthData,

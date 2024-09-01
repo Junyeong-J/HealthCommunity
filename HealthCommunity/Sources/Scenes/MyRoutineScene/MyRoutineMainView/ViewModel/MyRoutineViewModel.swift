@@ -28,7 +28,7 @@ final class MyRoutineViewModel: BaseViewModel {
         let recordButtonTapped: Observable<String>
         let myList: Observable<[Post]>
         let setDateList: Observable<[Routines]>
-        let content1List: Observable<[String]>
+        let todayData: Observable<[String]>
     }
     
     func transform(input: Input) -> Output {
@@ -66,7 +66,7 @@ final class MyRoutineViewModel: BaseViewModel {
             }
             .share(replay: 1, scope: .whileConnected)
         
-        let content1List = resultList
+        let todatData = resultList
             .map { posts in
                 posts.compactMap { post in
                     post.content1
@@ -78,7 +78,7 @@ final class MyRoutineViewModel: BaseViewModel {
             recordButtonTapped: recordButtonTapped,
             myList: myList,
             setDateList: routineList,
-            content1List: content1List
+            todayData: todatData
         )
     }
     

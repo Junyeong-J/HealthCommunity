@@ -35,7 +35,7 @@ final class MyRoutineView: BaseView {
     let activityButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("오늘 운동 기록하기", for: .normal)
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = .myAppMain
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 10
         return button
@@ -53,6 +53,22 @@ final class MyRoutineView: BaseView {
         return view
     }()
     
+    let todayDataView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemGray6
+        view.layer.cornerRadius = 10
+        return view
+    }()
+    
+    let summaryLabel: UILabel = {
+        let label = UILabel()
+        label.font = Font.regular13
+        label.textColor = .black
+        label.textAlignment = .center
+        label.numberOfLines = 1
+        return label
+    }()
+    
     let myRoutineDetailTableView: UITableView = {
         let view = UITableView()
         view.register(MyRoutineResultTableViewCell.self, forCellReuseIdentifier: MyRoutineResultTableViewCell.identifier)
@@ -65,6 +81,8 @@ final class MyRoutineView: BaseView {
         [segmentedControl, calendarView, graphView,
          activityButton, myRoutineView].forEach { addSubview($0) }
         myRoutineView.addSubview(myRoutineDetailTableView)
+        addSubview(todayDataView)
+        [summaryLabel].forEach { todayDataView.addSubview($0) }
     }
     
     override func configureLayout() {
@@ -87,7 +105,7 @@ final class MyRoutineView: BaseView {
         }
         
         myRoutineView.snp.makeConstraints { make in
-            make.top.equalTo(calendarView.snp.bottom).offset(10)
+            make.top.equalTo(todayDataView.snp.bottom).offset(10)
             make.horizontalEdges.equalToSuperview()
             make.bottom.equalTo(safeAreaLayoutGuide)
         }
@@ -102,6 +120,16 @@ final class MyRoutineView: BaseView {
             make.height.equalTo(50)
         }
         
+        todayDataView.snp.makeConstraints { make in
+            make.top.equalTo(graphView.snp.bottom).offset(20)
+            make.horizontalEdges.equalToSuperview().inset(20)
+            make.height.equalTo(40)
+        }
+        
+        summaryLabel.snp.makeConstraints { make in
+            make.edges.equalTo(todayDataView).inset(10)
+        }
+        
         updateView(index: segmentedControl.selectedSegmentIndex)
     }
     
@@ -111,18 +139,31 @@ final class MyRoutineView: BaseView {
             graphView.isHidden = true
             myRoutineView.isHidden = true
             activityButton.isHidden = false
+            todayDataView.isHidden = true
         } else {
             calendarView.isHidden = true
             graphView.isHidden = false
             myRoutineView.isHidden = true
             activityButton.isHidden = true
+            todayDataView.isHidden = true
         }
     }
     
     func isRoutineView(_ isCollect: Bool) {
         myRoutineView.isHidden = !isCollect
+        activityButton.isHidden = isCollect
         activityButton.isEnabled = !isCollect
+        todayDataView.isHidden = !isCollect
+    }
+    
+    func updateContentView(steps: String, distance: String, calories: String, standTime: String) {
+        summaryLabel.text = "걸음: \(steps), 거리: \(distance)km, 칼로리: \(calories)kcal, 서 있기시간: \(standTime)분"
     }
     
 }
 
+extension MyRoutineView: NaviProtocol {
+    var navigationTitle: String {
+        return NavigationTitle.myToutine.title
+    }
+}

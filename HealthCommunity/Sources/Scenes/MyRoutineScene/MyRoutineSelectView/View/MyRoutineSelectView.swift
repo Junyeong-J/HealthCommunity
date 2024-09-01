@@ -10,8 +10,6 @@ import SnapKit
 
 final class MyRoutineSelectView: BaseView {
     
-    let searchView = UISearchBar()
-    
     private let fitnessTitles = ["하체", "가슴", "등", "어깨", "팔", "역도", "복근", "기타", "유산소"]
     
     let collectionView: UICollectionView = {
@@ -74,19 +72,16 @@ final class MyRoutineSelectView: BaseView {
     }
     
     override func configureHierarchy() {
-        [searchView, collectionView, tableView, bottomView].forEach { addSubview($0) }
+        [collectionView, tableView, bottomView].forEach { addSubview($0) }
         bottomView.addSubview(selectedCollectionView)
         bottomView.addSubview(selectButton)
     }
     
     override func configureLayout() {
-        searchView.snp.makeConstraints { make in
-            make.top.horizontalEdges.equalTo(safeAreaLayoutGuide)
-        }
         
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(searchView.snp.bottom).offset(10)
-            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(safeAreaLayoutGuide).inset(10)
+            make.horizontalEdges.equalToSuperview()
             make.height.equalTo(42)
         }
         
@@ -126,5 +121,11 @@ final class MyRoutineSelectView: BaseView {
             make.height.equalTo(isExpand ? 30 : 0)
         }
         layoutIfNeeded()
+    }
+}
+
+extension MyRoutineSelectView: NaviProtocol {
+    var navigationTitle: String {
+        return NavigationTitle.myRoutineSelete.title
     }
 }
