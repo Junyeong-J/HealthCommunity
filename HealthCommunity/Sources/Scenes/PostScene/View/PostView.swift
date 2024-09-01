@@ -116,7 +116,7 @@ final class PostView: BaseView, UITextViewDelegate {
     let addButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("글쓰기", for: .normal)
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = .myAppMain
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 10
         return button
