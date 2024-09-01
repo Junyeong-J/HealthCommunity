@@ -12,7 +12,7 @@ final class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tabBar.tintColor = .systemBlue
+        tabBar.tintColor = .myAppMain
         tabBar.unselectedItemTintColor = .gray
         
         enum TabBase: Int, CaseIterable {
@@ -25,7 +25,7 @@ final class TabBarController: UITabBarController {
                 case .myRoutine:
                     return "내 루틴"
                 case .chat:
-                    return "채팅"
+                    return "클래스"
                 case .profile:
                     return "프로필"
                 }
@@ -38,7 +38,7 @@ final class TabBarController: UITabBarController {
                 case .myRoutine:
                     return UIImage(systemName: "figure.run")
                 case .chat:
-                    return UIImage(systemName: "message")
+                    return UIImage(systemName: "figure.run")
                 case .profile:
                     return UIImage(systemName: "person")
                 }
@@ -51,7 +51,7 @@ final class TabBarController: UITabBarController {
                 case .myRoutine:
                     return MyRoutineViewController()
                 case .chat:
-                    return ChatViewController()
+                    return HealthClassViewController()
                 case .profile:
                     return ProfileViewController()
                 }

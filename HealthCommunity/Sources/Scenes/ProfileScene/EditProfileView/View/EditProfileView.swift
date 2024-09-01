@@ -257,3 +257,9 @@ final class EditProfileView: BaseView {
     }
     
 }
+
+extension EditProfileView: NaviProtocol {
+    var navigationTitle: String {
+        return NavigationTitle.editProfile.title
+    }
+}

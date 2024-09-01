@@ -195,4 +195,8 @@ final class ProfileView: BaseView {
     }
 }
 
-
+extension ProfileView: NaviProtocol {
+    var navigationTitle: String {
+        return NavigationTitle.profile.title
+    }
+}

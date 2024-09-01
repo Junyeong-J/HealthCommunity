@@ -29,3 +29,9 @@ final class LikeRoutineView: BaseView {
         }
     }
 }
+
+extension LikeRoutineView: NaviProtocol {
+    var navigationTitle: String {
+        return NavigationTitle.likeRoutine.title
+    }
+}
