@@ -56,6 +56,13 @@ final class CommentViewController: BaseViewController<CommentView> {
                     cell.configure(with: comment)
                 }
                 .disposed(by: viewModel.disposeBag)
+        
+        input.sendButtonTap
+            .bind(with: self, onNext: { owner, _ in
+                owner.rootView.commentTextField.text = ""
+                owner.rootView.commentTextField.resignFirstResponder()
+            })
+            .disposed(by: viewModel.disposeBag)
     }
     
 }

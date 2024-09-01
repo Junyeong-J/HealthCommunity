@@ -53,3 +53,9 @@ final class CommentView: BaseView {
     }
     
 }
+
+extension CommentView: NaviProtocol {
+    var navigationTitle: String {
+        return NavigationTitle.comment.title
+    }
+}
