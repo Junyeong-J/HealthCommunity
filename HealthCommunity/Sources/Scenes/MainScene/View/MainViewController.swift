@@ -14,12 +14,6 @@ final class MainViewController: BaseViewController<MainView> {
     
     private let viewModel = MainViewModel()
     
-//    lazy var hud: JGProgressHUD = {
-//        let loader = JGProgressHUD(style: .dark)
-//        return loader
-//    }()
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         observePostSuccessNotification()
@@ -59,7 +53,12 @@ final class MainViewController: BaseViewController<MainView> {
         let input = MainViewModel.Input(
             postButtonTap: rootView.postButton.rx.tap,
             selectedSegment: rootView.segmentControl.rx.selectedSegmentIndex,
-            refreshTrigger: rootView.refreshControl.rx.controlEvent(.valueChanged)
+            refreshTrigger: rootView.refreshControl.rx.controlEvent(.valueChanged),
+            loadMoreTrigger: Observable.merge(
+                rootView.wodTableView.rx.reachedBottom(offset: 100).asObservable(),
+                rootView.feedbackTableView.rx.reachedBottom(offset: 100).asObservable(),
+                rootView.communicationTableView.rx.reachedBottom(offset: 100).asObservable()
+            ).asObservable()
         )
         
         let output = viewModel.transform(input: input)
@@ -87,7 +86,7 @@ final class MainViewController: BaseViewController<MainView> {
                             owner.present(VC, animated: true, completion: nil)
                         }
                         .disposed(by: cell.disposeBag)
-                        
+                    
                 }
                 .disposed(by: viewModel.disposeBag)
         
@@ -119,17 +118,14 @@ final class MainViewController: BaseViewController<MainView> {
                 }
                 .disposed(by: viewModel.disposeBag)
         
-//        output.refreshLoading
-//            .drive(onNext: { [weak self] isLoading in
-//                guard let self = self else { return }
-//                if isLoading {
-//                    self.showLoading()
-//                } else {
-//                    self.hideLoading()
-//                    self.rootView.refreshControl.endRefreshing()
-//                }
-//            })
-//            .disposed(by: viewModel.disposeBag)
+        output.refreshLoading
+            .drive(onNext: { [weak self] isLoading in
+                guard let self = self else { return }
+                if !isLoading {
+                    self.rootView.refreshControl.endRefreshing()
+                }
+            })
+            .disposed(by: viewModel.disposeBag)
         
         Observable.zip(
             rootView.wodTableView.rx.modelSelected(Post.self),
@@ -177,7 +173,7 @@ extension MainViewController {
         NotificationCenter.default.rx.notification(Notification.Name("postSuccess"))
             .bind(with: self, onNext: { owner, _ in
                 let selectedSegment = owner.rootView.segmentControl.selectedSegmentIndex
-                owner.viewModel.refreshCurrentSegment(selectedSegment)
+                //                owner.viewModel.refreshCurrentSegment(selectedSegment)
             })
             .disposed(by: viewModel.disposeBag)
     }

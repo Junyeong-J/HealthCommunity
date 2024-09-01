@@ -14,14 +14,18 @@ final class MainViewModel: BaseViewModel {
     let disposeBag = DisposeBag()
     
     private let networkManager = LSLPAPIManager.shared
-    private var isLoad = true
     
-    private let appList = PublishSubject<[Post]>()
+    private var nextCursor: String = ""
+    private var isLoad: Bool = false
+    private var isMoreData: Bool = true
+    
+    private let appList = BehaviorRelay<[Post]>(value: [])
     
     struct Input {
         let postButtonTap: ControlEvent<Void>
         let selectedSegment: ControlProperty<Int>
         let refreshTrigger: ControlEvent<Void>
+        let loadMoreTrigger: Observable<Void>
     }
     
     struct Output {
@@ -54,68 +58,96 @@ final class MainViewModel: BaseViewModel {
             .throttle(.seconds(1), scheduler: MainScheduler.instance)
             .distinctUntilChanged()
             .flatMapLatest { [weak self] index -> Observable<[Post]> in
-                return self?.fetchPosts(for: index) ?? Observable.just([])
+                guard let self = self else { return Observable.just([]) }
+                self.pagination()
+                return self.fetchPosts(for: index)
             }
+            .do(onNext: { [weak self] _ in
+                refreshLoading.accept(false)
+                self?.isLoad = false
+            })
             .bind(to: appList)
             .disposed(by: disposeBag)
         
-        //        input.refreshTrigger
-        //            .withLatestFrom(input.selectedSegment.asObservable())
-        //            .flatMapLatest { [weak self] index -> Observable<[Post]> in
-        //                return self?.fetchPosts(for: index) ?? Observable.just([])
-        //            }
-        //            .do(onNext: { _ in
-        //                refreshLoading.accept(false)
-        //            })
-        //            .bind(to: appList)
-        //            .disposed(by: disposeBag)
+        input.refreshTrigger
+            .withLatestFrom(input.selectedSegment.asObservable())
+            .flatMapLatest { [weak self] index -> Observable<[Post]> in
+                guard let self = self else { return Observable.just([]) }
+                self.pagination()
+                return self.fetchPosts(for: index)
+            }
+            .do(onNext: { [weak self] _ in
+                refreshLoading.accept(false)
+                self?.isLoad = false
+            })
+            .bind(to: appList)
+            .disposed(by: disposeBag)
+        
+        input.loadMoreTrigger
+            .withLatestFrom(input.selectedSegment.asObservable())
+            .filter { [weak self] _ in
+                !(self?.isLoad ?? true) && (self?.isMoreData ?? true)
+            }
+            .flatMapLatest { [weak self] index -> Observable<[Post]> in
+                guard let self = self else { return Observable.just([]) }
+                self.isLoad = true
+                return self.fetchPosts(for: index)
+            }
+            .do(onNext: { [weak self] newPosts in
+                self?.isLoad = false
+                guard let self = self else { return }
+                if newPosts.isEmpty {
+                    self.isMoreData = false
+                } else {
+                    self.appList.accept(self.appList.value + newPosts)
+                }
+            })
+            .subscribe()
+            .disposed(by: disposeBag)
         
         return Output(
             postButtonTapped: input.postButtonTap,
             selectedSegment: input.selectedSegment,
-            items: appList,
+            items: appList.asObservable(),
             refreshLoading: refreshLoading.asDriver(onErrorJustReturn: false)
         )
     }
-}
-
-
-extension MainViewModel {
     
-    func refreshCurrentSegment(_ index: Int) {
-        fetchPosts(for: index)
-            .bind(to: appList)
-            .disposed(by: disposeBag)
+    private func pagination() {
+        self.nextCursor = ""
+        self.isMoreData = true
+        self.appList.accept([])
     }
     
     private func fetchPosts(for index: Int) -> Observable<[Post]> {
-        let request: Single<Result<PostViewResponse, APIError>>
+        let productId: String
         
         switch index {
         case 0:
-            request = self.networkManager.request(
-                api: .post(.postView(next: "", limit: "5", productId: "오운완")),
-                model: PostViewResponse.self
-            )
+            productId = "오운완"
         case 1:
-            request = self.networkManager.request(
-                api: .post(.postView(next: "", limit: "5", productId: "피드백")),
-                model: PostViewResponse.self
-            )
+            productId = "피드백"
         case 2:
-            request = self.networkManager.request(
-                api: .post(.postView(next: "", limit: "5", productId: "소통")),
-                model: PostViewResponse.self
-            )
+            productId = "소통"
         default:
             return Observable.just([])
         }
         
+        let request = self.networkManager.request(
+            api: .post(.postView(next: nextCursor, limit: "5", productId: productId)),
+            model: PostViewResponse.self
+        )
+        
         return request
             .asObservable()
-            .map { result in
+            .map { [weak self] result in
                 switch result {
                 case .success(let response):
+                    if response.nextCursor == "0" {
+                        self?.isMoreData = false
+                    } else {
+                        self?.nextCursor = response.nextCursor
+                    }
                     return response.data
                 case .failure(let error):
                     print("Error: \(error)")
@@ -123,5 +155,4 @@ extension MainViewModel {
                 }
             }
     }
-    
 }

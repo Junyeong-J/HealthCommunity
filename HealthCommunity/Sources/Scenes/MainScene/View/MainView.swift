@@ -157,3 +157,9 @@ final class MainView: BaseView {
     }
 
 }
+
+extension MainView: NaviProtocol {
+    var navigationTitle: String {
+        return NavigationTitle.main.title
+    }
+}
