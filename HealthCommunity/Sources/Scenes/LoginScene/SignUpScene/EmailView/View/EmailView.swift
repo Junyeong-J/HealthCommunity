@@ -31,14 +31,12 @@ final class EmailView: BaseView {
         return stview
     }()
     
-    //MARK: - 이메일 입력부분
     let emailTextField : LineTextField = {
         let tf = LineTextField(style: .email)
         tf.keyboardType = .emailAddress
         return tf
     }()
     
-    //MARK: - 설명부분
     private let explanationLabel: UILabel = {
         let label = UILabel()
         label.text = "반드시 이메일 형식에 맞게 입력해 주세요"
@@ -58,7 +56,6 @@ final class EmailView: BaseView {
         return button
     }()
     
-    //MARK: - 버튼
     var nextButton = BaseButton(title: .next)
     
     override func configureHierarchy() {
@@ -100,5 +97,9 @@ final class EmailView: BaseView {
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(20)
             make.height.equalTo(50)
         }
+    }
+    
+    override func configureView() {
+        nextButton.backgroundColor = .gray
     }
 }

@@ -32,7 +32,7 @@ final class LoginViewModel: BaseViewModel {
             .withLatestFrom(Observable.combineLatest(input.email, input.password))
             .filter { !$0.0.isEmpty && !$0.1.isEmpty }
             .flatMapLatest { email, password in
-                LSLPAPIManager.shared.request(api: .LoginAPI(email: email, password: password), model: LoginResponse.self)
+                LSLPAPIManager.shared.request(api: .auth(.LoginAPI(email: email, password: password)), model: LoginResponse.self)
                     .map { result -> (String, Bool) in
                         switch result {
                         case .success(let response):

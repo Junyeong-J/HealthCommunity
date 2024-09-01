@@ -10,7 +10,9 @@ import RxSwift
 import RxCocoa
 
 final class EmailViewModel: BaseViewModel {
+    
     let disposeBag = DisposeBag()
+    private let isEmail = BehaviorRelay<Bool>(value: false)
     
     struct Input {
         let emailCheckButtonTap: ControlEvent<Void>
@@ -33,39 +35,37 @@ final class EmailViewModel: BaseViewModel {
             .distinctUntilChanged()
             .filter { !$0.isEmpty }
             .flatMapLatest { email in
-                LSLPAPIManager.shared.request(api: .EmailCheck(email: email), model: EmailCheck.self)
-                    .map { result -> (String, Bool) in
+                LSLPAPIManager.shared.request(api: .auth(.EmailCheck(email: email)), model: EmailCheck.self)
+                    .flatMap { [weak self] result -> Single<(String, Bool)> in
                         switch result {
                         case .success(let response):
-                            return (response.message, true)
+                            self?.isEmail.accept(true)
+                            return Single.just((response.message, true))
                         case .failure(let error):
-                            return (self.errorMessage(for: error), false)
+                            let errorMessage = self?.errorMessage(error: error) ?? "오류가 발생했습니다."
+                            self?.isEmail.accept(false)
+                            return Single.just((errorMessage, false))
                         }
                     }
-                    .catchAndReturn(("알 수 없는 오류가 발생했습니다.", false))
             }
             .share(replay: 1)
         
         let emailCheckResultText = emailCheckResult.map { $0.0 }
-        let isEmail = emailCheckResult.map { $0.1 }
+        let isEmail = isEmail.asObservable()
         
         return Output(emailCheckResult: emailCheckResultText, isEmail: isEmail, nextButtonTapped: input.nextButtonTap, email: input.email)
     }
+}
+
+extension EmailViewModel {
     
-    
-    private func errorMessage(for error: APIError) -> String {
+    private func errorMessage(error: APIError) -> String {
         switch error {
-        case .customError(let statusCode, let message):
-            switch statusCode {
-            case 400:
-                return "이메일을 적어주세요."
-            case 409:
-                return message
-            default:
-                return "오류가 발생했습니다."
-            }
+        case .customError(_, let message):
+            return message
         default:
             return "네트워크 오류가 발생했습니다."
         }
     }
+    
 }

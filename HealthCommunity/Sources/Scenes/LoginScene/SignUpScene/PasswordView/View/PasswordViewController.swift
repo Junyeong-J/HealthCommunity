@@ -24,7 +24,6 @@ final class PasswordViewController: BaseViewController<PasswordView> {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -60,6 +59,13 @@ final class PasswordViewController: BaseViewController<PasswordView> {
                 .disposed(by: disposeBag)
         }
         
+        output.isValidPassword
+            .bind(with: self) { owner, isValid in
+                owner.rootView.passwordNextbt.isEnabled = isValid
+                owner.rootView.passwordNextbt.backgroundColor = isValid ? .myAppMain : .myAppGray
+            }
+            .disposed(by: disposeBag)
+        
         output.nextButtonTapped
             .withLatestFrom(Observable.combineLatest(output.password, output.email))
             .bind(with: self) { owner, value in
@@ -67,7 +73,5 @@ final class PasswordViewController: BaseViewController<PasswordView> {
                 owner.navigationController?.pushViewController(nickVC, animated: true)
             }
             .disposed(by: disposeBag)
-        
     }
-    
 }

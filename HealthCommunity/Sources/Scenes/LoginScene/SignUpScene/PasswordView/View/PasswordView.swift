@@ -43,7 +43,6 @@ final class PasswordView: BaseView {
         return stview
     }()
     
-    //MARK: - 이메일 입력부분
     let passwordInputTextField: LineTextField = {
         let tf = LineTextField(style: .passwordCheck)
         tf.textColor = .black
@@ -55,7 +54,6 @@ final class PasswordView: BaseView {
         return tf
     }()
     
-    //MARK: - 설명부분
     private func checkImage() -> UIImageView {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "checkmark")?.withTintColor(.gray, renderingMode: .alwaysOriginal)
@@ -83,9 +81,7 @@ final class PasswordView: BaseView {
         return PasswordRequirements.allCases.map { explainStackView(requirements: $0) }
     }()
     
-    //MARK: - 버튼
     let passwordNextbt = BaseButton(title: .next)
-    
     
     override func configureHierarchy() {
         [passwordInputTextField, passwordStackView, passwordNextbt].forEach { addSubview($0) }

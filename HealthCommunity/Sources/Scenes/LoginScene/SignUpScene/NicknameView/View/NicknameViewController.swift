@@ -55,8 +55,14 @@ final class NicknameViewController: BaseViewController<NicknameView> {
             .bind(with: self, onNext: { owner, value in
                 if value.success {
                     let loginVC = LoginViewController()
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "signupSuccess"), object: nil)
-                    owner.navigationController?.pushViewController(loginVC, animated: true)
+                    let userInfo = ["message": value.message]
+                    NotificationManager.shared.post(NotificationManager.Names.signupSuccess, userInfo: userInfo)
+                    let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+                    let sceneDelegate = windowScene?.delegate as? SceneDelegate
+                    
+                    let rootViewController = LoginViewController()
+                    sceneDelegate?.window?.rootViewController = rootViewController
+                    sceneDelegate?.window?.makeKeyAndVisible()
                 } else {
                     owner.view.makeToast(value.message)
                 }

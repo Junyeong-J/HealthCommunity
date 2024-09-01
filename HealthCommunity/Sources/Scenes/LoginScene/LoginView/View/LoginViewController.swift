@@ -15,10 +15,11 @@ final class LoginViewController: BaseViewController<LoginView> {
     private var isShowToast = false
     private let viewModel = LoginViewModel()
     private let disposeBag = DisposeBag()
+    private var signupSuccessObserver: NSObjectProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        NotificationCenter.default.addObserver(self, selector: #selector(showSignupSuccessToast), name: NSNotification.Name(rawValue: "signupSuccess"), object: nil)
+        configureNavigationBar()
     }
     
     override func configureView() {
@@ -46,7 +47,7 @@ final class LoginViewController: BaseViewController<LoginView> {
                     let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
                     let sceneDelegate = windowScene?.delegate as? SceneDelegate
                     
-                    let rootViewController = MainViewController()
+                    let rootViewController = TabBarController()
                     sceneDelegate?.window?.rootViewController = rootViewController
                     sceneDelegate?.window?.makeKeyAndVisible()
                 } else {
@@ -55,5 +56,4 @@ final class LoginViewController: BaseViewController<LoginView> {
             })
             .disposed(by: disposeBag)
     }
-    
 }

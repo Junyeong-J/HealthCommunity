@@ -53,9 +53,6 @@ final class EmailViewController: BaseViewController<EmailView> {
                 owner.navigationController?.pushViewController(passwordVC, animated: true)
             }
             .disposed(by: disposeBag)
-        
     }
-    
-    
-    
+
 }

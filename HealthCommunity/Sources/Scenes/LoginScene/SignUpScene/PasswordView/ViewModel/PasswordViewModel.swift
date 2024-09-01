@@ -29,6 +29,7 @@ final class PasswordViewModel: BaseViewModel {
         let nextButtonTapped: ControlEvent<Void>
         let password: Observable<String>
         let email: Observable<String>
+        let isValidPassword: Observable<Bool>
     }
     
     func transform(input: Input) -> Output {
@@ -42,9 +43,22 @@ final class PasswordViewModel: BaseViewModel {
         let isLengthValid = password.map { $0.count >= 8 && $0.count <= 16 }
         let isWhitespace = password.map { $0.rangeOfCharacter(from: .whitespaces) == nil }
         
-        return Output(isNumber: isNumber, isSpecialCharacter: isSpecialCharacter,
-                      isLowercase: isLowercase, isLengthValid: isLengthValid,
-                      isWhitespace: isWhitespace, nextButtonTapped: input.nextButtonTap,
-                      password: input.password, email: email)
+        let isValidPassword = Observable.combineLatest(isNumber, isSpecialCharacter, isLowercase, isLengthValid, isWhitespace)
+            .map { $0 && $1 && $2 && $3 && $4 }
+            .distinctUntilChanged()
+            .share(replay: 1)
+        
+        return Output(
+            isNumber: isNumber,
+            isSpecialCharacter: isSpecialCharacter,
+            isLowercase: isLowercase,
+            isLengthValid: isLengthValid,
+            isWhitespace: isWhitespace,
+            nextButtonTapped: input.nextButtonTap,
+            password: input.password,
+            email: email,
+            isValidPassword: isValidPassword
+        )
     }
 }
+

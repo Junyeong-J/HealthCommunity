@@ -14,7 +14,6 @@ struct JoinResult {
     let message: String
 }
 
-
 final class NicknameViewModel: BaseViewModel {
     
     var email = BehaviorRelay<String>(value: "")
@@ -46,17 +45,17 @@ final class NicknameViewModel: BaseViewModel {
             .withLatestFrom(Observable.combineLatest(email.asObservable(), password.asObservable(), input.nicknameText.orEmpty.asObservable()))
             .filter { !$0.0.isEmpty && !$0.1.isEmpty && !$0.2.isEmpty }
             .flatMapLatest { email, password, nick in
-                LSLPAPIManager.shared.request(api: .SignUpAPI(email: email, password: password, nick: nick),
+                LSLPAPIManager.shared.request(api: .auth(.SignUpAPI(email: email, password: password, nick: nick)),
                                               model: JoinResponse.self)
                 .map { result -> JoinResult in
                     switch result {
                     case .success(_):
-                        return JoinResult(success: true, message: "회원가입이 성공적으로 완료되었습니다.")
+                        return JoinResult(success: true, message: MessageString.successSignUp.rawValue)
                     case .failure(let error):
                         return JoinResult(success: false, message: self.errorMessage(for: error))
                     }
                 }
-                .catchAndReturn(JoinResult(success: false, message: "알 수 없는 오류가 발생했습니다."))
+                .catchAndReturn(JoinResult(success: false, message: MessageString.failSignUp.rawValue))
             }
             .share(replay: 1)
         
@@ -66,7 +65,7 @@ final class NicknameViewModel: BaseViewModel {
     
     private func errorMessage(for error: APIError) -> String {
         switch error {
-        case .customError(let statusCode, let message):
+        case .customError(let statusCode, _):
             switch statusCode {
             case 400:
                 return "이메일을 적어주세요."
