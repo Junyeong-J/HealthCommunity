@@ -12,16 +12,18 @@ import RxCocoa
 
 final class ToggleDetailView: UIView {
     
+    private let disposeBag = DisposeBag()
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = Font.bold16
+        label.font = UIFont.boldSystemFont(ofSize: 16)
         label.textColor = .black
         return label
     }()
     
     private let contentLabel: UILabel = {
         let label = UILabel()
-        label.font = Font.regular14
+        label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .darkGray
         label.numberOfLines = 0
         label.isHidden = true
@@ -30,34 +32,51 @@ final class ToggleDetailView: UIView {
     
     private let toggleButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("더보기", for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         return button
     }()
     
-    private let actionButton: UIButton = {
+    let actionButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("", for: .normal)
+        button.setTitleColor(.systemRed, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         button.isHidden = true
         return button
     }()
     
     private var isExpand = false
     private var storedText: String?
-    
-    private let disposeBag = DisposeBag()
-    
-    init(title: String, buttonText: String?) {
+    private let viewText: String
+    private let hideText: String?
+
+    init(title: String, viewText: String, hideText: String?, actionButtonText: String? = nil, actionButtonImage: UIImage? = nil) {
+        self.viewText = viewText
+        self.hideText = hideText
         super.init(frame: .zero)
         
+        self.backgroundColor = UIColor(white: 0.95, alpha: 1.0) // 연한 회색 배경
+        self.layer.cornerRadius = 8
+        self.clipsToBounds = true
+        
         titleLabel.text = title
-        if let buttonText = buttonText {
+        
+        if let buttonText = actionButtonText {
             actionButton.setTitle(buttonText, for: .normal)
+            if let image = actionButtonImage {
+                actionButton.setImage(image, for: .normal)
+                actionButton.tintColor = .systemRed
+                actionButton.semanticContentAttribute = .forceRightToLeft
+                actionButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
+            }
             actionButton.isHidden = false
         }
         
         configureHierarchy()
         configureLayout()
         configureBindings()
+        
+        toggleButton.setTitle(viewText, for: .normal)
     }
     
     required init?(coder: NSCoder) {
@@ -65,28 +84,27 @@ final class ToggleDetailView: UIView {
     }
     
     private func configureHierarchy() {
-        [titleLabel, contentLabel,
-         toggleButton, actionButton].forEach { addSubview($0) }
+        [titleLabel, contentLabel, toggleButton, actionButton].forEach { addSubview($0) }
     }
     
     private func configureLayout() {
         titleLabel.snp.makeConstraints { make in
-            make.top.horizontalEdges.equalToSuperview()
+            make.top.leading.trailing.equalToSuperview().inset(12)
         }
         
         toggleButton.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(8)
-            make.leading.equalToSuperview()
+            make.leading.equalToSuperview().inset(12)
         }
         
         contentLabel.snp.makeConstraints { make in
             make.top.equalTo(toggleButton.snp.bottom).offset(8)
-            make.horizontalEdges.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(12)
         }
         
         actionButton.snp.makeConstraints { make in
             make.top.equalTo(contentLabel.snp.bottom).offset(8)
-            make.horizontalEdges.bottom.equalToSuperview()
+            make.leading.trailing.bottom.equalToSuperview().inset(12)
         }
     }
     
@@ -103,12 +121,12 @@ final class ToggleDetailView: UIView {
         contentLabel.isHidden = true
         toggleButton.isHidden = false
         isExpand = false
-        toggleButton.setTitle("더보기", for: .normal)
+        toggleButton.setTitle(viewText, for: .normal)
     }
     
     private func toggleContent() {
         isExpand.toggle()
-        toggleButton.setTitle(isExpand ? "숨기기" : "더보기", for: .normal)
+        toggleButton.setTitle(isExpand ? (hideText ?? "숨기기") : viewText, for: .normal)
         
         if isExpand {
             contentLabel.text = storedText

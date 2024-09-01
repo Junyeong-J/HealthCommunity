@@ -38,24 +38,46 @@ final class DetailView: BaseView {
         return label
     }()
     
-    private let routineToggleView = ToggleDetailView(title: "루틴", buttonText: "내 루틴에 저장")
-    private let nutrientsToggleView = ToggleDetailView(title: "영양소", buttonText: nil)
-    private let exerciseTimeToggleView = ToggleDetailView(title: "운동시간", buttonText: nil)
-    private let calorieToggleView = ToggleDetailView(title: "칼로리", buttonText: nil)
+    let routineToggleView = ToggleDetailView(
+        title: "루틴",
+        viewText: "루틴 자세히보기",
+        hideText: "루틴 숨기기",
+        actionButtonText: "내 루틴에 저장",
+        actionButtonImage: UIImage(systemName: "heart")
+    )
+    
+    let nutrientsToggleView = ToggleDetailView(
+        title: "오늘 활동량",
+        viewText: "오늘 활동량 자세히보기",
+        hideText: "오늘 활동량 숨기기"
+    )
+    
+    let exerciseTimeToggleView = ToggleDetailView(
+        title: "운동시간",
+        viewText: "운동시간 자세히보기",
+        hideText: "운동시간 숨기기"
+    )
+    
+    let calorieToggleView = ToggleDetailView(
+        title: "칼로리",
+        viewText: "칼로리 자세히보기",
+        hideText: "칼로리 숨기기"
+    )
     
     let showCommentsButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("댓글 보기", for: .normal)
+        button.setTitleColor(.myAppMain, for: .normal)
+        button.titleLabel?.font = Font.bold16
         return button
     }()
     
     override func configureHierarchy() {
         addSubview(scrollView)
         scrollView.addSubview(contentView)
-        
-        [profileImageView, nicknameLabel, mainImageView,
-         postContentLabel, routineToggleView, nutrientsToggleView,
-         exerciseTimeToggleView, calorieToggleView, showCommentsButton].forEach { contentView.addSubview($0) }
+        [ profileImageView, nicknameLabel, mainImageView,
+          postContentLabel, routineToggleView, nutrientsToggleView,
+          exerciseTimeToggleView, calorieToggleView, showCommentsButton ].forEach { contentView.addSubview($0) }
     }
     
     override func configureLayout() {
@@ -65,7 +87,7 @@ final class DetailView: BaseView {
         
         contentView.snp.makeConstraints { make in
             make.width.equalTo(scrollView.snp.width)
-            make.verticalEdges.equalTo(scrollView)
+            make.edges.equalTo(scrollView)
         }
         
         profileImageView.snp.makeConstraints { make in
@@ -80,44 +102,45 @@ final class DetailView: BaseView {
         
         mainImageView.snp.makeConstraints { make in
             make.top.equalTo(profileImageView.snp.bottom).offset(16)
-            make.horizontalEdges.equalTo(contentView).inset(16)
+            make.horizontalEdges.equalTo(contentView)
             make.height.equalTo(300)
         }
         
         postContentLabel.snp.makeConstraints { make in
             make.top.equalTo(mainImageView.snp.bottom).offset(16)
-            make.horizontalEdges.equalTo(contentView).inset(16)
+            make.leading.trailing.equalTo(contentView).inset(16)
         }
         
         routineToggleView.snp.makeConstraints { make in
             make.top.equalTo(postContentLabel.snp.bottom).offset(16)
-            make.horizontalEdges.equalTo(contentView).inset(16)
+            make.leading.trailing.equalTo(contentView).inset(16)
         }
         
         nutrientsToggleView.snp.makeConstraints { make in
             make.top.equalTo(routineToggleView.snp.bottom).offset(16)
-            make.horizontalEdges.equalTo(contentView).inset(16)
+            make.leading.trailing.equalTo(contentView).inset(16)
         }
         
         exerciseTimeToggleView.snp.makeConstraints { make in
             make.top.equalTo(nutrientsToggleView.snp.bottom).offset(16)
-            make.horizontalEdges.equalTo(contentView).inset(16)
+            make.leading.trailing.equalTo(contentView).inset(16)
         }
         
         calorieToggleView.snp.makeConstraints { make in
             make.top.equalTo(exerciseTimeToggleView.snp.bottom).offset(16)
-            make.horizontalEdges.equalTo(contentView).inset(16)
+            make.leading.trailing.equalTo(contentView).inset(16)
         }
         
         showCommentsButton.snp.makeConstraints { make in
             make.top.equalTo(calorieToggleView.snp.bottom).offset(16)
-            make.horizontalEdges.equalTo(contentView).inset(16)
+            make.leading.trailing.equalTo(contentView).inset(16)
             make.bottom.equalTo(contentView).inset(16)
             make.height.equalTo(50)
         }
     }
     
-    func configureData(data: Post) {
+    func configureData(data: [Post]) {
+        guard let data = data.first else { return }
         
         if let profileImageUrl = URL(string: APIURL.baseURL + (data.creator.profileImage ?? "")) {
             profileImageView.kf.setImage(with: profileImageUrl)
@@ -126,8 +149,7 @@ final class DetailView: BaseView {
         }
         
         nicknameLabel.text = data.creator.nick
-        postContentLabel.text = data.content
-        
+        postContentLabel.text = data.content2
         mainImageView.subviews.forEach { $0.removeFromSuperview() }
         
         let imageUrls = data.files.compactMap { URL(string: APIURL.baseURL + $0) }
@@ -146,7 +168,8 @@ final class DetailView: BaseView {
             var previousImageView: UIImageView?
             for (index, imageUrl) in imageUrls.enumerated() {
                 let imageView = UIImageView()
-                imageView.contentMode = .scaleToFill
+                imageView.contentMode = .scaleAspectFill
+                imageView.clipsToBounds = true
                 imageView.kf.setImage(with: imageUrl)
                 mainImageView.addSubview(imageView)
                 
@@ -181,10 +204,55 @@ final class DetailView: BaseView {
             exerciseTimeToggleView.isHidden = false
             calorieToggleView.isHidden = false
             
-            routineToggleView.setContentText(data.content2)
-            nutrientsToggleView.setContentText(data.content3)
-            exerciseTimeToggleView.setContentText(data.content4)
-            calorieToggleView.setContentText(data.content2)
+            let routines = parseRoutineData(data.content ?? "")
+            routineToggleView.setContentText(routines.map { routine in
+                """
+                \(routine.category) | \(routine.name)
+                - \(routine.sets)세트 \(routine.weight)KG, \(routine.reps)회
+                """
+            }.joined(separator: "\n\n"))
+            
+            let activityData = parseActivityData(data.content1 ?? "")
+            nutrientsToggleView.setContentText(activityData)
+            
+            exerciseTimeToggleView.setContentText(data.content3)
+            calorieToggleView.setContentText(data.content4)
         }
     }
+
+
+    func parseRoutineData(_ data: String) -> [RoutinDetail] {
+        var routines = [RoutinDetail]()
+        
+        let exercises = data.components(separatedBy: "; ")
+        
+        for exercise in exercises {
+            let details = exercise.components(separatedBy: ", ")
+            if details.count == 4 {
+                let categoryAndName = details[0].components(separatedBy: "|")
+                let category = categoryAndName[0].trimmingCharacters(in: .whitespacesAndNewlines)
+                let name = categoryAndName[1].trimmingCharacters(in: .whitespacesAndNewlines)
+                let sets = details[1]
+                let weight = details[2]
+                let reps = details[3]
+                let routine = RoutinDetail(category: category, name: name, sets: sets, weight: weight, reps: reps)
+                routines.append(routine)
+            }
+        }
+        return routines
+    }
+
+    func parseActivityData(_ data: String) -> String {
+        let components = data.components(separatedBy: ", ")
+        guard components.count == 4 else {
+            return "데이터가 없습니다."
+        }
+        let steps = components[0]
+        let distance = components[1]
+        let calories = components[2]
+        let standingTime = components[3]
+        return "오늘 활동량 : \(steps)걸음, \(distance)km 이동, \(calories)kcal 활동량 소비, \(standingTime)분 서있기"
+    }
+
 }
+

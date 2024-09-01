@@ -30,14 +30,27 @@ final class DetailViewController: BaseViewController<DetailView> {
     
     override func configureView() {
         super.configureView()
-        
-        rootView.configureData(data: postDetail)
     }
     
     override func bindModel() {
         let input = DetailViewModel.Input(
-            commentTap: rootView.showCommentsButton.rx.tap)
+            commentTap: rootView.showCommentsButton.rx.tap,
+            likeButtonTap: rootView.routineToggleView.actionButton.rx.tap,
+            post: postDetail)
         let output = viewModel.transform(input: input)
+        
+        output.posts
+            .bind(with: self, onNext: { owner, post in
+                owner.rootView.configureData(data: post)
+            })
+            .disposed(by: viewModel.disposeBag)
+        
+        output.likeStatus
+            .drive(with: self, onNext: { owner, isLiked in
+                let imageName = isLiked ? "heart.fill" : "heart"
+                owner.rootView.routineToggleView.actionButton.setImage(UIImage(systemName: imageName), for: .normal)
+            })
+            .disposed(by: viewModel.disposeBag)
         
         output.commentTapped
             .bind(with: self) { owner, _ in

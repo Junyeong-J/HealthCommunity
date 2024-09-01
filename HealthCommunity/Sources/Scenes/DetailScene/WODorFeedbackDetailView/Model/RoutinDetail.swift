@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+struct RoutinDetail {
+    let category: String
+    let name: String
+    let sets: String
+    let weight: String
+    let reps: String
+}
