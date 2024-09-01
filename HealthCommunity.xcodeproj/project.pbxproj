@@ -59,10 +59,7 @@
 		723E47AB2C721AF1004B0E0C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47AA2C721AF1004B0E0C /* MainView.swift */; };
 		723E47B52C7369CA004B0E0C /* PostButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47B42C7369CA004B0E0C /* PostButton.swift */; };
 		723E47BE2C736DAF004B0E0C /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47BD2C736DAF004B0E0C /* MainViewModel.swift */; };
-		723E47C22C7385C6004B0E0C /* WODView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47C12C7385C6004B0E0C /* WODView.swift */; };
-		723E47C42C7385CF004B0E0C /* WODViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47C32C7385CF004B0E0C /* WODViewController.swift */; };
 		723E47C62C7389A9004B0E0C /* CameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47C52C7389A9004B0E0C /* CameraButton.swift */; };
-		723E47C92C738DF8004B0E0C /* WODViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723E47C82C738DF8004B0E0C /* WODViewModel.swift */; };
 		725B9A282C761E930078863C /* RoutineData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9A272C761E930078863C /* RoutineData.swift */; };
 		725B9A2B2C76547E0078863C /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9A2A2C76547E0078863C /* AuthRouter.swift */; };
 		725B9A2D2C7654C60078863C /* PostRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9A2C2C7654C60078863C /* PostRouter.swift */; };
@@ -72,8 +69,8 @@
 		725B9A552C7788A10078863C /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9A542C7788A10078863C /* TabBarController.swift */; };
 		725B9A5A2C778AA70078863C /* MyRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9A592C778AA70078863C /* MyRoutineView.swift */; };
 		725B9A5C2C778AB40078863C /* MyRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9A5B2C778AB40078863C /* MyRoutineViewController.swift */; };
-		725B9A5E2C778ABF0078863C /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9A5D2C778ABF0078863C /* ChatView.swift */; };
-		725B9A602C778ACB0078863C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9A5F2C778ACB0078863C /* ChatViewController.swift */; };
+		725B9A5E2C778ABF0078863C /* HealthClassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9A5D2C778ABF0078863C /* HealthClassView.swift */; };
+		725B9A602C778ACB0078863C /* HealthClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9A5F2C778ACB0078863C /* HealthClassViewController.swift */; };
 		725B9A622C778AD40078863C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9A612C778AD40078863C /* ProfileView.swift */; };
 		725B9A642C778ADF0078863C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9A632C778ADF0078863C /* ProfileViewController.swift */; };
 		725B9A672C785EDC0078863C /* MainFeedbackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9A662C785EDC0078863C /* MainFeedbackTableViewCell.swift */; };
@@ -105,18 +102,9 @@
 		725B9AAF2C7B6B300078863C /* FormatterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9AAE2C7B6B300078863C /* FormatterManager.swift */; };
 		725B9AB62C7C5ACD0078863C /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 725B9AB52C7C5ACD0078863C /* FSCalendar */; };
 		725B9ABF2C7C952F0078863C /* MyRoutineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B9ABE2C7C952E0078863C /* MyRoutineViewModel.swift */; };
-		7274DA452C74D8E700245DCD /* WODTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA442C74D8E700245DCD /* WODTableViewCell.swift */; };
 		7274DA482C74D93600245DCD /* ReuseIdentifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA472C74D93600245DCD /* ReuseIdentifierProtocol.swift */; };
-		7274DA4B2C74DC8300245DCD /* WODTableTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA4A2C74DC8300245DCD /* WODTableTitles.swift */; };
 		7274DA4E2C74DF4C00245DCD /* TriangleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA4D2C74DF4C00245DCD /* TriangleImage.swift */; };
-		7274DA522C74FE1200245DCD /* RoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA512C74FE1200245DCD /* RoutineView.swift */; };
-		7274DA542C74FE2300245DCD /* RoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA532C74FE2300245DCD /* RoutineViewController.swift */; };
-		7274DA572C75008700245DCD /* RoutineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA562C75008700245DCD /* RoutineViewModel.swift */; };
-		7274DA592C75016200245DCD /* RoutineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA582C75016200245DCD /* RoutineTableViewCell.swift */; };
-		7274DA5B2C75088F00245DCD /* RoutineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA5A2C75088F00245DCD /* RoutineCollectionViewCell.swift */; };
 		7274DA5D2C7510F700245DCD /* RoutineAreaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA5C2C7510F700245DCD /* RoutineAreaButton.swift */; };
-		7274DA7D2C75D55000245DCD /* RoutineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA7C2C75D55000245DCD /* RoutineType.swift */; };
-		7274DA7F2C75DE9C00245DCD /* RoutineSelectedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274DA7E2C75DE9C00245DCD /* RoutineSelectedCollectionViewCell.swift */; };
 		72940B372C7C9CDC00311CE8 /* MyRoutineMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940B362C7C9CDC00311CE8 /* MyRoutineMenuViewController.swift */; };
 		72940B392C7C9CE800311CE8 /* MyRoutineMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940B382C7C9CE800311CE8 /* MyRoutineMenuView.swift */; };
 		72940B3B2C7C9E8900311CE8 /* MyRoutineMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940B3A2C7C9E8900311CE8 /* MyRoutineMenuViewModel.swift */; };
@@ -134,6 +122,39 @@
 		72940B682C7E3B7F00311CE8 /* SelectedRoutineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940B672C7E3B7F00311CE8 /* SelectedRoutineCollectionViewCell.swift */; };
 		72940B6A2C7EAA3D00311CE8 /* DeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940B692C7EAA3D00311CE8 /* DeleteButton.swift */; };
 		72940B772C7F17F600311CE8 /* MyRoutineDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940B762C7F17F600311CE8 /* MyRoutineDetailTableViewCell.swift */; };
+		72940B822C80364100311CE8 /* MyRoutineResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940B812C80364100311CE8 /* MyRoutineResultTableViewCell.swift */; };
+		72940B872C80AC9500311CE8 /* MyRoutineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940B862C80AC9500311CE8 /* MyRoutineModel.swift */; };
+		72940B8A2C80DD2100311CE8 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 72940B892C80DD2100311CE8 /* IQKeyboardManagerSwift */; };
+		72940B8D2C81920100311CE8 /* ShadowRoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940B8C2C81920100311CE8 /* ShadowRoundedView.swift */; };
+		72940B902C81C98000311CE8 /* HealthClassCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940B8F2C81C98000311CE8 /* HealthClassCollectionViewCell.swift */; };
+		72940B932C81F51200311CE8 /* HealthClassViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940B922C81F51200311CE8 /* HealthClassViewModel.swift */; };
+		72940B982C82092A00311CE8 /* HealthClassDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940B972C82092A00311CE8 /* HealthClassDetailViewController.swift */; };
+		72940B9A2C82093300311CE8 /* HealthClassDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940B992C82093300311CE8 /* HealthClassDetailView.swift */; };
+		72940B9C2C820FDE00311CE8 /* HealthClassDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940B9B2C820FDE00311CE8 /* HealthClassDetailViewModel.swift */; };
+		72940B9F2C822E4A00311CE8 /* iamport-ios in Frameworks */ = {isa = PBXBuildFile; productRef = 72940B9E2C822E4A00311CE8 /* iamport-ios */; };
+		72940BA12C823C2C00311CE8 /* PaymentRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940BA02C823C2C00311CE8 /* PaymentRouter.swift */; };
+		72940BA32C823EC200311CE8 /* PaymentResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940BA22C823EC200311CE8 /* PaymentResponse.swift */; };
+		72940BA72C83196400311CE8 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940BA62C83196400311CE8 /* PostView.swift */; };
+		72940BA92C83196D00311CE8 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940BA82C83196D00311CE8 /* PostViewController.swift */; };
+		72940BAB2C83197500311CE8 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940BAA2C83197500311CE8 /* PostViewModel.swift */; };
+		72940BB02C83475000311CE8 /* PostHealthDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940BAF2C83475000311CE8 /* PostHealthDataViewController.swift */; };
+		72940BB22C83475D00311CE8 /* PostHealthDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940BB12C83475D00311CE8 /* PostHealthDataView.swift */; };
+		72940BB42C83476F00311CE8 /* PostHealthDataCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940BB32C83476F00311CE8 /* PostHealthDataCollectionViewCell.swift */; };
+		72940BB62C83477D00311CE8 /* PostHealthDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940BB52C83477D00311CE8 /* PostHealthDataViewModel.swift */; };
+		72940BB92C84291A00311CE8 /* RoutinDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940BB82C84291A00311CE8 /* RoutinDetail.swift */; };
+		72940BBC2C843E4C00311CE8 /* LikeRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940BBB2C843E4C00311CE8 /* LikeRoutineView.swift */; };
+		72940BBE2C843E5A00311CE8 /* LikeRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940BBD2C843E5A00311CE8 /* LikeRoutineViewController.swift */; };
+		72940BC22C843E7900311CE8 /* LikeRoutineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940BC12C843E7900311CE8 /* LikeRoutineViewModel.swift */; };
+		72940BC42C84409400311CE8 /* LikeRoutineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940BC32C84409400311CE8 /* LikeRoutineTableViewCell.swift */; };
+		72940BC62C84435900311CE8 /* LikeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940BC52C84435900311CE8 /* LikeResponse.swift */; };
+		72940BC82C844D0C00311CE8 /* LikeRoutineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940BC72C844D0C00311CE8 /* LikeRoutineHeaderView.swift */; };
+		72940BCC2C849E2400311CE8 /* IconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940BCB2C849E2400311CE8 /* IconManager.swift */; };
+		72940BCF2C84A10F00311CE8 /* NaviProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940BCE2C84A10F00311CE8 /* NaviProtocol.swift */; };
+		72940BD32C84A96B00311CE8 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940BD22C84A96B00311CE8 /* Message.swift */; };
+		72940BD52C84AB0A00311CE8 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940BD42C84AB0A00311CE8 /* NotificationManager.swift */; };
+		72940BD72C84B2F700311CE8 /* ReachedBottom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940BD62C84B2F700311CE8 /* ReachedBottom.swift */; };
+		72940BD92C84B7A400311CE8 /* NavigationTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940BD82C84B7A400311CE8 /* NavigationTitle.swift */; };
+		72940BDB2C84CF0200311CE8 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72940BDA2C84CF0200311CE8 /* PaymentViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -186,10 +207,7 @@
 		723E47AA2C721AF1004B0E0C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		723E47B42C7369CA004B0E0C /* PostButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostButton.swift; sourceTree = "<group>"; };
 		723E47BD2C736DAF004B0E0C /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
-		723E47C12C7385C6004B0E0C /* WODView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODView.swift; sourceTree = "<group>"; };
-		723E47C32C7385CF004B0E0C /* WODViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODViewController.swift; sourceTree = "<group>"; };
 		723E47C52C7389A9004B0E0C /* CameraButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraButton.swift; sourceTree = "<group>"; };
-		723E47C82C738DF8004B0E0C /* WODViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODViewModel.swift; sourceTree = "<group>"; };
 		725B9A272C761E930078863C /* RoutineData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineData.swift; sourceTree = "<group>"; };
 		725B9A2A2C76547E0078863C /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
 		725B9A2C2C7654C60078863C /* PostRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRouter.swift; sourceTree = "<group>"; };
@@ -199,8 +217,8 @@
 		725B9A542C7788A10078863C /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		725B9A592C778AA70078863C /* MyRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRoutineView.swift; sourceTree = "<group>"; };
 		725B9A5B2C778AB40078863C /* MyRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRoutineViewController.swift; sourceTree = "<group>"; };
-		725B9A5D2C778ABF0078863C /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
-		725B9A5F2C778ACB0078863C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		725B9A5D2C778ABF0078863C /* HealthClassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthClassView.swift; sourceTree = "<group>"; };
+		725B9A5F2C778ACB0078863C /* HealthClassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthClassViewController.swift; sourceTree = "<group>"; };
 		725B9A612C778AD40078863C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		725B9A632C778ADF0078863C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		725B9A652C7795B30078863C /* HealthCommunity.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HealthCommunity.entitlements; sourceTree = "<group>"; };
@@ -230,18 +248,9 @@
 		725B9AAB2C7B68F90078863C /* SendButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendButton.swift; sourceTree = "<group>"; };
 		725B9AAE2C7B6B300078863C /* FormatterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatterManager.swift; sourceTree = "<group>"; };
 		725B9ABE2C7C952E0078863C /* MyRoutineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRoutineViewModel.swift; sourceTree = "<group>"; };
-		7274DA442C74D8E700245DCD /* WODTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODTableViewCell.swift; sourceTree = "<group>"; };
 		7274DA472C74D93600245DCD /* ReuseIdentifierProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifierProtocol.swift; sourceTree = "<group>"; };
-		7274DA4A2C74DC8300245DCD /* WODTableTitles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODTableTitles.swift; sourceTree = "<group>"; };
 		7274DA4D2C74DF4C00245DCD /* TriangleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleImage.swift; sourceTree = "<group>"; };
-		7274DA512C74FE1200245DCD /* RoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineView.swift; sourceTree = "<group>"; };
-		7274DA532C74FE2300245DCD /* RoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineViewController.swift; sourceTree = "<group>"; };
-		7274DA562C75008700245DCD /* RoutineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineViewModel.swift; sourceTree = "<group>"; };
-		7274DA582C75016200245DCD /* RoutineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineTableViewCell.swift; sourceTree = "<group>"; };
-		7274DA5A2C75088F00245DCD /* RoutineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineCollectionViewCell.swift; sourceTree = "<group>"; };
 		7274DA5C2C7510F700245DCD /* RoutineAreaButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineAreaButton.swift; sourceTree = "<group>"; };
-		7274DA7C2C75D55000245DCD /* RoutineType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineType.swift; sourceTree = "<group>"; };
-		7274DA7E2C75DE9C00245DCD /* RoutineSelectedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineSelectedCollectionViewCell.swift; sourceTree = "<group>"; };
 		72940B362C7C9CDC00311CE8 /* MyRoutineMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRoutineMenuViewController.swift; sourceTree = "<group>"; };
 		72940B382C7C9CE800311CE8 /* MyRoutineMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRoutineMenuView.swift; sourceTree = "<group>"; };
 		72940B3A2C7C9E8900311CE8 /* MyRoutineMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRoutineMenuViewModel.swift; sourceTree = "<group>"; };
@@ -259,6 +268,37 @@
 		72940B672C7E3B7F00311CE8 /* SelectedRoutineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedRoutineCollectionViewCell.swift; sourceTree = "<group>"; };
 		72940B692C7EAA3D00311CE8 /* DeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteButton.swift; sourceTree = "<group>"; };
 		72940B762C7F17F600311CE8 /* MyRoutineDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRoutineDetailTableViewCell.swift; sourceTree = "<group>"; };
+		72940B812C80364100311CE8 /* MyRoutineResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRoutineResultTableViewCell.swift; sourceTree = "<group>"; };
+		72940B862C80AC9500311CE8 /* MyRoutineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRoutineModel.swift; sourceTree = "<group>"; };
+		72940B8C2C81920100311CE8 /* ShadowRoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowRoundedView.swift; sourceTree = "<group>"; };
+		72940B8F2C81C98000311CE8 /* HealthClassCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthClassCollectionViewCell.swift; sourceTree = "<group>"; };
+		72940B922C81F51200311CE8 /* HealthClassViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthClassViewModel.swift; sourceTree = "<group>"; };
+		72940B972C82092A00311CE8 /* HealthClassDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthClassDetailViewController.swift; sourceTree = "<group>"; };
+		72940B992C82093300311CE8 /* HealthClassDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthClassDetailView.swift; sourceTree = "<group>"; };
+		72940B9B2C820FDE00311CE8 /* HealthClassDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthClassDetailViewModel.swift; sourceTree = "<group>"; };
+		72940BA02C823C2C00311CE8 /* PaymentRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentRouter.swift; sourceTree = "<group>"; };
+		72940BA22C823EC200311CE8 /* PaymentResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentResponse.swift; sourceTree = "<group>"; };
+		72940BA62C83196400311CE8 /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
+		72940BA82C83196D00311CE8 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		72940BAA2C83197500311CE8 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
+		72940BAF2C83475000311CE8 /* PostHealthDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHealthDataViewController.swift; sourceTree = "<group>"; };
+		72940BB12C83475D00311CE8 /* PostHealthDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHealthDataView.swift; sourceTree = "<group>"; };
+		72940BB32C83476F00311CE8 /* PostHealthDataCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHealthDataCollectionViewCell.swift; sourceTree = "<group>"; };
+		72940BB52C83477D00311CE8 /* PostHealthDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHealthDataViewModel.swift; sourceTree = "<group>"; };
+		72940BB82C84291A00311CE8 /* RoutinDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinDetail.swift; sourceTree = "<group>"; };
+		72940BBB2C843E4C00311CE8 /* LikeRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeRoutineView.swift; sourceTree = "<group>"; };
+		72940BBD2C843E5A00311CE8 /* LikeRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeRoutineViewController.swift; sourceTree = "<group>"; };
+		72940BC12C843E7900311CE8 /* LikeRoutineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeRoutineViewModel.swift; sourceTree = "<group>"; };
+		72940BC32C84409400311CE8 /* LikeRoutineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeRoutineTableViewCell.swift; sourceTree = "<group>"; };
+		72940BC52C84435900311CE8 /* LikeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeResponse.swift; sourceTree = "<group>"; };
+		72940BC72C844D0C00311CE8 /* LikeRoutineHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeRoutineHeaderView.swift; sourceTree = "<group>"; };
+		72940BCB2C849E2400311CE8 /* IconManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconManager.swift; sourceTree = "<group>"; };
+		72940BCE2C84A10F00311CE8 /* NaviProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaviProtocol.swift; sourceTree = "<group>"; };
+		72940BD22C84A96B00311CE8 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		72940BD42C84AB0A00311CE8 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		72940BD62C84B2F700311CE8 /* ReachedBottom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachedBottom.swift; sourceTree = "<group>"; };
+		72940BD82C84B7A400311CE8 /* NavigationTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTitle.swift; sourceTree = "<group>"; };
+		72940BDA2C84CF0200311CE8 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,6 +311,8 @@
 				723E472D2C6DC11A004B0E0C /* RxSwift in Frameworks */,
 				723E47302C6DC12A004B0E0C /* SnapKit in Frameworks */,
 				723E472B2C6DC11A004B0E0C /* RxCocoa in Frameworks */,
+				72940B9F2C822E4A00311CE8 /* iamport-ios in Frameworks */,
+				72940B8A2C80DD2100311CE8 /* IQKeyboardManagerSwift in Frameworks */,
 				725B9AB62C7C5ACD0078863C /* FSCalendar in Frameworks */,
 				723E47732C6F3B87004B0E0C /* Toast in Frameworks */,
 				723E47282C6DC100004B0E0C /* Alamofire in Frameworks */,
@@ -333,6 +375,7 @@
 		723E471C2C6DBCA6004B0E0C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				72940BC92C849E0100311CE8 /* UI */,
 				72940B5D2C7D8B9100311CE8 /* Extensions */,
 				725B9AAD2C7B6B210078863C /* Utilities */,
 				725B9A532C7788910078863C /* TabBar */,
@@ -350,6 +393,7 @@
 		723E471D2C6DBE43004B0E0C /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				72940BCD2C84A10000311CE8 /* Protocol */,
 				723E471E2C6DBF5F004B0E0C /* BaseView.swift */,
 				723E47202C6DBF98004B0E0C /* BaseViewController.swift */,
 				723E47222C6DBFBB004B0E0C /* BaseCollectionViewCell.swift */,
@@ -362,18 +406,14 @@
 		723E47312C6DC1DA004B0E0C /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				725B9A892C7A3B140078863C /* DetailScene */,
 				723E47322C6DC1F3004B0E0C /* OnBoardingScene */,
 				723E47872C707D61004B0E0C /* LoginScene */,
-				725B9A582C778A720078863C /* ProfileScene */,
-				725B9A572C778A6C0078863C /* ChatScene */,
-				725B9A562C778A550078863C /* MyRoutineScene */,
-				7274DA7A2C75D1D700245DCD /* CaloryScene */,
 				723E47A62C721AD2004B0E0C /* MainScene */,
+				725B9A892C7A3B140078863C /* DetailScene */,
 				723E47B62C736CB8004B0E0C /* PostScene */,
-				7274DA4F2C74FDAC00245DCD /* RoutineScene */,
-				7274DA782C75D1AD00245DCD /* NutrientScene */,
-				7274DA792C75D1C800245DCD /* WorkoutTimeScene */,
+				725B9A562C778A550078863C /* MyRoutineScene */,
+				725B9A572C778A6C0078863C /* HealthClassScene */,
+				725B9A582C778A720078863C /* ProfileScene */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -399,6 +439,7 @@
 		723E47382C6DC4FE004B0E0C /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				72940B8B2C8191F500311CE8 /* View */,
 				7274DA4C2C74DF3A00245DCD /* ImageView */,
 				723E47662C6F287B004B0E0C /* TextField */,
 				723E47392C6DC573004B0E0C /* Button */,
@@ -440,8 +481,10 @@
 		723E47422C6DC9F0004B0E0C /* Enums */ = {
 			isa = PBXGroup;
 			children = (
+				72940BD12C84A95B00311CE8 /* Message */,
 				723E47432C6DCA1B004B0E0C /* ButtonTitle.swift */,
 				723E47692C6F28C5004B0E0C /* TextFieldPlaceholder.swift */,
+				72940BD82C84B7A400311CE8 /* NavigationTitle.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -556,6 +599,7 @@
 				725B9A2C2C7654C60078863C /* PostRouter.swift */,
 				725B9A752C79A26B0078863C /* ProfileRouter.swift */,
 				725B9AA42C7B21680078863C /* CommentRouter.swift */,
+				72940BA02C823C2C00311CE8 /* PaymentRouter.swift */,
 				723E475B2C6DE187004B0E0C /* Header.swift */,
 				723E47742C6F3ED5004B0E0C /* Body.swift */,
 			);
@@ -655,6 +699,8 @@
 				725B9A702C78D4AB0078863C /* PostResponse.swift */,
 				725B9A772C79A50C0078863C /* ProfileResponse.swift */,
 				725B9AA62C7B2A0C0078863C /* CommentResponse.swift */,
+				72940BA22C823EC200311CE8 /* PaymentResponse.swift */,
+				72940BC52C84435900311CE8 /* LikeResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -683,7 +729,9 @@
 		723E47B62C736CB8004B0E0C /* PostScene */ = {
 			isa = PBXGroup;
 			children = (
-				723E47BF2C7385AA004B0E0C /* WODView */,
+				72940BAC2C83470600311CE8 /* PostHealthDataView */,
+				72940BA42C83194B00311CE8 /* View */,
+				72940BA52C83195500311CE8 /* Model */,
 			);
 			path = PostScene;
 			sourceTree = "<group>";
@@ -692,34 +740,6 @@
 			isa = PBXGroup;
 			children = (
 				723E47BD2C736DAF004B0E0C /* MainViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		723E47BF2C7385AA004B0E0C /* WODView */ = {
-			isa = PBXGroup;
-			children = (
-				7274DA492C74DC6F00245DCD /* Model */,
-				723E47C02C7385B4004B0E0C /* View */,
-				723E47C72C738DEB004B0E0C /* ViewModel */,
-			);
-			path = WODView;
-			sourceTree = "<group>";
-		};
-		723E47C02C7385B4004B0E0C /* View */ = {
-			isa = PBXGroup;
-			children = (
-				723E47C32C7385CF004B0E0C /* WODViewController.swift */,
-				723E47C12C7385C6004B0E0C /* WODView.swift */,
-				7274DA442C74D8E700245DCD /* WODTableViewCell.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		723E47C72C738DEB004B0E0C /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				723E47C82C738DF8004B0E0C /* WODViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -751,19 +771,21 @@
 			path = MyRoutineScene;
 			sourceTree = "<group>";
 		};
-		725B9A572C778A6C0078863C /* ChatScene */ = {
+		725B9A572C778A6C0078863C /* HealthClassScene */ = {
 			isa = PBXGroup;
 			children = (
-				725B9A5D2C778ABF0078863C /* ChatView.swift */,
-				725B9A5F2C778ACB0078863C /* ChatViewController.swift */,
+				72940B942C8208FF00311CE8 /* DetailView */,
+				72940B8E2C81C96C00311CE8 /* View */,
+				72940B912C81F50500311CE8 /* ViewModel */,
 			);
-			path = ChatScene;
+			path = HealthClassScene;
 			sourceTree = "<group>";
 		};
 		725B9A582C778A720078863C /* ProfileScene */ = {
 			isa = PBXGroup;
 			children = (
 				725B9A7A2C79C7500078863C /* MyProfileView */,
+				72940BBA2C843E2F00311CE8 /* LikeRoutineView */,
 				725B9A792C79C7410078863C /* EditProfileView */,
 			);
 			path = ProfileScene;
@@ -834,6 +856,7 @@
 		725B9A8A2C7A3B420078863C /* WODorFeedbackDetailView */ = {
 			isa = PBXGroup;
 			children = (
+				72940BB72C84290A00311CE8 /* Model */,
 				725B9A8B2C7A3B4F0078863C /* View */,
 				725B9A8C2C7A3B530078863C /* ViewModel */,
 			);
@@ -889,6 +912,7 @@
 			isa = PBXGroup;
 			children = (
 				725B9AAE2C7B6B300078863C /* FormatterManager.swift */,
+				72940BD42C84AB0A00311CE8 /* NotificationManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -898,6 +922,7 @@
 			children = (
 				725B9A5B2C778AB40078863C /* MyRoutineViewController.swift */,
 				725B9A592C778AA70078863C /* MyRoutineView.swift */,
+				72940B812C80364100311CE8 /* MyRoutineResultTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -918,14 +943,6 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
-		7274DA492C74DC6F00245DCD /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				7274DA4A2C74DC8300245DCD /* WODTableTitles.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		7274DA4C2C74DF3A00245DCD /* ImageView */ = {
 			isa = PBXGroup;
 			children = (
@@ -936,68 +953,10 @@
 			path = ImageView;
 			sourceTree = "<group>";
 		};
-		7274DA4F2C74FDAC00245DCD /* RoutineScene */ = {
-			isa = PBXGroup;
-			children = (
-				7274DA7B2C75D54500245DCD /* Model */,
-				7274DA502C74FE0500245DCD /* View */,
-				7274DA552C75005000245DCD /* ViewModel */,
-			);
-			path = RoutineScene;
-			sourceTree = "<group>";
-		};
-		7274DA502C74FE0500245DCD /* View */ = {
-			isa = PBXGroup;
-			children = (
-				7274DA532C74FE2300245DCD /* RoutineViewController.swift */,
-				7274DA512C74FE1200245DCD /* RoutineView.swift */,
-				7274DA582C75016200245DCD /* RoutineTableViewCell.swift */,
-				7274DA5A2C75088F00245DCD /* RoutineCollectionViewCell.swift */,
-				7274DA7E2C75DE9C00245DCD /* RoutineSelectedCollectionViewCell.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		7274DA552C75005000245DCD /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				7274DA562C75008700245DCD /* RoutineViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		7274DA782C75D1AD00245DCD /* NutrientScene */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = NutrientScene;
-			sourceTree = "<group>";
-		};
-		7274DA792C75D1C800245DCD /* WorkoutTimeScene */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = WorkoutTimeScene;
-			sourceTree = "<group>";
-		};
-		7274DA7A2C75D1D700245DCD /* CaloryScene */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CaloryScene;
-			sourceTree = "<group>";
-		};
-		7274DA7B2C75D54500245DCD /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				7274DA7C2C75D55000245DCD /* RoutineType.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		72940B322C7C9CA300311CE8 /* MyRoutineMainView */ = {
 			isa = PBXGroup;
 			children = (
+				72940B852C80AC8300311CE8 /* Model */,
 				725B9AB72C7C91C80078863C /* View */,
 				725B9ABD2C7C95230078863C /* ViewModel */,
 			);
@@ -1084,6 +1043,7 @@
 			isa = PBXGroup;
 			children = (
 				72940B5E2C7D8BAE00311CE8 /* UIButton+Extension.swift */,
+				72940BD62C84B2F700311CE8 /* ReachedBottom.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1094,6 +1054,179 @@
 				72940B612C7D932600311CE8 /* MyRoutineSelectViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		72940B852C80AC8300311CE8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				72940B862C80AC9500311CE8 /* MyRoutineModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		72940B8B2C8191F500311CE8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				72940B8C2C81920100311CE8 /* ShadowRoundedView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		72940B8E2C81C96C00311CE8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				725B9A5F2C778ACB0078863C /* HealthClassViewController.swift */,
+				725B9A5D2C778ABF0078863C /* HealthClassView.swift */,
+				72940B8F2C81C98000311CE8 /* HealthClassCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		72940B912C81F50500311CE8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				72940B922C81F51200311CE8 /* HealthClassViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		72940B942C8208FF00311CE8 /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				72940B952C82090900311CE8 /* View */,
+				72940B962C82090F00311CE8 /* ViewModel */,
+			);
+			path = DetailView;
+			sourceTree = "<group>";
+		};
+		72940B952C82090900311CE8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				72940B972C82092A00311CE8 /* HealthClassDetailViewController.swift */,
+				72940B992C82093300311CE8 /* HealthClassDetailView.swift */,
+				72940BDA2C84CF0200311CE8 /* PaymentViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		72940B962C82090F00311CE8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				72940B9B2C820FDE00311CE8 /* HealthClassDetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		72940BA42C83194B00311CE8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				72940BA82C83196D00311CE8 /* PostViewController.swift */,
+				72940BA62C83196400311CE8 /* PostView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		72940BA52C83195500311CE8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				72940BAA2C83197500311CE8 /* PostViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		72940BAC2C83470600311CE8 /* PostHealthDataView */ = {
+			isa = PBXGroup;
+			children = (
+				72940BAD2C83471600311CE8 /* View */,
+				72940BAE2C83471F00311CE8 /* ViewModel */,
+			);
+			path = PostHealthDataView;
+			sourceTree = "<group>";
+		};
+		72940BAD2C83471600311CE8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				72940BAF2C83475000311CE8 /* PostHealthDataViewController.swift */,
+				72940BB12C83475D00311CE8 /* PostHealthDataView.swift */,
+				72940BB32C83476F00311CE8 /* PostHealthDataCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		72940BAE2C83471F00311CE8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				72940BB52C83477D00311CE8 /* PostHealthDataViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		72940BB72C84290A00311CE8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				72940BB82C84291A00311CE8 /* RoutinDetail.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		72940BBA2C843E2F00311CE8 /* LikeRoutineView */ = {
+			isa = PBXGroup;
+			children = (
+				72940BBF2C843E5E00311CE8 /* View */,
+				72940BC02C843E6A00311CE8 /* ViewModel */,
+			);
+			path = LikeRoutineView;
+			sourceTree = "<group>";
+		};
+		72940BBF2C843E5E00311CE8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				72940BBD2C843E5A00311CE8 /* LikeRoutineViewController.swift */,
+				72940BBB2C843E4C00311CE8 /* LikeRoutineView.swift */,
+				72940BC32C84409400311CE8 /* LikeRoutineTableViewCell.swift */,
+				72940BC72C844D0C00311CE8 /* LikeRoutineHeaderView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		72940BC02C843E6A00311CE8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				72940BC12C843E7900311CE8 /* LikeRoutineViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		72940BC92C849E0100311CE8 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				72940BCA2C849E1300311CE8 /* Icons */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		72940BCA2C849E1300311CE8 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				72940BCB2C849E2400311CE8 /* IconManager.swift */,
+			);
+			path = Icons;
+			sourceTree = "<group>";
+		};
+		72940BCD2C84A10000311CE8 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				72940BCE2C84A10F00311CE8 /* NaviProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		72940BD12C84A95B00311CE8 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				72940BD22C84A96B00311CE8 /* Message.swift */,
+			);
+			path = Message;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1121,6 +1254,8 @@
 				725B9A732C78F6240078863C /* Kingfisher */,
 				725B9AA92C7B64FB0078863C /* JGProgressHUD */,
 				725B9AB52C7C5ACD0078863C /* FSCalendar */,
+				72940B892C80DD2100311CE8 /* IQKeyboardManagerSwift */,
+				72940B9E2C822E4A00311CE8 /* iamport-ios */,
 			);
 			productName = HealthCommunity;
 			productReference = 723E46FF2C6CD240004B0E0C /* HealthCommunity.app */;
@@ -1158,6 +1293,8 @@
 				725B9A722C78F6240078863C /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				725B9AA82C7B64FB0078863C /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
 				725B9AB42C7C5ACD0078863C /* XCRemoteSwiftPackageReference "FSCalendar" */,
+				72940B882C80DD2100311CE8 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				72940B9D2C822E4A00311CE8 /* XCRemoteSwiftPackageReference "iamport-ios" */,
 			);
 			productRefGroup = 723E47002C6CD240004B0E0C /* Products */;
 			projectDirPath = "";
@@ -1187,20 +1324,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				725B9A552C7788A10078863C /* TabBarController.swift in Sources */,
+				72940BCF2C84A10F00311CE8 /* NaviProtocol.swift in Sources */,
 				723E47212C6DBF98004B0E0C /* BaseViewController.swift in Sources */,
 				723E47AB2C721AF1004B0E0C /* MainView.swift in Sources */,
 				72940B5F2C7D8BAE00311CE8 /* UIButton+Extension.swift in Sources */,
 				723E477B2C705E6D004B0E0C /* PasswordView.swift in Sources */,
 				725B9A712C78D4AB0078863C /* PostResponse.swift in Sources */,
+				72940BDB2C84CF0200311CE8 /* PaymentViewController.swift in Sources */,
 				723E47B52C7369CA004B0E0C /* PostButton.swift in Sources */,
 				72940B662C7E1BF100311CE8 /* MyRoutineSelectTableViewCell.swift in Sources */,
-				7274DA7F2C75DE9C00245DCD /* RoutineSelectedCollectionViewCell.swift in Sources */,
 				725B9AAC2C7B68F90078863C /* SendButton.swift in Sources */,
+				72940BD72C84B2F700311CE8 /* ReachedBottom.swift in Sources */,
+				72940BB42C83476F00311CE8 /* PostHealthDataCollectionViewCell.swift in Sources */,
 				723E476D2C6F3345004B0E0C /* EmailViewModel.swift in Sources */,
 				723E473E2C6DC6EC004B0E0C /* ResourceFont.swift in Sources */,
 				725B9A7E2C79C77F0078863C /* EditProfileView.swift in Sources */,
 				725B9A692C785F190078863C /* MainCommunityTableViewCell.swift in Sources */,
 				723E47442C6DCA1B004B0E0C /* ButtonTitle.swift in Sources */,
+				72940BBC2C843E4C00311CE8 /* LikeRoutineView.swift in Sources */,
 				723E47902C707E79004B0E0C /* BoxTypeTextField.swift in Sources */,
 				723E47632C6F2718004B0E0C /* EmailView.swift in Sources */,
 				72940B592C7D86F900311CE8 /* MyRoutineSelectView.swift in Sources */,
@@ -1208,8 +1349,10 @@
 				723E47032C6CD240004B0E0C /* AppDelegate.swift in Sources */,
 				723E479C2C708E48004B0E0C /* NicknameViewModel.swift in Sources */,
 				723E47192C6CD360004B0E0C /* APIKey.swift in Sources */,
+				72940BB22C83475D00311CE8 /* PostHealthDataView.swift in Sources */,
 				725B9ABF2C7C952F0078863C /* MyRoutineViewModel.swift in Sources */,
 				725B9A942C7A3FBE0078863C /* ToggleDetailView.swift in Sources */,
+				72940BC62C84435900311CE8 /* LikeResponse.swift in Sources */,
 				723E47752C6F3ED5004B0E0C /* Body.swift in Sources */,
 				725B9A6F2C786D990078863C /* ProfileListTableViewCell.swift in Sources */,
 				725B9A672C785EDC0078863C /* MainFeedbackTableViewCell.swift in Sources */,
@@ -1218,33 +1361,35 @@
 				72940B5C2C7D873D00311CE8 /* MyRoutineSelectViewController.swift in Sources */,
 				723E477F2C706EEE004B0E0C /* PasswordViewModel.swift in Sources */,
 				723E47372C6DC279004B0E0C /* OnBoardingView.swift in Sources */,
-				7274DA522C74FE1200245DCD /* RoutineView.swift in Sources */,
 				723E47A52C7212E7004B0E0C /* LoginResponse.swift in Sources */,
 				725B9AA32C7B1B4D0078863C /* CommentViewModel.swift in Sources */,
 				723E47682C6F288E004B0E0C /* LineTextField.swift in Sources */,
-				7274DA7D2C75D55000245DCD /* RoutineType.swift in Sources */,
+				72940B982C82092A00311CE8 /* HealthClassDetailViewController.swift in Sources */,
 				725B9A522C7770BF0078863C /* OpponentProfileImage.swift in Sources */,
 				725B9A902C7A3B720078863C /* DetailView.swift in Sources */,
 				723E47352C6DC23B004B0E0C /* OnBoardingViewController.swift in Sources */,
 				725B9AA52C7B21680078863C /* CommentRouter.swift in Sources */,
 				725B9A5A2C778AA70078863C /* MyRoutineView.swift in Sources */,
-				723E47C92C738DF8004B0E0C /* WODViewModel.swift in Sources */,
 				723E47BE2C736DAF004B0E0C /* MainViewModel.swift in Sources */,
+				72940BAB2C83197500311CE8 /* PostViewModel.swift in Sources */,
 				723E478E2C707DD9004B0E0C /* LoginViewController.swift in Sources */,
 				723E479A2C7089B8004B0E0C /* NicknameViewController.swift in Sources */,
 				72940B3D2C7C9FC900311CE8 /* MyRoutineMenuTableViewCell.swift in Sources */,
+				72940B9C2C820FDE00311CE8 /* HealthClassDetailViewModel.swift in Sources */,
 				725B9A822C79C79F0078863C /* EditProfileViewModel.swift in Sources */,
 				725B9A882C79CEAF0078863C /* BoxTypeProfileTextField.swift in Sources */,
 				723E47462C6DCE9C004B0E0C /* BaseViewModel.swift in Sources */,
 				723E47582C6DDCD2004B0E0C /* TargetType.swift in Sources */,
-				725B9A602C778ACB0078863C /* ChatViewController.swift in Sources */,
-				725B9A5E2C778ABF0078863C /* ChatView.swift in Sources */,
+				725B9A602C778ACB0078863C /* HealthClassViewController.swift in Sources */,
+				725B9A5E2C778ABF0078863C /* HealthClassView.swift in Sources */,
 				723E47052C6CD240004B0E0C /* SceneDelegate.swift in Sources */,
-				723E47C42C7385CF004B0E0C /* WODViewController.swift in Sources */,
 				72940B442C7CAE8200311CE8 /* HealthDataViewController.swift in Sources */,
 				723E47652C6F2720004B0E0C /* EmailViewController.swift in Sources */,
+				72940BD32C84A96B00311CE8 /* Message.swift in Sources */,
 				725B9A2F2C765DD70078863C /* ImageResponse.swift in Sources */,
 				723E479F2C71DD7C004B0E0C /* JoinResponse.swift in Sources */,
+				72940BBE2C843E5A00311CE8 /* LikeRoutineViewController.swift in Sources */,
+				72940BB02C83475000311CE8 /* PostHealthDataViewController.swift in Sources */,
 				72940B642C7DCF7600311CE8 /* FitnessAreaCollectionViewCell.swift in Sources */,
 				723E47982C7089AD004B0E0C /* NicknameView.swift in Sources */,
 				723E475C2C6DE187004B0E0C /* Header.swift in Sources */,
@@ -1256,51 +1401,62 @@
 				725B9AAF2C7B6B300078863C /* FormatterManager.swift in Sources */,
 				725B9A502C772A8C0078863C /* MainWodTableViewCell.swift in Sources */,
 				725B9A862C79CDCB0078863C /* ProfileChangeButton.swift in Sources */,
-				7274DA572C75008700245DCD /* RoutineViewModel.swift in Sources */,
+				72940BC22C843E7900311CE8 /* LikeRoutineViewModel.swift in Sources */,
+				72940B872C80AC9500311CE8 /* MyRoutineModel.swift in Sources */,
 				725B9A9A2C7B0CCE0078863C /* CommentTableViewCell.swift in Sources */,
 				723E47C62C7389A9004B0E0C /* CameraButton.swift in Sources */,
-				723E47C22C7385C6004B0E0C /* WODView.swift in Sources */,
+				72940BC42C84409400311CE8 /* LikeRoutineTableViewCell.swift in Sources */,
 				72940B682C7E3B7F00311CE8 /* SelectedRoutineCollectionViewCell.swift in Sources */,
+				72940BD52C84AB0A00311CE8 /* NotificationManager.swift in Sources */,
 				723E47922C7081C4004B0E0C /* PasswordSecureButton.swift in Sources */,
+				72940BA32C823EC200311CE8 /* PaymentResponse.swift in Sources */,
 				723E475A2C6DDD0A004B0E0C /* LSLPRouter.swift in Sources */,
 				723E47A22C721152004B0E0C /* UserDefaultsManager.swift in Sources */,
+				72940BD92C84B7A400311CE8 /* NavigationTitle.swift in Sources */,
 				723E47492C6DCF22004B0E0C /* OnBoardingViewModel.swift in Sources */,
 				72940B622C7D932600311CE8 /* MyRoutineSelectViewModel.swift in Sources */,
+				72940B902C81C98000311CE8 /* HealthClassCollectionViewCell.swift in Sources */,
+				72940B822C80364100311CE8 /* MyRoutineResultTableViewCell.swift in Sources */,
 				723E473B2C6DC5BE004B0E0C /* BaseButton.swift in Sources */,
 				7274DA4E2C74DF4C00245DCD /* TriangleImage.swift in Sources */,
+				72940BA92C83196D00311CE8 /* PostViewController.swift in Sources */,
 				725B9A9D2C7B14A20078863C /* CommentView.swift in Sources */,
 				72940B772C7F17F600311CE8 /* MyRoutineDetailTableViewCell.swift in Sources */,
 				725B9A282C761E930078863C /* RoutineData.swift in Sources */,
-				7274DA542C74FE2300245DCD /* RoutineViewController.swift in Sources */,
 				725B9A6D2C786C490078863C /* ProfileViewModel.swift in Sources */,
+				72940BC82C844D0C00311CE8 /* LikeRoutineHeaderView.swift in Sources */,
 				723E476A2C6F28C5004B0E0C /* TextFieldPlaceholder.swift in Sources */,
-				7274DA592C75016200245DCD /* RoutineTableViewCell.swift in Sources */,
 				72940B372C7C9CDC00311CE8 /* MyRoutineMenuViewController.swift in Sources */,
 				7274DA5D2C7510F700245DCD /* RoutineAreaButton.swift in Sources */,
 				725B9A2D2C7654C60078863C /* PostRouter.swift in Sources */,
 				723E47A92C721AEB004B0E0C /* MainViewController.swift in Sources */,
+				72940B8D2C81920100311CE8 /* ShadowRoundedView.swift in Sources */,
 				72940B3B2C7C9E8900311CE8 /* MyRoutineMenuViewModel.swift in Sources */,
-				7274DA5B2C75088F00245DCD /* RoutineCollectionViewCell.swift in Sources */,
+				72940BB62C83477D00311CE8 /* PostHealthDataViewModel.swift in Sources */,
 				723E47252C6DBFE7004B0E0C /* BaseTableViewCell.swift in Sources */,
 				723E47532C6DD9E2004B0E0C /* LSLPAPIManager.swift in Sources */,
 				725B9A642C778ADF0078863C /* ProfileViewController.swift in Sources */,
 				725B9A622C778AD40078863C /* ProfileView.swift in Sources */,
 				725B9A8E2C7A3B640078863C /* DetailViewController.swift in Sources */,
 				72940B6A2C7EAA3D00311CE8 /* DeleteButton.swift in Sources */,
+				72940BA72C83196400311CE8 /* PostView.swift in Sources */,
+				72940BA12C823C2C00311CE8 /* PaymentRouter.swift in Sources */,
 				72940B422C7CAE5C00311CE8 /* HealthDataView.swift in Sources */,
 				72940B392C7C9CE800311CE8 /* MyRoutineMenuView.swift in Sources */,
 				723E471F2C6DBF5F004B0E0C /* BaseView.swift in Sources */,
+				72940B9A2C82093300311CE8 /* HealthClassDetailView.swift in Sources */,
 				72940B462C7CAEAE00311CE8 /* HealthDataViewModel.swift in Sources */,
 				725B9A922C7A3BB80078863C /* DetailViewModel.swift in Sources */,
-				7274DA4B2C74DC8300245DCD /* WODTableTitles.swift in Sources */,
+				72940BB92C84291A00311CE8 /* RoutinDetail.swift in Sources */,
 				725B9A5C2C778AB40078863C /* MyRoutineViewController.swift in Sources */,
 				725B9AA72C7B2A0C0078863C /* CommentResponse.swift in Sources */,
+				72940BCC2C849E2400311CE8 /* IconManager.swift in Sources */,
 				725B9A9F2C7B14B20078863C /* CommentViewController.swift in Sources */,
 				72940B482C7CB03D00311CE8 /* HealthDataCollectionViewCell.swift in Sources */,
-				7274DA452C74D8E700245DCD /* WODTableViewCell.swift in Sources */,
 				723E47232C6DBFBB004B0E0C /* BaseCollectionViewCell.swift in Sources */,
 				725B9A762C79A26B0078863C /* ProfileRouter.swift in Sources */,
 				723E47562C6DDC77004B0E0C /* APIError.swift in Sources */,
+				72940B932C81F51200311CE8 /* HealthClassViewModel.swift in Sources */,
 				723E47702C6F3814004B0E0C /* EmailCheck.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1590,6 +1746,22 @@
 				minimumVersion = 2.8.4;
 			};
 		};
+		72940B882C80DD2100311CE8 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.1.1;
+			};
+		};
+		72940B9D2C822E4A00311CE8 /* XCRemoteSwiftPackageReference "iamport-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/iamport/iamport-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1632,6 +1804,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 725B9AB42C7C5ACD0078863C /* XCRemoteSwiftPackageReference "FSCalendar" */;
 			productName = FSCalendar;
+		};
+		72940B892C80DD2100311CE8 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 72940B882C80DD2100311CE8 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+		72940B9E2C822E4A00311CE8 /* iamport-ios */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 72940B9D2C822E4A00311CE8 /* XCRemoteSwiftPackageReference "iamport-ios" */;
+			productName = "iamport-ios";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

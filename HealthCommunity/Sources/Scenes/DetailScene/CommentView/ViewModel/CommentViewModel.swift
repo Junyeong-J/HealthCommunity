@@ -34,7 +34,7 @@ final class CommentViewModel: BaseViewModel {
                     return Single.just(profile)
                 case .failure(let error):
                     print("Error: \(error)")
-                    return Single.just(Post(postID: "", productID: "", title: "", price: 0, content: "", content1: "", content2: "", content3: "", content4: "", createdAt: "", creator: Creator(userID: "", nick: "", profileImage: ""), files: [], likes: [], likes2: [], hashTags: [], comments: []))
+                    return Single.just(Post(postID: "", productID: "", title: "", price: 0, content: "", content1: "", content2: "", content3: "", content4: "", buyers: [], createdAt: "", creator: Creator(userID: "", nick: "", profileImage: ""), files: [], likes: [], likes2: [], hashTags: [], comments: []))
                 }
             }
             .subscribe(onSuccess: { data in

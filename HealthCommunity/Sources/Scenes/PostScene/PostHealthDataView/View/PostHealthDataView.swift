@@ -36,7 +36,7 @@ final class PostHealthDataView: BaseView {
     let fetchButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("데이터 가져오기", for: .normal)
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = .myAppMain
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 10
         return button
@@ -45,7 +45,7 @@ final class PostHealthDataView: BaseView {
     let registerButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("데이터 등록하기", for: .normal)
-        button.backgroundColor = .systemGreen
+        button.backgroundColor = .myAppMain
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 10
         return button

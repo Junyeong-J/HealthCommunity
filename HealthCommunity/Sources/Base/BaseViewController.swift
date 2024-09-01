@@ -29,6 +29,7 @@ class BaseViewController<RootView: UIView>: UIViewController {
         configureHierarchy()
         configureView()
         configureConstraints()
+        configureNavigationBar()
         bindModel()
     }
     
@@ -48,6 +49,15 @@ class BaseViewController<RootView: UIView>: UIViewController {
         
     }
     
+    func configureNavigationBar() {
+        navigationItem.largeTitleDisplayMode = .never
+        configureNavBarAppearance()
+        if let nc = self.navigationController, nc.viewControllers.count > 1 {
+            configureNavBarLeftBarButtonItem()
+        }
+        configureNavBarTitle()
+    }
+    
     func configureKeyboardTapGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         rootView.addGestureRecognizer(tapGesture)
@@ -55,6 +65,41 @@ class BaseViewController<RootView: UIView>: UIViewController {
     
     @objc private func dismissKeyboard() {
         rootView.endEditing(true)
+    }
+    
+    @objc private func backButtonClicked() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+}
+
+extension BaseViewController {
+    
+    private func configureNavBarAppearance() {
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.configureWithOpaqueBackground()
+        
+        UINavigationBar.appearance().standardAppearance = navigationBarAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
+        
+        navigationController?.navigationBar.standardAppearance = navigationBarAppearance
+        navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
+        navigationController?.navigationBar.compactAppearance = navigationBarAppearance
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.tintColor = .myAppBlack
+    }
+    
+    private func configureNavBarLeftBarButtonItem() {
+        let backButtonImage = UIImage(systemName: "chevron.left")
+        let backButton = UIBarButtonItem(image: backButtonImage, style: .plain, target: self, action: #selector(backButtonClicked))
+        navigationItem.leftBarButtonItem = backButton
+    }
+    
+    private func configureNavBarTitle() {
+        guard let navBarInfo = self.rootView as? NaviProtocol else {
+            return
+        }
+        navigationItem.title = navBarInfo.navigationTitle
     }
     
 }
