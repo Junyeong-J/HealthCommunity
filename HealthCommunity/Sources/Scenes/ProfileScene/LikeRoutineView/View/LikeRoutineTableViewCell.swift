@@ -1,5 +1,5 @@
 //
-//  RoutineTableViewCell.swift
+//  LikeRoutineTableViewCell.swift
 //  HealthCommunity
 //
 //  Created by 전준영 on 9/1/24.
@@ -27,7 +27,7 @@ final class LikeRoutineTableViewCell: BaseTableViewCell {
         label.textColor = .white
         label.backgroundColor = .systemBlue
         label.textAlignment = .center
-        label.layer.cornerRadius = 15
+        label.layer.cornerRadius = 13
         label.clipsToBounds = true
         return label
     }()
@@ -62,7 +62,7 @@ final class LikeRoutineTableViewCell: BaseTableViewCell {
         orderLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(15)
             make.top.equalToSuperview().offset(15)
-            make.width.height.equalTo(30)
+            make.width.height.equalTo(26)
         }
         
         routineTitleLabel.snp.makeConstraints { make in

@@ -14,6 +14,16 @@ final class EditProfileViewController: BaseViewController<EditProfileView> {
     
     private let viewModel = EditProfileViewModel()
     private let profileImage = BehaviorSubject<UIImage?>(value: nil)
+    private let profileData: BehaviorSubject<UserProfile>
+    
+    init(profile: UserProfile) {
+        self.profileData = BehaviorSubject(value: profile)
+        super.init()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +42,8 @@ final class EditProfileViewController: BaseViewController<EditProfileView> {
             bench: rootView.benchTextField.rx.text.orEmpty.asObservable(),
             squat: rootView.squatTextField.rx.text.orEmpty.asObservable(),
             deadlift: rootView.deadliftTextField.rx.text.orEmpty.asObservable(),
-            profileImage: profileImage.asObservable()
+            profileImage: profileImage.asObservable(),
+            originProfileData: profileData.asObservable()
         )
         
         let output = viewModel.transform(input: input)
@@ -46,10 +57,17 @@ final class EditProfileViewController: BaseViewController<EditProfileView> {
         output.saveButtonResult
             .bind(with: self) { owner, success in
                 if success {
-                    print("Profile updated successfully.")
+                    NotificationCenter.default.post(name: Notification.Name("profileDidUpdate"), object: nil)
+                    owner.navigationController?.popViewController(animated: true)
                 } else {
                     print("Failed to update profile.")
                 }
+            }
+            .disposed(by: viewModel.disposeBag)
+        
+        output.originProfileData
+            .bind(with: self) { owner, profile in
+                owner.rootView.originalData(profile: profile)
             }
             .disposed(by: viewModel.disposeBag)
     }

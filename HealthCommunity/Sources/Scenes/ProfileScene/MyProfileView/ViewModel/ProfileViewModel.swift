@@ -14,24 +14,29 @@ final class ProfileViewModel: BaseViewModel {
     let disposeBag = DisposeBag()
     private let networkManager = LSLPAPIManager.shared
     
+    private let profileList = PublishSubject<[UserProfile]>()
+    
     struct Input {
-        
+        let editProfileTap: ControlEvent<Void>
+        let routineLikeTap: ControlEvent<Void>
     }
     
     struct Output {
-        let menuItems: Driver<[String]>
+        let editProfileTapped: ControlEvent<Void>
+        let routineLikeTapped: ControlEvent<Void>
         let myProfileList: Observable<[UserProfile]>
     }
     
     func transform(input: Input) -> Output {
-        let profileList = PublishSubject<[UserProfile]>()
-        let menuItems = Observable.just([
-            "프로필 수정",
-            "루틴 좋아요 목록",
-            "목표 정하기",
-            "탈퇴"
-        ]).asDriver(onErrorJustReturn: [])
         
+        fetchProfileData()
+        
+        return Output(editProfileTapped: input.editProfileTap,
+                      routineLikeTapped: input.routineLikeTap,
+                      myProfileList: profileList.asObservable())
+    }
+    
+    func fetchProfileData() {
         networkManager.request(api: .profile(.myProfile), model: UserProfile.self)
             .flatMap { result -> Single<[UserProfile]> in
                 switch result {
@@ -43,13 +48,10 @@ final class ProfileViewModel: BaseViewModel {
                 }
             }
             .subscribe(onSuccess: { profiles in
-                profileList.onNext(profiles)
+                self.profileList.onNext(profiles)
             }, onFailure: { error in
-                profileList.onNext([])
+                self.profileList.onNext([])
             })
             .disposed(by: disposeBag)
-        
-        return Output(menuItems: menuItems, myProfileList: profileList)
     }
-    
 }

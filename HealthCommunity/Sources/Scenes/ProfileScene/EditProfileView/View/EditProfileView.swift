@@ -41,7 +41,11 @@ final class EditProfileView: BaseView {
         return label
     }()
     
-    let benchTextField = BoxTypeProfileTextField(style: .bench)
+    let benchTextField: BoxTypeProfileTextField = {
+        let textField = BoxTypeProfileTextField(style: .bench)
+        textField.keyboardType = .numberPad
+        return textField
+    }()
     
     private let benchKgLabel: UILabel = {
         let label = UILabel()
@@ -59,7 +63,11 @@ final class EditProfileView: BaseView {
         return label
     }()
     
-    let squatTextField = BoxTypeProfileTextField(style: .squat)
+    let squatTextField: BoxTypeProfileTextField = {
+        let textField = BoxTypeProfileTextField(style: .squat)
+        textField.keyboardType = .numberPad
+        return textField
+    }()
     
     private let squatKgLabel: UILabel = {
         let label = UILabel()
@@ -77,7 +85,11 @@ final class EditProfileView: BaseView {
         return label
     }()
     
-    let deadliftTextField = BoxTypeProfileTextField(style: .deadlift)
+    let deadliftTextField: BoxTypeProfileTextField = {
+        let textField = BoxTypeProfileTextField(style: .deadlift)
+        textField.keyboardType = .numberPad
+        return textField
+    }()
     
     private let deadliftKgLabel: UILabel = {
         let label = UILabel()
@@ -197,6 +209,51 @@ final class EditProfileView: BaseView {
     
     func handleImage(image: UIImage) {
         self.profileImageView.image = image
+    }
+    
+    func originalData(profile: UserProfile) {
+        if let firstFile = profile.profileImage {
+            let url = URL(string: APIURL.baseURL + firstFile)
+            profileImageView.kf.setImage(with: url)
+        } else {
+            profileImageView.image = UIImage(named: "star")
+        }
+        
+        nicknameTextField.text = profile.nick
+        introduceTextField.text = profile.phoneNum
+        
+        let infoString = profile.birthDay ?? ""
+        
+        let components = infoString.components(separatedBy: " ")
+        
+        var benchValue: String?
+        var squatValue: String?
+        var deadliftValue: String?
+        
+        if components.count > 1 {
+            benchValue = components[1]
+                .replacingOccurrences(of: "벤치:", with: "")
+                .replacingOccurrences(of: "kg", with: "")
+                .trimmingCharacters(in: .whitespaces)
+        }
+        
+        if components.count > 3 {
+            squatValue = components[3]
+                .replacingOccurrences(of: "스쿼트:", with: "")
+                .replacingOccurrences(of: "kg", with: "")
+                .trimmingCharacters(in: .whitespaces)
+        }
+        
+        if components.count > 5 {
+            deadliftValue = components[5]
+                .replacingOccurrences(of: "데드:", with: "")
+                .replacingOccurrences(of: "kg", with: "")
+                .trimmingCharacters(in: .whitespaces)
+        }
+        
+        benchTextField.text = benchValue
+        squatTextField.text = squatValue
+        deadliftTextField.text = deadliftValue
     }
     
 }

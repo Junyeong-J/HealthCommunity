@@ -12,9 +12,11 @@ import RxCocoa
 final class ProfileViewController: BaseViewController<ProfileView> {
     
     private let viewModel = ProfileViewModel()
+    private var userProfile: UserProfile?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        observeProfileUpdateNotification()
     }
     
     override func configureView() {
@@ -22,38 +24,43 @@ final class ProfileViewController: BaseViewController<ProfileView> {
     }
     
     override func bindModel() {
-        let input = ProfileViewModel.Input()
+        let input = ProfileViewModel.Input(
+            editProfileTap: rootView.profileEditButton.rx.tap,
+            routineLikeTap: rootView.routineLikesButton.rx.tap)
         
         let output = viewModel.transform(input: input)
         
-        output.menuItems
-            .drive(rootView.tableView.rx.items(
-                cellIdentifier: ProfileListTableViewCell.identifier,
-                cellType: ProfileListTableViewCell.self)) { row, item, cell in
-                    cell.configure(with: item)
-                }
-                .disposed(by: viewModel.disposeBag)
-        
         output.myProfileList
             .bind(with: self, onNext: { owner, profile in
+                owner.userProfile = profile.first
                 owner.rootView.configureData(profile: profile)
             })
             .disposed(by: viewModel.disposeBag)
         
-        rootView.tableView.rx.modelSelected(String.self)
-            .bind(with: self, onNext: { owner, item in
-                switch item {
-                case "프로필 수정":
-                    print("프로필 수정 화면으로 이동")
-                case "루틴 좋아요 목록":
-                    print("루틴 좋아요 목록 화면으로 이동")
-                case "목표 정하기":
-                    print("목표 정하기 화면으로 이동")
-                case "탈퇴":
-                    print("탈퇴 화면으로 이동")
-                default:
-                    break
+        output.editProfileTapped
+            .bind(with: self) { owner, _ in
+                if let profile = owner.userProfile {
+                    owner.navigationController?.pushViewController(EditProfileViewController(profile: profile), animated: true)
                 }
+            }
+            .disposed(by: viewModel.disposeBag)
+        
+        output.routineLikeTapped
+            .bind(with: self) { owner, _ in
+                owner.navigationController?.pushViewController(LikeRoutineViewController(), animated: true)
+            }
+            .disposed(by: viewModel.disposeBag)
+        
+    }
+    
+}
+
+extension ProfileViewController {
+    
+    private func observeProfileUpdateNotification() {
+        NotificationCenter.default.rx.notification(Notification.Name("profileDidUpdate"))
+            .bind(with: self, onNext: { owner, _ in
+                owner.viewModel.fetchProfileData()
             })
             .disposed(by: viewModel.disposeBag)
     }
