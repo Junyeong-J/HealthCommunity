@@ -237,36 +237,21 @@ final class HealthClassDetailView: BaseView {
         }
     }
     
-    override func configureView() {
-        classImageView.backgroundColor = .gray
-        titleLabel.text = "classData.title"
-        locationInfoLabel.text = "classData.location"
-        targetInfoLabel.text = "classData.target"
-        timeInfoLabel.text = "classData.time"
-        participantsInfoLabel.text = "classData.currentParticipants)/(classData.maxParticipants)"
-        priceInfoLabel.text = "classData.price원"
-    }
-}
-
-
-#if DEBUG
-
-import SwiftUI
-
-struct ViewControllerPresentable: UIViewControllerRepresentable{
-    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+    func updateView(post: Post?) {
+        guard let post = post else { return }
         
+        classImageView.kf.setImage(with: URL(string: APIURL.baseURL + (post.files.first ?? "")))
+        titleLabel.text = post.title ?? "제목 없음"
+        locationInfoLabel.text = post.content3 ?? "정보 없음"
+        targetInfoLabel.text = "운동 능력 향상 하고싶은 분"
+        timeInfoLabel.text = post.content ?? "시간 정보 없음"
+        participantsInfoLabel.text = "\(post.buyers.count) / \(post.content2 ?? "0")"
+        priceInfoLabel.text = "\(post.price ?? 0)원"
     }
     
-    func makeUIViewController(context: Context) -> some UIViewController {
-        HealthClassDetailViewController()
+    func updateButton() {
+        actionButton.setTitle("결제된 상품입니다", for: .normal)
+        actionButton.backgroundColor = .lightGray
+        actionButton.isEnabled = false
     }
 }
-
-struct ViewControllerPrepresentable_PreviewProvider : PreviewProvider{
-    static var previews: some View{
-        ViewControllerPresentable()
-    }
-}
-
-#endif

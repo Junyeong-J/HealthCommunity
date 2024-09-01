@@ -13,10 +13,13 @@ final class HealthClassViewController: BaseViewController<HealthClassView> {
     
     private let viewModel = HealthClassViewModel()
     
-    private let locations = ["전체", "서울", "부산", "대구", "광주", "인천", "대전"]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.refreshData()
     }
     
     override func bindModel() {
@@ -32,7 +35,12 @@ final class HealthClassViewController: BaseViewController<HealthClassView> {
                 }
                 .disposed(by: viewModel.disposeBag)
         
-        
+        rootView.collectionView.rx.modelSelected(Post.self)
+            .subscribe(with: self) { owner, post in
+                let detailVC = HealthClassDetailViewController(postData: post)
+                owner.navigationController?.pushViewController(detailVC, animated: true)
+            }
+            .disposed(by: viewModel.disposeBag)
         
     }
     

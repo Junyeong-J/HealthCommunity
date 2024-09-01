@@ -104,7 +104,7 @@ final class HealthClassCollectionViewCell: BaseCollectionViewCell {
         titleLabel.text = post.title
         priceLabel.text = "\(post.price ?? 0)원"
         timeLabel.text = post.content
-        participantsLabel.text = "\(post.content1 ?? "0")/\(post.content2 ?? "0") 참여중"
+        participantsLabel.text = "\(post.buyers.count)/\(post.content2 ?? "0") 참여중"
         hashtagLabel.text = post.hashTags.joined(separator: " ")
     }
 }

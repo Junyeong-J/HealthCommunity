@@ -10,11 +10,6 @@ import SnapKit
 
 final class HealthClassView: BaseView {
     
-    let locationPicker: UIPickerView = {
-        let picker = UIPickerView()
-        return picker
-    }()
-    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "이번달 클래스"
@@ -49,19 +44,12 @@ final class HealthClassView: BaseView {
     
     
     override func configureHierarchy() {
-        [locationPicker, titleLabel,
-         collectionView].forEach { addSubview($0) }
+        [ titleLabel, collectionView].forEach { addSubview($0) }
     }
     
     override func configureLayout() {
-        locationPicker.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide).offset(10)
-            make.horizontalEdges.equalToSuperview().inset(10)
-            make.height.equalTo(50)
-        }
-        
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(locationPicker.snp.bottom).offset(10)
+            make.top.equalTo(safeAreaLayoutGuide).inset(10)
             make.horizontalEdges.equalToSuperview().inset(10)
             make.height.equalTo(50)
         }
@@ -73,9 +61,11 @@ final class HealthClassView: BaseView {
         }
     }
     
-    func updateTitleLabel(with location: String) {
-        titleLabel.text = "\(location) 지역 이번달 클래스"
-    }
 }
 
+extension HealthClassView: NaviProtocol {
+    var navigationTitle: String {
+        return NavigationTitle.healthClass.title
+    }
+}
 

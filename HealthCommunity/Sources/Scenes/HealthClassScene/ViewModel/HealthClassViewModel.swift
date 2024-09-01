@@ -25,6 +25,14 @@ final class HealthClassViewModel: BaseViewModel {
     
     func transform(input: Input) -> Output {
         
+        return Output(posts: postList)
+    }
+    
+}
+
+extension HealthClassViewModel {
+    
+    func refreshData() {
         networkManager.request(api: .post(.postView(next: "", limit: "", productId: "헬스PT클래스")), model: PostViewResponse.self)
             .flatMap { result -> Single<[Post]> in
                 switch result {
@@ -41,8 +49,6 @@ final class HealthClassViewModel: BaseViewModel {
                 owner.postList.onNext([])
             })
             .disposed(by: disposeBag)
-        
-        return Output(posts: postList)
     }
     
 }
