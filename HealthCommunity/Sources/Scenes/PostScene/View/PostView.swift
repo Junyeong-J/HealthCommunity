@@ -79,7 +79,7 @@ final class PostView: BaseView, UITextViewDelegate {
         return label
     }()
     
-    private let contentTextView: UITextView = {
+    let contentTextView: UITextView = {
         let textView = UITextView()
         textView.font = UIFont.systemFont(ofSize: 16)
         textView.layer.borderWidth = 1
@@ -266,6 +266,9 @@ final class PostView: BaseView, UITextViewDelegate {
         photoLabel.isHidden = !isVisible
         photoScrollView.isHidden = !isVisible
         photoCountLabel.isHidden = !isVisible
+        tableView.isHidden = !isVisible
+        myRoutineDetailTableView.isHidden = !isVisible
+        healthDataView.isHidden = !isVisible
         
         if isVisible {
             contentTextView.snp.remakeConstraints { make in

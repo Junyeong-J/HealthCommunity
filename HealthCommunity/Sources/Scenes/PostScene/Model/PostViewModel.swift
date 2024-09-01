@@ -25,6 +25,7 @@ final class PostViewModel: BaseViewModel {
         let healthData: Observable<String>
         let postButtonTap: ControlEvent<Void>
         let tableSize: Reactive<UITableView>
+        let contentText: Observable<String>
     }
     
     struct Output {
@@ -88,26 +89,13 @@ final class PostViewModel: BaseViewModel {
         
         let postResult = input.postButtonTap
             .throttle(.seconds(1), scheduler: MainScheduler.instance)
-            .withLatestFrom(photosRelay)
-            .distinctUntilChanged()
-            .map { photos in
-                return photos.compactMap { $0.jpegData(compressionQuality: 0.7) }
-            }
-            .flatMapLatest { imageDatas in
-                self.networkManager.uploadImagesRequest(model: ImageResponse.self, imageDatas: imageDatas)
-                    .asObservable()
-            }
             .withLatestFrom(Observable.combineLatest(
-                input.contentData, formattedHealthData, productIdRelay)) {
-                    (uploadResult, combinedData) -> (Result<ImageResponse, APIError>, String, String, String) in
-                return (uploadResult, combinedData.0, combinedData.1, combinedData.2)
-            }
-            .flatMapLatest { uploadResult, content, healthData, productId in
-                switch uploadResult {
-                case .success(let imageResponse):
-                    let files = imageResponse.files
+                photosRelay, productIdRelay, input.contentData, formattedHealthData, input.contentText
+            ))
+            .flatMapLatest { photos, productId, content, healthData, contentText -> Observable<Bool> in
+                if productId == "소통" {
                     return self.networkManager.request(
-                        api: .post(.posts(content: content, content1: healthData, content2: "", productId: productId, files: files)),
+                        api: .post(.posts(content: "", content1: "", content2: contentText, productId: productId, files: nil)),
                         model: PostModelResponse.self
                     )
                     .map { result -> Bool in
@@ -121,10 +109,35 @@ final class PostViewModel: BaseViewModel {
                         }
                     }
                     .asObservable()
-                    
-                case .failure(let error):
-                    print("Image upload failed: \(error)")
-                    return Observable.just(false)
+                } else {
+                    let imageDatas = photos.compactMap { $0.jpegData(compressionQuality: 0.7) }
+                    return self.networkManager.uploadImagesRequest(model: ImageResponse.self, imageDatas: imageDatas)
+                        .asObservable()
+                        .flatMapLatest { uploadResult -> Observable<Bool> in
+                            switch uploadResult {
+                            case .success(let imageResponse):
+                                let files = imageResponse.files
+                                return self.networkManager.request(
+                                    api: .post(.posts(content: content, content1: healthData, content2: contentText, productId: productId, files: files)),
+                                    model: PostModelResponse.self
+                                )
+                                .map { result -> Bool in
+                                    switch result {
+                                    case .success(let value):
+                                        print("Post successful: \(value)")
+                                        return true
+                                    case .failure(let error):
+                                        print("Post failed: \(error)")
+                                        return false
+                                    }
+                                }
+                                .asObservable()
+                                
+                            case .failure(let error):
+                                print("Image upload failed: \(error)")
+                                return Observable.just(false)
+                            }
+                        }
                 }
             }
             .asDriver(onErrorJustReturn: false)

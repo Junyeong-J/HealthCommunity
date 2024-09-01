@@ -35,7 +35,8 @@ final class PostViewController: BaseViewController<PostView> {
             contentData: content.asObserver(),
             healthData: healthData.asObserver(),
             postButtonTap: rootView.addButton.rx.tap,
-            tableSize: rootView.myRoutineDetailTableView.rx
+            tableSize: rootView.myRoutineDetailTableView.rx,
+            contentText: rootView.contentTextView.rx.text.orEmpty.asObservable()
         )
         
         let output = viewModel.transform(input: input)
@@ -107,7 +108,8 @@ final class PostViewController: BaseViewController<PostView> {
                     owner.rootView.tableView.deselectRow(at: indexPath, animated: true)
                     owner.navigationController?.pushViewController(routineSelectVC, animated: true)
                 case 1:
-                    let healthDataVC = PostHealthDataViewController(dateString: "2024-08-31")
+                    let currentDate = FormatterManager.shared.getCurrentDate()
+                    let healthDataVC = PostHealthDataViewController(dateString: currentDate)
                     owner.rootView.tableView.deselectRow(at: indexPath, animated: true)
                     owner.navigationController?.pushViewController(healthDataVC, animated: true)
                 default:
@@ -142,6 +144,7 @@ final class PostViewController: BaseViewController<PostView> {
         output.postResult
             .drive(with: self) { owner, value in
                 if value {
+                    NotificationCenter.default.post(name: Notification.Name("postSuccess"), object: nil)
                     owner.navigationController?.popViewController(animated: true)
                 } else {
                     print("error입니다")
