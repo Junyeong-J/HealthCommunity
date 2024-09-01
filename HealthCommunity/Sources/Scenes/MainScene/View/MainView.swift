@@ -19,7 +19,6 @@ final class MainView: BaseView {
         segment.insertSegment(withTitle: "소통", at: 2, animated: true)
         segment.selectedSegmentIndex = 0
         
-        // 텍스트 스타일 설정
         segment.setTitleTextAttributes([
             NSAttributedString.Key.foregroundColor: UIColor.gray,
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)], for: .normal)
@@ -27,7 +26,6 @@ final class MainView: BaseView {
             NSAttributedString.Key.foregroundColor: UIColor.black,
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)], for: .selected)
         
-        // 배경 및 구분선 제거
         segment.selectedSegmentTintColor = .clear
         segment.setBackgroundImage(UIImage(), for: .normal, barMetrics: .default)
         segment.setDividerImage(UIImage(), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
@@ -144,7 +142,6 @@ final class MainView: BaseView {
             }
         }
     }
-
     
     @objc
     private func changeUnderLinePosition(_ segment: UISegmentedControl) {
@@ -159,5 +156,4 @@ final class MainView: BaseView {
         }
     }
 
-    
 }

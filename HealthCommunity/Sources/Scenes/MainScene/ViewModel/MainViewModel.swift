@@ -16,6 +16,8 @@ final class MainViewModel: BaseViewModel {
     private let networkManager = LSLPAPIManager.shared
     private var isLoad = true
     
+    private let appList = PublishSubject<[Post]>()
+    
     struct Input {
         let postButtonTap: ControlEvent<Void>
         let selectedSegment: ControlProperty<Int>
@@ -30,8 +32,23 @@ final class MainViewModel: BaseViewModel {
     }
     
     func transform(input: Input) -> Output {
-        let appList = PublishSubject<[Post]>()
+        
         let refreshLoading = PublishRelay<Bool>()
+        
+        networkManager.request(api: .profile(.myProfile), model: UserProfile.self)
+            .flatMap { result -> Single<Void> in
+                switch result {
+                case .success(let profile):
+                    let userID = profile.userId
+                    UserDefaultsManager.shared.userID = userID
+                    return Single.just(())
+                case .failure(let error):
+                    print("Error: \(error)")
+                    return Single.just(())
+                }
+            }
+            .subscribe()
+            .disposed(by: disposeBag)
         
         input.selectedSegment
             .throttle(.seconds(1), scheduler: MainScheduler.instance)
@@ -42,16 +59,16 @@ final class MainViewModel: BaseViewModel {
             .bind(to: appList)
             .disposed(by: disposeBag)
         
-//        input.refreshTrigger
-//            .withLatestFrom(input.selectedSegment.asObservable())
-//            .flatMapLatest { [weak self] index -> Observable<[Post]> in
-//                return self?.fetchPosts(for: index) ?? Observable.just([])
-//            }
-//            .do(onNext: { _ in
-//                refreshLoading.accept(false)
-//            })
-//            .bind(to: appList)
-//            .disposed(by: disposeBag)
+        //        input.refreshTrigger
+        //            .withLatestFrom(input.selectedSegment.asObservable())
+        //            .flatMapLatest { [weak self] index -> Observable<[Post]> in
+        //                return self?.fetchPosts(for: index) ?? Observable.just([])
+        //            }
+        //            .do(onNext: { _ in
+        //                refreshLoading.accept(false)
+        //            })
+        //            .bind(to: appList)
+        //            .disposed(by: disposeBag)
         
         return Output(
             postButtonTapped: input.postButtonTap,
@@ -64,6 +81,12 @@ final class MainViewModel: BaseViewModel {
 
 
 extension MainViewModel {
+    
+    func refreshCurrentSegment(_ index: Int) {
+        fetchPosts(for: index)
+            .bind(to: appList)
+            .disposed(by: disposeBag)
+    }
     
     private func fetchPosts(for index: Int) -> Observable<[Post]> {
         let request: Single<Result<PostViewResponse, APIError>>

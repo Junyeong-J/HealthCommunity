@@ -21,7 +21,7 @@ final class MainWodTableViewCell: BaseTableViewCell {
     
     private let opponentProfileImageView = OpponentProfileImage()
     
-    private var disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -32,7 +32,19 @@ final class MainWodTableViewCell: BaseTableViewCell {
         let label = UILabel()
         label.font = Font.bold16
         label.textColor = .myAppBlack
+        label.backgroundColor = .lightGray.withAlphaComponent(0.3)
+        label.layer.cornerRadius = 5
+        label.clipsToBounds = true
+        label.textAlignment = .center
+        label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        label.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         return label
+    }()
+    
+    private let topSeparatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .lightGray
+        return view
     }()
     
     private let mainImageView: UIImageView = {
@@ -42,26 +54,19 @@ final class MainWodTableViewCell: BaseTableViewCell {
         return imageView
     }()
     
-    private let likeButton: UIButton = {
+    private let bottomSeparatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .lightGray
+        return view
+    }()
+    
+    let commentButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "heart"), for: .normal)
-        button.setImage(UIImage(systemName: "heart.fill"), for: .selected)
+        button.setImage(UIImage(systemName: "message")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        button.tintColor = .myAppMain
         return button
     }()
-
-    private let likeCountLabel: UILabel = {
-        let label = UILabel()
-        label.font = Font.bold14
-        label.textColor = .darkGray
-        return label
-    }()
-
-    private let commentButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(systemName: "message.fill"), for: .normal)
-        return button
-    }()
-
+    
     private let commentCountLabel: UILabel = {
         let label = UILabel()
         label.font = Font.bold14
@@ -86,11 +91,11 @@ final class MainWodTableViewCell: BaseTableViewCell {
     
     override func configureHierarchy() {
         contentView.addSubview(containerView)
-        [opponentProfileImageView, nicknameLabel,
-         mainImageView, likeButton, likeCountLabel,
-         commentButton, commentCountLabel, contentLabel, timeLabel].forEach { containerView.addSubview($0) }
+        [opponentProfileImageView, nicknameLabel, topSeparatorView,
+         mainImageView, bottomSeparatorView, commentButton, commentCountLabel,
+         contentLabel, timeLabel].forEach { containerView.addSubview($0) }
     }
-
+    
     override func configureLayout() {
         containerView.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(10)
@@ -106,36 +111,37 @@ final class MainWodTableViewCell: BaseTableViewCell {
             make.centerY.equalTo(opponentProfileImageView)
         }
         
-        mainImageView.snp.makeConstraints { make in
+        topSeparatorView.snp.makeConstraints { make in
             make.top.equalTo(opponentProfileImageView.snp.bottom).offset(10)
+            make.horizontalEdges.equalToSuperview()
+            make.height.equalTo(1)
+        }
+        
+        mainImageView.snp.makeConstraints { make in
+            make.top.equalTo(topSeparatorView.snp.bottom).offset(10)
             make.horizontalEdges.equalToSuperview()
             make.height.equalTo(200)
         }
         
-        likeButton.snp.makeConstraints { make in
+        bottomSeparatorView.snp.makeConstraints { make in
             make.top.equalTo(mainImageView.snp.bottom).offset(10)
-            make.leading.equalToSuperview().inset(10)
-            make.width.height.equalTo(24)
-        }
-        
-        likeCountLabel.snp.makeConstraints { make in
-            make.leading.equalTo(likeButton.snp.trailing).offset(10)
-            make.centerY.equalTo(likeButton)
+            make.horizontalEdges.equalToSuperview()
+            make.height.equalTo(1)
         }
         
         commentButton.snp.makeConstraints { make in
-            make.leading.equalTo(likeCountLabel.snp.trailing).offset(20)
-            make.centerY.equalTo(likeButton)
-            make.width.height.equalTo(24)
+            make.top.equalTo(bottomSeparatorView.snp.bottom).offset(10)
+            make.leading.equalToSuperview().offset(10)
+            make.size.equalTo(24)
         }
         
         commentCountLabel.snp.makeConstraints { make in
-            make.leading.equalTo(commentButton.snp.trailing).offset(10)
-            make.centerY.equalTo(likeButton)
+            make.leading.equalTo(commentButton.snp.trailing).offset(5)
+            make.centerY.equalTo(commentButton)
         }
         
         contentLabel.snp.makeConstraints { make in
-            make.top.equalTo(likeButton.snp.bottom).offset(10)
+            make.top.equalTo(commentButton.snp.bottom).offset(10)
             make.horizontalEdges.equalToSuperview().inset(10)
         }
         
@@ -148,7 +154,7 @@ final class MainWodTableViewCell: BaseTableViewCell {
     func configure(post: Post) {
         KingfisherManager.shared.setHeaders()
         nicknameLabel.text = post.creator.nick
-        contentLabel.text = post.content
+        contentLabel.text = post.content2
         
         if let createImage = post.creator.profileImage {
             let url = URL(string: APIURL.baseURL + createImage)
@@ -165,18 +171,8 @@ final class MainWodTableViewCell: BaseTableViewCell {
         }
         
         timeLabel.text = FormatterManager.shared.formatDate(from: post.createdAt)
-        
-//        likeButton.isSelected = post.likes.contains(currentUserId)
-        likeCountLabel.text = "\(post.likes.count)"
         commentCountLabel.text = "\(post.comments.count)"
         
-        // 좋아요 버튼 액션
-        likeButton.rx.tap
-            .bind { [weak self] in
-                self?.likeButton.isSelected.toggle()
-                // 좋아요 상태를 서버에 전송하는 로직 추가
-            }
-            .disposed(by: disposeBag)
     }
     
 }

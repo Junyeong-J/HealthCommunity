@@ -22,6 +22,7 @@ final class MainViewController: BaseViewController<MainView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        observePostSuccessNotification()
     }
     
     override func configureView() {
@@ -65,7 +66,7 @@ final class MainViewController: BaseViewController<MainView> {
         
         output.postButtonTapped
             .bind(with: self) { owner, _ in
-                owner.navigationController?.pushViewController(WODViewController(), animated: true)
+                owner.navigationController?.pushViewController(PostViewController(), animated: true)
             }
             .disposed(by: viewModel.disposeBag)
         
@@ -80,6 +81,13 @@ final class MainViewController: BaseViewController<MainView> {
                 cellIdentifier: MainWodTableViewCell.identifier,
                 cellType: MainWodTableViewCell.self)) { row, item, cell in
                     cell.configure(post: item)
+                    cell.commentButton.rx.tap
+                        .bind(with: self) { owner, _ in
+                            let VC = CommentViewController(postDetail: item)
+                            owner.present(VC, animated: true, completion: nil)
+                        }
+                        .disposed(by: cell.disposeBag)
+                        
                 }
                 .disposed(by: viewModel.disposeBag)
         
@@ -88,6 +96,12 @@ final class MainViewController: BaseViewController<MainView> {
                 cellIdentifier: MainFeedbackTableViewCell.identifier,
                 cellType: MainFeedbackTableViewCell.self)) { row, item, cell in
                     cell.configure(post: item)
+                    cell.commentButton.rx.tap
+                        .bind(with: self) { owner, _ in
+                            let VC = CommentViewController(postDetail: item)
+                            owner.present(VC, animated: true, completion: nil)
+                        }
+                        .disposed(by: cell.disposeBag)
                 }
                 .disposed(by: viewModel.disposeBag)
         
@@ -96,6 +110,12 @@ final class MainViewController: BaseViewController<MainView> {
                 cellIdentifier: MainCommunityTableViewCell.identifier,
                 cellType: MainCommunityTableViewCell.self)) { row, item, cell in
                     cell.configure(post: item)
+                    cell.commentButton.rx.tap
+                        .bind(with: self) { owner, _ in
+                            let VC = CommentViewController(postDetail: item)
+                            owner.present(VC, animated: true, completion: nil)
+                        }
+                        .disposed(by: cell.disposeBag)
                 }
                 .disposed(by: viewModel.disposeBag)
         
@@ -149,6 +169,18 @@ final class MainViewController: BaseViewController<MainView> {
         
     }
     
+}
+
+extension MainViewController {
+    
+    private func observePostSuccessNotification() {
+        NotificationCenter.default.rx.notification(Notification.Name("postSuccess"))
+            .bind(with: self, onNext: { owner, _ in
+                let selectedSegment = owner.rootView.segmentControl.selectedSegmentIndex
+                owner.viewModel.refreshCurrentSegment(selectedSegment)
+            })
+            .disposed(by: viewModel.disposeBag)
+    }
     
 }
 

@@ -12,7 +12,7 @@ import RxCocoa
 
 final class MainCommunityTableViewCell: BaseTableViewCell {
     
-    private var disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -49,10 +49,24 @@ final class MainCommunityTableViewCell: BaseTableViewCell {
         return label
     }()
     
+    let commentButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "message")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        button.tintColor = .myAppMain
+        return button
+    }()
+    
+    private let commentCountLabel: UILabel = {
+        let label = UILabel()
+        label.font = Font.bold14
+        label.textColor = .darkGray
+        return label
+    }()
+    
     override func configureHierarchy() {
         contentView.addSubview(containerView)
-        [opponentProfileImageView, nicknameLabel,
-         contentLabel, timeLabel].forEach { containerView.addSubview($0) }
+        [opponentProfileImageView, nicknameLabel, contentLabel,
+         timeLabel, commentButton, commentCountLabel].forEach { containerView.addSubview($0) }
     }
     
     override func configureLayout() {
@@ -75,8 +89,19 @@ final class MainCommunityTableViewCell: BaseTableViewCell {
             make.horizontalEdges.equalToSuperview().inset(10)
         }
         
-        timeLabel.snp.makeConstraints { make in
+        commentButton.snp.makeConstraints { make in
             make.top.equalTo(contentLabel.snp.bottom).offset(10)
+            make.leading.equalToSuperview().offset(10)
+            make.size.equalTo(24)
+        }
+        
+        commentCountLabel.snp.makeConstraints { make in
+            make.leading.equalTo(commentButton.snp.trailing).offset(5)
+            make.centerY.equalTo(commentButton)
+        }
+        
+        timeLabel.snp.makeConstraints { make in
+            make.top.equalTo(commentButton.snp.bottom).offset(10)
             make.leading.bottom.equalToSuperview().inset(10)
         }
     }
@@ -99,5 +124,7 @@ final class MainCommunityTableViewCell: BaseTableViewCell {
         nicknameLabel.text = post.creator.nick
         contentLabel.text = post.content
         timeLabel.text = FormatterManager.shared.formatDate(from: post.createdAt)
+        commentCountLabel.text = "\(post.comments.count)"
     }
 }
+
