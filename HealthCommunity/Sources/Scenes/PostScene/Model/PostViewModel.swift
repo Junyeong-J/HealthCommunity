@@ -26,6 +26,7 @@ final class PostViewModel: BaseViewModel {
         let postButtonTap: ControlEvent<Void>
         let tableSize: Reactive<UITableView>
         let contentText: Observable<String>
+        let workoutTimeText: Observable<String>
     }
     
     struct Output {
@@ -56,6 +57,14 @@ final class PostViewModel: BaseViewModel {
             .observe(CGSize.self, "contentSize")
             .compactMap { $0?.height }
             .distinctUntilChanged()
+        
+        let workoutTimeViewVisible = Observable.of(
+            input.onewonButtonTap.map { true },
+            input.feedbackButtonTap.map { true },
+            input.communicationButtonTap.map { false }
+        )
+            .merge()
+            .asDriver(onErrorJustReturn: false)
         
         input.onewonButtonTap
             .map { "오운완" }
@@ -90,12 +99,19 @@ final class PostViewModel: BaseViewModel {
         let postResult = input.postButtonTap
             .throttle(.seconds(1), scheduler: MainScheduler.instance)
             .withLatestFrom(Observable.combineLatest(
-                photosRelay, productIdRelay, input.contentData, formattedHealthData, input.contentText
+                photosRelay, productIdRelay, input.contentData, formattedHealthData, input.contentText, input.workoutTimeText
             ))
-            .flatMapLatest { photos, productId, content, healthData, contentText -> Observable<Bool> in
+            .flatMapLatest { photos, productId, content, healthData, contentText, workoutTime -> Observable<Bool> in
+                
+                let kcalValue = self.extractKcal(from: healthData)
+                let totalKcal = self.calculateTotalKcal(kcal: kcalValue, workoutTime: workoutTime)
+                
+                let content3 = workoutTime
+                let content4 = "\(totalKcal)"
+                
                 if productId == "소통" {
                     return self.networkManager.request(
-                        api: .post(.posts(content: "", content1: "", content2: contentText, productId: productId, files: nil)),
+                        api: .post(.posts(content: "", content1: "", content2: contentText, content3: content3, content4: content4, productId: productId, files: nil)),
                         model: PostModelResponse.self
                     )
                     .map { result -> Bool in
@@ -118,7 +134,7 @@ final class PostViewModel: BaseViewModel {
                             case .success(let imageResponse):
                                 let files = imageResponse.files
                                 return self.networkManager.request(
-                                    api: .post(.posts(content: content, content1: healthData, content2: contentText, productId: productId, files: files)),
+                                    api: .post(.posts(content: content, content1: healthData, content2: contentText, content3: content3, content4: content4, productId: productId, files: files)),
                                     model: PostModelResponse.self
                                 )
                                 .map { result -> Bool in
@@ -154,6 +170,22 @@ final class PostViewModel: BaseViewModel {
         )
     }
     
+    private func extractKcal(from healthData: String) -> Int {
+        let kcalString = healthData.split(separator: ",").compactMap { item -> Int? in
+            if item.contains("칼로리") {
+                return Int(item.replacingOccurrences(of: "칼로리", with: "").trimmingCharacters(in: .whitespaces))
+            }
+            return nil
+        }.first
+        return kcalString ?? 0
+    }
+    
+    private func calculateTotalKcal(kcal: Int, workoutTime: String) -> Int {
+        guard let workoutTimeInt = Int(workoutTime) else { return kcal }
+        let additionalKcal = workoutTimeInt * 6
+        return kcal + additionalKcal
+    }
+    
     func addPhoto(_ photo: UIImage) {
         var photos = photosRelay.value
         if photos.count < 5 {
@@ -170,3 +202,5 @@ final class PostViewModel: BaseViewModel {
         }
     }
 }
+
+

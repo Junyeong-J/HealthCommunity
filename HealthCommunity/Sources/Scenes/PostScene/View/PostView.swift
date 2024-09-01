@@ -138,6 +138,32 @@ final class PostView: BaseView, UITextViewDelegate {
         return label
     }()
     
+    let workoutTimeView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemGray6
+        view.layer.cornerRadius = 10
+        return view
+    }()
+    
+    let workoutTimeLabel: UILabel = {
+        let label = UILabel()
+        label.text = "운동 시간 (분):"
+        label.font = UIFont.systemFont(ofSize: 16)
+        label.textColor = .black
+        return label
+    }()
+    
+    let workoutTimeTextField: UITextField = {
+        let textField = UITextField()
+        textField.keyboardType = .numberPad
+        textField.font = UIFont.systemFont(ofSize: 16)
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = UIColor.black.cgColor
+        textField.layer.cornerRadius = 8
+        textField.textAlignment = .center
+        return textField
+    }()
+    
     override func configureHierarchy() {
         addSubview(scrollView)
         scrollView.addSubview(contentView)
@@ -150,6 +176,9 @@ final class PostView: BaseView, UITextViewDelegate {
         contentView.addSubview(photoScrollView)
         contentView.addSubview(photoCountLabel)
         contentView.addSubview(contentTextView)
+        contentView.addSubview(workoutTimeView)
+        workoutTimeView.addSubview(workoutTimeLabel)
+        workoutTimeView.addSubview(workoutTimeTextField)
         contentTextView.addSubview(placeholderLabel)
         photoScrollView.addSubview(photoButton)
         [tableView, addButton, healthDataView, myRoutineDetailTableView].forEach { contentView.addSubview($0) }
@@ -227,8 +256,26 @@ final class PostView: BaseView, UITextViewDelegate {
             make.leading.equalTo(contentTextView).offset(5)
         }
         
+        workoutTimeView.snp.makeConstraints { make in
+            make.top.equalTo(contentTextView.snp.bottom).offset(10)
+            make.horizontalEdges.equalTo(contentView).inset(20)
+            make.height.equalTo(50)
+        }
+        
+        workoutTimeLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(workoutTimeView)
+            make.leading.equalTo(workoutTimeView).offset(10)
+        }
+        
+        workoutTimeTextField.snp.makeConstraints { make in
+            make.centerY.equalTo(workoutTimeView)
+            make.trailing.equalTo(workoutTimeView).inset(10)
+            make.width.equalTo(80)
+            make.height.equalTo(30)
+        }
+        
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(contentTextView.snp.bottom).offset(20)
+            make.top.equalTo(workoutTimeView.snp.bottom).offset(20)
             make.horizontalEdges.equalTo(contentView)
             make.height.equalTo(100)
         }
@@ -269,17 +316,18 @@ final class PostView: BaseView, UITextViewDelegate {
         tableView.isHidden = !isVisible
         myRoutineDetailTableView.isHidden = !isVisible
         healthDataView.isHidden = !isVisible
+        workoutTimeView.isHidden = !isVisible
         
         if isVisible {
             contentTextView.snp.remakeConstraints { make in
                 make.top.equalTo(photoCountLabel.snp.bottom).offset(20)
-                make.leading.trailing.equalToSuperview().inset(20)
+                make.horizontalEdges.equalToSuperview().inset(20)
                 make.height.equalTo(300)
             }
         } else {
             contentTextView.snp.remakeConstraints { make in
                 make.top.equalTo(communicationButton.snp.bottom).offset(20)
-                make.leading.trailing.equalToSuperview().inset(20)
+                make.horizontalEdges.equalToSuperview().inset(20)
                 make.height.equalTo(300)
             }
         }

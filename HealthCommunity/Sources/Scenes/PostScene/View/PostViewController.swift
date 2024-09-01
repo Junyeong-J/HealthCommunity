@@ -36,7 +36,8 @@ final class PostViewController: BaseViewController<PostView> {
             healthData: healthData.asObserver(),
             postButtonTap: rootView.addButton.rx.tap,
             tableSize: rootView.myRoutineDetailTableView.rx,
-            contentText: rootView.contentTextView.rx.text.orEmpty.asObservable()
+            contentText: rootView.contentTextView.rx.text.orEmpty.asObservable(),
+            workoutTimeText: rootView.workoutTimeTextField.rx.text.orEmpty.asObservable()
         )
         
         let output = viewModel.transform(input: input)
@@ -157,7 +158,6 @@ final class PostViewController: BaseViewController<PostView> {
                 owner.updateTableViewHeight(height)
             }
             .disposed(by: viewModel.disposeBag)
-        
     }
     
 }
