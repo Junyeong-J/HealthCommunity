@@ -122,7 +122,7 @@ final class MainCommunityTableViewCell: BaseTableViewCell {
         }
         
         nicknameLabel.text = post.creator.nick
-        contentLabel.text = post.content
+        contentLabel.text = post.content2
         timeLabel.text = FormatterManager.shared.formatDate(from: post.createdAt)
         commentCountLabel.text = "\(post.comments.count)"
     }
