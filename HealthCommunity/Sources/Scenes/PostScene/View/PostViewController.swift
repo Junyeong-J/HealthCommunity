@@ -79,22 +79,24 @@ final class PostViewController: BaseViewController<PostView> {
             .bind(with: self, onNext: { owner, cell in
                 cell.textFieldChanges
                     .bind(onNext: { routineName, set, weight, count in
-                        var newContentArray = [[String]]()
-                        
+                        var routineDetailsArray = [[String]]()
+
                         for i in 0..<self.rootView.myRoutineDetailTableView.numberOfRows(inSection: 0) {
                             if let cell = self.rootView.myRoutineDetailTableView.cellForRow(at: IndexPath(row: i, section: 0)) as? MyRoutineDetailTableViewCell {
                                 let routineData = cell.getRoutineData()
-                                let routineName = routineData.routineName
-                                let set = routineData.set ?? ""
+                                let exerciseName = routineData.routineName
+                                let sets = routineData.set ?? ""
                                 let weight = routineData.weight ?? ""
-                                let count = routineData.count ?? ""
-                                let routineArray = [routineName, set, weight, count]
-                                newContentArray.append(routineArray)
+                                let repetitions = routineData.count ?? ""
+                                let routineDetails = [exerciseName, sets, weight, repetitions]
+                                routineDetailsArray.append(routineDetails)
                             }
                         }
-                        let joinedContent = newContentArray.map { $0.joined(separator: ", ") }
-                        let finalContent = joinedContent.joined(separator: "; ")
-                        self.content.onNext(finalContent)
+
+                        let modifyDetails = routineDetailsArray.map { $0.joined(separator: ", ") }
+                        let nextRoutineString = modifyDetails.joined(separator: "; ")
+                        owner.content.onNext(nextRoutineString)
+
                     })
                     .disposed(by: cell.disposeBag)
             })

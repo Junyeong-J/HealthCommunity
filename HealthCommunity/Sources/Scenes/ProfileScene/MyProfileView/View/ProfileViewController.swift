@@ -26,7 +26,8 @@ final class ProfileViewController: BaseViewController<ProfileView> {
     override func bindModel() {
         let input = ProfileViewModel.Input(
             editProfileTap: rootView.profileEditButton.rx.tap,
-            routineLikeTap: rootView.routineLikesButton.rx.tap)
+            routineLikeTap: rootView.routineLikesButton.rx.tap,
+            logoutTap: rootView.logoutButton.rx.tap)
         
         let output = viewModel.transform(input: input)
         
@@ -48,6 +49,17 @@ final class ProfileViewController: BaseViewController<ProfileView> {
         output.routineLikeTapped
             .bind(with: self) { owner, _ in
                 owner.navigationController?.pushViewController(LikeRoutineViewController(), animated: true)
+            }
+            .disposed(by: viewModel.disposeBag)
+        
+        output.logoutTapped
+            .bind(with: self) { owner, _ in
+                let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+                let sceneDelegate = windowScene?.delegate as? SceneDelegate
+                
+                let rootViewController = LoginViewController()
+                sceneDelegate?.window?.rootViewController = rootViewController
+                sceneDelegate?.window?.makeKeyAndVisible()
             }
             .disposed(by: viewModel.disposeBag)
         

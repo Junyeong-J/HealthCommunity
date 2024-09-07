@@ -111,17 +111,20 @@ final class HealthDataViewController: BaseViewController<HealthDataView> {
     }
     
     private func fetchHealthData(for date: Date, type: HKQuantityTypeIdentifier, unit: HKUnit, completion: @escaping (Double) -> Void) {
+        //데이터를 가져올 수 있는 타입인지 확인
         guard let quantityType = HKQuantityType.quantityType(forIdentifier: type) else {
-            completion(0)
+            completion(0)//없으면 0으로 반환
             return
         }
         
         let calendar = Calendar.current
-        let startDate = calendar.startOfDay(for: date)
-        let endDate = calendar.date(byAdding: .day, value: 1, to: startDate)!
+        let startDate = calendar.startOfDay(for: date)//시작일
+        let endDate = calendar.date(byAdding: .day, value: 1, to: startDate)!// 끝지점
         
+        // 특정 날짜 설정에 대한 쿼리문
         let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
         
+        //누적 데이터 가져오기
         let query = HKStatisticsQuery(quantityType: quantityType, quantitySamplePredicate: predicate, options: .cumulativeSum) { _, result, error in
             if let error = error {
                 print("error: \(error.localizedDescription)")
@@ -129,11 +132,13 @@ final class HealthDataViewController: BaseViewController<HealthDataView> {
                 return
             }
             
+            // 결과에서 합계를 추출
             guard let result = result, let sum = result.sumQuantity() else {
                 completion(0)
                 return
             }
             
+            // 주어진 단위로 변환
             let value = sum.doubleValue(for: unit)
             DispatchQueue.main.async {
                 completion(value)

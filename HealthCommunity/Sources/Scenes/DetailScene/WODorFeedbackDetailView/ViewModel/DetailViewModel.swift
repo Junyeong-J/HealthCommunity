@@ -16,10 +16,12 @@ final class DetailViewModel: BaseViewModel {
     
     private let postList = PublishSubject<[Post]>()
     private let likeStatusRelay = BehaviorRelay<Bool>(value: false)
+    private let postDeleted = PublishSubject<Void>()
     
     struct Input {
         let commentTap: ControlEvent<Void>
         let likeButtonTap: ControlEvent<Void>
+        let deleteButtonTap: Observable<Void>
         let post: Post
     }
     
@@ -27,6 +29,7 @@ final class DetailViewModel: BaseViewModel {
         let commentTapped: ControlEvent<Void>
         let posts: Observable<[Post]>
         let likeStatus: Driver<Bool>
+        let postDeleted: Observable<Void>
     }
     
     func transform(input: Input) -> Output {
@@ -62,9 +65,17 @@ final class DetailViewModel: BaseViewModel {
             })
             .disposed(by: disposeBag)
         
+        input.deleteButtonTap
+            .flatMapLatest { [weak self] in
+                self?.deletePost(postID: input.post.postID) ?? .empty()
+            }
+            .bind(to: postDeleted)
+            .disposed(by: disposeBag)
+        
         return Output(commentTapped: input.commentTap,
                       posts: postList,
-                      likeStatus: likeStatusRelay.asDriver(onErrorJustReturn: false))
+                      likeStatus: likeStatusRelay.asDriver(onErrorJustReturn: false),
+                      postDeleted: postDeleted.asObservable())
     }
     
     private func toggleLikeStatus(userID: String, currentStatus: Bool) -> Observable<Bool> {
@@ -80,6 +91,20 @@ final class DetailViewModel: BaseViewModel {
                 }
             }
             .catchAndReturn(currentStatus)
+    }
+    
+    private func deletePost(postID: String) -> Observable<Void> {
+        return networkManager.request(api: .post(.deletePost(id: postID)), model: Data.self)
+            .asObservable()
+            .map { result in
+                switch result {
+                case .success:
+                    return ()
+                case .failure(let error):
+                    print("Error: \(error)")
+                    throw error
+                }
+            }
     }
     
 }

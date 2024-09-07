@@ -95,7 +95,7 @@ final class ProfileView: BaseView {
         return button
     }()
     
-    private let logoutButton: UIButton = {
+    let logoutButton: UIButton = {
         let button = UIButton()
         button.setTitle("로그아웃", for: .normal)
         button.setTitleColor(.systemRed, for: .normal)

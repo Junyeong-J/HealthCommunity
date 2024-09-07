@@ -82,6 +82,10 @@ struct APIErrorMessages {
                 return [
                     400: "이메일 형식이 잘못되었습니다."
                 ]
+            case .deletePost(id: let id):
+                return [
+                    400: "이메일 형식이 잘못되었습니다."
+                ]
             }
         case .profile(let profileRouter):
             switch profileRouter {

@@ -224,17 +224,19 @@ final class DetailView: BaseView {
     func parseRoutineData(_ data: String) -> [RoutinDetail] {
         var routines = [RoutinDetail]()
         
+        //세미콜론을 기준 루틴으로 분리
         let exercises = data.components(separatedBy: "; ")
-        
+    
         for exercise in exercises {
-            let details = exercise.components(separatedBy: ", ")
-            if details.count == 4 {
-                let categoryAndName = details[0].components(separatedBy: "|")
-                let category = categoryAndName[0].trimmingCharacters(in: .whitespacesAndNewlines)
-                let name = categoryAndName[1].trimmingCharacters(in: .whitespacesAndNewlines)
-                let sets = details[1]
-                let weight = details[2]
-                let reps = details[3]
+            let details = exercise.components(separatedBy: ", ")//, 로 분리
+            if details.count == 4 {//요소가 무조건 4개
+                let categoryAndName = details[0].components(separatedBy: "|")//카테고리 이름 구분
+                let category = categoryAndName[0].trimmingCharacters(in: .whitespacesAndNewlines)//공백 앞뒤로 제거
+                let name = categoryAndName[1].trimmingCharacters(in: .whitespacesAndNewlines)//공백 앞뒤로 제거
+                let sets = details[1]//세트
+                let weight = details[2]//중량
+                let reps = details[3]//1회당 횟수
+                //RoutinDetail 객체로 구조화하여 배열에 추가
                 let routine = RoutinDetail(category: category, name: name, sets: sets, weight: weight, reps: reps)
                 routines.append(routine)
             }

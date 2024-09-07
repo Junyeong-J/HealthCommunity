@@ -19,6 +19,7 @@ enum PostRouter: TargetType {
     case userByPostAPI(id: String, productId: String)
     case likeAPI(id: String, likeState: Bool)
     case likeMeAPI(next: String, limit: String)
+    case deletePost(id: String)
     
 }
 
@@ -44,6 +45,8 @@ extension PostRouter {
             return APIURL.likeURL + id + APIURL.likeSecondURL
         case .likeMeAPI:
             return APIURL.likesMeURL
+        case .deletePost(let id):
+            return APIURL.deletePostURL + id
         }
     }
     
@@ -53,6 +56,8 @@ extension PostRouter {
             return .post
         case .postView, .specificPost, .userByPostAPI, .likeMeAPI:
             return .get
+        case .deletePost:
+            return .delete
         }
     }
     
@@ -64,7 +69,7 @@ extension PostRouter {
                 Header.sesacKey.rawValue: APIKey.key,
                 Header.authorization.rawValue: UserDefaultsManager.shared.token
             ]
-        case .postView, .specificPost, .userByPostAPI, .likeMeAPI:
+        case .postView, .specificPost, .userByPostAPI, .likeMeAPI, .deletePost:
             return [
                 Header.sesacKey.rawValue: APIKey.key,
                 Header.authorization.rawValue: UserDefaultsManager.shared.token
@@ -84,7 +89,7 @@ extension PostRouter {
     
     var queryItems: [URLQueryItem]? {
         switch self {
-        case .imageUpload, .specificPost, .myRoutinePosts, .posts, .likeAPI:
+        case .imageUpload, .specificPost, .myRoutinePosts, .posts, .likeAPI, .deletePost:
             return nil
         case .postView(let next, let limit, let productId):
             return [
@@ -107,7 +112,7 @@ extension PostRouter {
     
     var body: Data? {
         switch self {
-        case .imageUpload, .postView, .specificPost, .userByPostAPI, .likeMeAPI:
+        case .imageUpload, .postView, .specificPost, .userByPostAPI, .likeMeAPI, .deletePost:
             return nil
         case .myRoutinePosts(let title, let content, let content1, let productId):
             let params: [String: Any] = [

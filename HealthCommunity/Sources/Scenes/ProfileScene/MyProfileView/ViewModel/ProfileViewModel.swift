@@ -19,12 +19,14 @@ final class ProfileViewModel: BaseViewModel {
     struct Input {
         let editProfileTap: ControlEvent<Void>
         let routineLikeTap: ControlEvent<Void>
+        let logoutTap: ControlEvent<Void>
     }
     
     struct Output {
         let editProfileTapped: ControlEvent<Void>
         let routineLikeTapped: ControlEvent<Void>
         let myProfileList: Observable<[UserProfile]>
+        let logoutTapped: ControlEvent<Void>
     }
     
     func transform(input: Input) -> Output {
@@ -33,7 +35,8 @@ final class ProfileViewModel: BaseViewModel {
         
         return Output(editProfileTapped: input.editProfileTap,
                       routineLikeTapped: input.routineLikeTap,
-                      myProfileList: profileList.asObservable())
+                      myProfileList: profileList.asObservable(),
+                      logoutTapped: input.logoutTap)
     }
     
     func fetchProfileData() {
