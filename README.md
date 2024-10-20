@@ -31,3 +31,55 @@ MZ세대 감성으로 운동 기록과 사진을 공유하고, 사용자들끼�
 | **내 루틴 기록 화면** | **루틴 좋아요 기능** | **커뮤니티 상세화면** | **클래스 참여 (포트원 결제 연동)** |
 |-----------------------|-----------|-----------|-----------|
 | <img src="https://github.com/user-attachments/assets/4c156c58-c1b5-472c-bb8a-bb7dc5a746b4" width="200"/> | <img src="https://github.com/user-attachments/assets/3a92f457-da9c-4dea-8557-0ed0490b8bf1" width="200"/> | <img src="https://github.com/user-attachments/assets/5e003085-f0e2-4570-9a46-3f841b7c214e" width="200"/> | <img src="https://github.com/user-attachments/assets/0c147427-e1d2-4a49-b5d4-a447042add41" width="200"/> |
+
+## 트러블슈팅
+1. HealthKit데이터 가져오기에서 반환 문제
+    - 처음에 Apple에서 제공하는 쿼리문을 사용하여 HealthKit데이터를 가져오려고 했지만, 값이 아예 반환되지 않는 문제가 발생했습니다.
+2. 해결과정
+   - 먼저 내가 가져오려는 데이터 타입이 정확한지부터 확인했습니다. HealthKit에 해당 데이터 타입이 존재하지 않거나, 값이 0으로 반환되는 상황, 혹은 쿼리문이 실패할 가능성도 고려했습니다.
+   - 쿼리문에서 날짜 범위가 잘못 설정되었을 가능성을 의심해 날짜 출력도 확인했습니다. 하지만 오류는 없었고 여전히 데이터 값이 0으로 나왔습니다.
+   - 그러나 문제의 원인은 데이터가 실제로 존재하지 않아서였습니다. 예를 들어, 사용자가 지정한 날짜에 걸음 수가 없으면, 0으로 반환되고 데이터를 표시할 수 없었던 것입니다.
+   ~~~swift
+    private func fetchHealthData(for date: Date, type: HKQuantityTypeIdentifier, unit: HKUnit, completion: @escaping (Double) -> Void) {
+        //데이터를 가져올 수 있는 타입인지 확인
+        guard let quantityType = HKQuantityType.quantityType(forIdentifier: type) else {
+            completion(0)//없으면 0으로 반환
+            return
+        }
+        
+        let calendar = Calendar.current
+        let startDate = calendar.startOfDay(for: date)//시작일
+        let endDate = calendar.date(byAdding: .day, value: 1, to: startDate)!// 끝지점
+        
+        // 특정 날짜 설정에 대한 쿼리문
+        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
+        
+        //누적 데이터 가져오기
+        let query = HKStatisticsQuery(quantityType: quantityType, quantitySamplePredicate: predicate, options: .cumulativeSum) { _, result, error in
+            if let error = error {
+                print("error: \(error.localizedDescription)")
+                completion(0)
+                return
+            }
+            
+            // 결과에서 합계를 추출
+            guard let result = result, let sum = result.sumQuantity() else {
+                completion(0)
+                return
+            }
+            
+            // 주어진 단위로 변환
+            let value = sum.doubleValue(for: unit)
+            DispatchQueue.main.async {
+                completion(value)
+            }
+        }
+        healthStore.execute(query)
+    }
+   ~~~
+    최종적으로 이렇게 나왔습니다.
+3. 결과
+    - 데이터 타입과 단위가 HealthKit에서 올바르게 설정되었는지 확인하고, 해당하는 데이터에 대해서만 쿼리를 실행하도록 수정했습니다.
+    - HealthKit에서 데이터를 반환하지 않을 때 0으로 처리하는 로직을 추가하여, 빈 값이 반환되더라도 앱이 정상적으로 동작하도록 개선했습니다.
+
+
